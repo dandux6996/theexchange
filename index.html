@@ -1,302 +1,1075 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-<meta charset="UTF-8">
-<meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>The Exchange</title>
+  <meta charset="UTF-8">
+  <title>The Exchange – Enjoy a happy exchange</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1">
 
-<style>
-:root {
-    --bg: #f4efe7;
-    --primary: #7b4b2a;
-    --accent: #a97449;
-    --text: #3e2a1d;
-}
+  <!-- Color palette: cream background, warm brown, soft gold -->
+  <style>
+    :root {
+      --bg: #f7f1e8;
+      --card-bg: #fbf7f1;
+      --brown: #7b4a25;
+      --brown-dark: #5a3417;
+      --gold: #c39a5b;
+      --accent-soft: #e3c99a;
+      --text-main: #3b2a1b;
+      --text-muted: #8d7764;
+      --error: #b53939;
+      --success: #1f7a4d;
+      --border-soft: #e0d2c2;
+    }
 
-body {
-    margin: 0;
-    font-family: 'Georgia', serif;
-    background-color: var(--bg);
-    color: var(--text);
-}
+    * {
+      box-sizing: border-box;
+      margin: 0;
+      padding: 0;
+    }
 
-nav {
-    text-align: center;
-    padding: 20px;
-}
+    body {
+      font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", system-ui, sans-serif;
+      background: var(--bg);
+      color: var(--text-main);
+      line-height: 1.6;
+    }
 
-nav a {
-    margin: 0 15px;
-    text-decoration: none;
-    color: var(--primary);
-    font-weight: bold;
-}
+    img {
+      max-width: 100%;
+      display: block;
+    }
 
-section {
-    padding: 60px 20px;
-    max-width: 1000px;
-    margin: auto;
-}
+    a {
+      color: var(--brown);
+      text-decoration: none;
+    }
 
-.logo {
-    display: block;
-    margin: 0 auto 20px auto;
-    width: 180px;
-}
+    header {
+      background: var(--card-bg);
+      border-bottom: 1px solid var(--border-soft);
+      position: sticky;
+      top: 0;
+      z-index: 10;
+    }
 
-.tagline {
-    text-align: center;
-    font-style: italic;
-    margin-bottom: 40px;
-}
+    .nav-inner {
+      max-width: 1100px;
+      margin: 0 auto;
+      padding: 0.8rem 1.5rem;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+    }
 
-h2 {
-    text-align: center;
-    color: var(--primary);
-}
+    .brand-lockup {
+      display: flex;
+      align-items: center;
+      gap: 0.75rem;
+    }
 
-.card {
-    background: white;
-    padding: 25px;
-    margin: 20px 0;
-    border-radius: 10px;
-    box-shadow: 0 4px 12px rgba(0,0,0,0.05);
-}
+    .brand-lockup img {
+      width: 44px;
+      height: 44px;
+      border-radius: 999px;
+    }
 
-input, select, textarea {
-    width: 100%;
-    padding: 10px;
-    margin: 10px 0;
-    border: 1px solid #ccc;
-    border-radius: 5px;
-}
+    .brand-text {
+      display: flex;
+      flex-direction: column;
+    }
 
-button {
-    background-color: var(--primary);
-    color: white;
-    border: none;
-    padding: 10px 20px;
-    cursor: pointer;
-    border-radius: 5px;
-}
+    .brand-text span:first-child {
+      letter-spacing: 0.18em;
+      font-size: 0.75rem;
+      text-transform: uppercase;
+      color: var(--brown-dark);
+    }
 
-button:hover {
-    background-color: var(--accent);
-}
+    .brand-text span:last-child {
+      font-size: 0.7rem;
+      color: var(--text-muted);
+    }
 
-.menu-grid {
-    display: grid;
-    grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
-    gap: 20px;
-}
+    nav ul {
+      list-style: none;
+      display: flex;
+      gap: 1.3rem;
+      font-size: 0.9rem;
+    }
 
-.menu-item img {
-    width: 100%;
-    border-radius: 10px;
-}
+    nav a {
+      position: relative;
+      padding-bottom: 2px;
+    }
 
-.progress-bar {
-    height: 20px;
-    background-color: #ddd;
-    border-radius: 10px;
-    overflow: hidden;
-    margin-top: 5px;
-}
+    nav a::after {
+      content: "";
+      position: absolute;
+      left: 0;
+      bottom: 0;
+      width: 0;
+      height: 1px;
+      background: var(--gold);
+      transition: width 0.2s ease;
+    }
 
-.progress {
-    height: 100%;
-    background-color: var(--primary);
-    width: 0%;
-}
+    nav a:hover::after {
+      width: 100%;
+    }
 
-footer {
-    text-align: center;
-    padding: 30px;
-    background: #eee;
-}
-</style>
+    main {
+      max-width: 1100px;
+      margin: 0 auto;
+      padding: 1.5rem 1.5rem 3rem;
+    }
+
+    .hero {
+      display: grid;
+      grid-template-columns: minmax(0, 1.4fr) minmax(0, 1fr);
+      gap: 2.5rem;
+      padding: 2.2rem 1.5rem;
+      background: linear-gradient(135deg, #fbf7f1, #f3e1c8);
+      border-radius: 18px;
+      border: 1px solid var(--border-soft);
+      box-shadow: 0 18px 40px rgba(91, 57, 28, 0.06);
+      margin-top: 1.5rem;
+    }
+
+    .hero-logo-block {
+      text-align: center;
+      padding-right: 1rem;
+      border-right: 1px solid rgba(195, 154, 91, 0.4);
+    }
+
+    .hero-logo-block img {
+      margin: 0 auto 0.75rem;
+      max-width: 210px;
+    }
+
+    .hero-tagline {
+      font-family: "Georgia", "Times New Roman", serif;
+      font-size: 1.1rem;
+      color: var(--brown-dark);
+      letter-spacing: 0.08em;
+      text-transform: uppercase;
+    }
+
+    .hero-philosophy {
+      margin-top: 1.25rem;
+      font-size: 0.98rem;
+      color: var(--text-main);
+    }
+
+    .hero-philosophy em {
+      font-style: normal;
+      font-weight: 600;
+      color: var(--brown-dark);
+    }
+
+    .hero-meta {
+      margin-top: 0.9rem;
+      font-size: 0.88rem;
+      color: var(--text-muted);
+    }
+
+    .pill-row {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 0.4rem;
+      margin-top: 0.75rem;
+    }
+
+    .pill {
+      padding: 0.25rem 0.6rem;
+      border-radius: 999px;
+      background: rgba(195, 154, 91, 0.18);
+      color: var(--brown-dark);
+      font-size: 0.74rem;
+      letter-spacing: 0.06em;
+      text-transform: uppercase;
+    }
+
+    .hero-reservation {
+      padding-left: 1rem;
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+    }
+
+    .section-label {
+      letter-spacing: 0.16em;
+      text-transform: uppercase;
+      color: var(--gold);
+      font-size: 0.73rem;
+      margin-bottom: 0.25rem;
+    }
+
+    .section-title {
+      font-family: "Georgia", "Times New Roman", serif;
+      font-size: 1.25rem;
+      margin-bottom: 0.8rem;
+      color: var(--brown-dark);
+    }
+
+    form {
+      margin-top: 0.25rem;
+    }
+
+    .form-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(180px, 1fr));
+      gap: 0.75rem 0.9rem;
+    }
+
+    label {
+      display: block;
+      font-size: 0.78rem;
+      text-transform: uppercase;
+      letter-spacing: 0.14em;
+      color: var(--text-muted);
+      margin-bottom: 0.25rem;
+    }
+
+    input, select, textarea {
+      width: 100%;
+      border-radius: 999px;
+      border: 1px solid var(--border-soft);
+      padding: 0.5rem 0.9rem;
+      font-size: 0.9rem;
+      color: var(--text-main);
+      background: rgba(255, 255, 255, 0.9);
+      outline: none;
+      transition: border 0.15s ease, box-shadow 0.15s ease, background 0.15s ease;
+    }
+
+    textarea {
+      border-radius: 12px;
+      min-height: 66px;
+      resize: vertical;
+      padding-top: 0.6rem;
+    }
+
+    input:focus,
+    select:focus,
+    textarea:focus {
+      border-color: var(--gold);
+      box-shadow: 0 0 0 1px rgba(195, 154, 91, 0.4);
+      background: #fffaf3;
+    }
+
+    .helper {
+      font-size: 0.75rem;
+      color: var(--text-muted);
+      margin-top: 0.25rem;
+    }
+
+    .chip-row {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 0.3rem;
+      margin-top: 0.25rem;
+      font-size: 0.75rem;
+    }
+
+    .chip {
+      border-radius: 999px;
+      padding: 0.2rem 0.6rem;
+      background: rgba(123, 74, 37, 0.06);
+      border: 1px dashed rgba(123, 74, 37, 0.25);
+      color: var(--text-muted);
+    }
+
+    .button-row {
+      margin-top: 0.9rem;
+      display: flex;
+      gap: 0.6rem;
+      flex-wrap: wrap;
+      align-items: center;
+    }
+
+    button,
+    .btn-secondary {
+      border-radius: 999px;
+      border: none;
+      padding: 0.55rem 1.3rem;
+      font-size: 0.9rem;
+      cursor: pointer;
+      font-weight: 500;
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      gap: 0.35rem;
+      transition: background 0.18s ease, transform 0.1s ease, box-shadow 0.18s ease;
+    }
+
+    button {
+      background: var(--brown);
+      color: #fffaf3;
+      box-shadow: 0 10px 24px rgba(62, 34, 13, 0.25);
+    }
+
+    button:hover {
+      background: var(--brown-dark);
+      transform: translateY(-1px);
+      box-shadow: 0 14px 30px rgba(62, 34, 13, 0.28);
+    }
+
+    .btn-secondary {
+      background: transparent;
+      border: 1px solid rgba(123, 74, 37, 0.35);
+      color: var(--brown-dark);
+    }
+
+    .btn-secondary:hover {
+      background: rgba(251, 247, 241, 0.85);
+    }
+
+    .note-inline {
+      font-size: 0.75rem;
+      color: var(--text-muted);
+    }
+
+    /* Sections */
+    section {
+      margin-top: 3rem;
+    }
+
+    .section-card {
+      background: var(--card-bg);
+      border-radius: 18px;
+      padding: 1.7rem 1.6rem 1.9rem;
+      border: 1px solid var(--border-soft);
+      box-shadow: 0 12px 28px rgba(87, 56, 30, 0.06);
+    }
+
+    .section-header {
+      margin-bottom: 1.1rem;
+    }
+
+    .section-header p {
+      font-size: 0.92rem;
+      color: var(--text-muted);
+      max-width: 560px;
+    }
+
+    /* Menu */
+    .menu-layout {
+      display: grid;
+      grid-template-columns: minmax(0, 1.4fr) minmax(0, 1.2fr);
+      gap: 2rem;
+      margin-top: 1rem;
+    }
+
+    .menu-column h3 {
+      font-family: "Georgia", "Times New Roman", serif;
+      font-size: 1.05rem;
+      letter-spacing: 0.18em;
+      text-transform: uppercase;
+      color: var(--brown-dark);
+      margin-bottom: 0.4rem;
+    }
+
+    .menu-divider {
+      height: 1px;
+      background: linear-gradient(to right, rgba(195,154,91,0.5), rgba(195,154,91,0));
+      margin-bottom: 0.6rem;
+    }
+
+    .menu-item {
+      margin-bottom: 0.65rem;
+    }
+
+    .menu-item-header {
+      display: flex;
+      justify-content: space-between;
+      align-items: baseline;
+      gap: 0.4rem;
+    }
+
+    .menu-item-title {
+      font-weight: 600;
+      font-size: 0.96rem;
+      color: var(--brown-dark);
+    }
+
+    .menu-item-tag {
+      font-size: 0.75rem;
+      color: var(--text-muted);
+    }
+
+    .menu-item-desc {
+      font-size: 0.85rem;
+      color: var(--text-muted);
+      margin-top: 0.1rem;
+    }
+
+    .set-pricing {
+      margin-top: 0.6rem;
+      border-radius: 14px;
+      border: 1px solid rgba(195,154,91,0.5);
+      background: rgba(250, 243, 231, 0.7);
+      padding: 0.8rem 0.9rem;
+      font-size: 0.87rem;
+    }
+
+    .set-line {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      margin-top: 0.2rem;
+    }
+
+    .set-name {
+      font-weight: 600;
+      color: var(--brown-dark);
+    }
+
+    .set-price {
+      font-weight: 600;
+      color: var(--brown-dark);
+    }
+
+    .set-meta {
+      font-size: 0.8rem;
+      color: var(--text-muted);
+    }
+
+    .dish-gallery {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(130px, 1fr));
+      gap: 0.8rem;
+      margin-top: 0.6rem;
+    }
+
+    .dish-card {
+      border-radius: 14px;
+      background: #fdf8ef;
+      border: 1px dashed rgba(195,154,91,0.6);
+      padding: 0.65rem;
+      display: flex;
+      flex-direction: column;
+      gap: 0.4rem;
+      font-size: 0.8rem;
+    }
+
+    .dish-pill {
+      font-size: 0.7rem;
+      text-transform: uppercase;
+      letter-spacing: 0.13em;
+      color: var(--text-muted);
+    }
+
+    .dish-name {
+      font-weight: 600;
+      color: var(--brown-dark);
+    }
+
+    .dish-ai-note {
+      font-size: 0.76rem;
+      color: var(--text-muted);
+    }
+
+    /* CSR section */
+    .csr-stats {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 1rem;
+      align-items: center;
+      margin-top: 0.4rem;
+      margin-bottom: 1rem;
+    }
+
+    .csr-amount {
+      font-size: 1.6rem;
+      font-weight: 600;
+      color: var(--brown-dark);
+    }
+
+    .csr-pill {
+      font-size: 0.78rem;
+      padding: 0.3rem 0.7rem;
+      border-radius: 999px;
+      background: rgba(31, 122, 77, 0.08);
+      color: var(--success);
+    }
+
+    .csr-form-grid {
+      display: grid;
+      grid-template-columns: minmax(0, 1.2fr) minmax(0, 1.2fr);
+      gap: 1.4rem;
+      margin-top: 0.4rem;
+    }
+
+    .amount-row {
+      display: flex;
+      gap: 0.7rem;
+      align-items: center;
+      margin-top: 0.45rem;
+      flex-wrap: wrap;
+    }
+
+    .amount-row input {
+      max-width: 160px;
+    }
+
+    .quick-amount {
+      border-radius: 999px;
+      padding: 0.25rem 0.7rem;
+      border: 1px solid rgba(195,154,91,0.8);
+      background: rgba(251,247,241,0.9);
+      font-size: 0.8rem;
+      cursor: pointer;
+      color: var(--brown-dark);
+    }
+
+    .quick-amount:hover {
+      background: #f3e1c8;
+    }
+
+    .org-list {
+      margin-top: 0.6rem;
+    }
+
+    .org-card {
+      border-radius: 12px;
+      border: 1px solid rgba(195,154,91,0.7);
+      background: rgba(251,247,241,0.8);
+      padding: 0.6rem 0.7rem;
+      margin-bottom: 0.45rem;
+      display: flex;
+      gap: 0.6rem;
+      align-items: flex-start;
+      cursor: pointer;
+      transition: background 0.15s ease, transform 0.08s ease, box-shadow 0.15s ease;
+    }
+
+    .org-card:hover {
+      background: #f3e1c8;
+      transform: translateY(-1px);
+      box-shadow: 0 6px 18px rgba(145, 104, 60, 0.18);
+    }
+
+    .org-radio {
+      margin-top: 0.18rem;
+    }
+
+    .org-main {
+      flex: 1;
+    }
+
+    .org-name {
+      font-weight: 600;
+      font-size: 0.9rem;
+      color: var(--brown-dark);
+    }
+
+    .org-tags {
+      margin-top: 0.1rem;
+      font-size: 0.75rem;
+      color: var(--text-muted);
+    }
+
+    .org-score {
+      font-size: 0.76rem;
+      color: var(--gold);
+      white-space: nowrap;
+    }
+
+    .leaderboard-note {
+      font-size: 0.78rem;
+      margin-top: 0.4rem;
+      color: var(--text-muted);
+    }
+
+    /* Footer */
+    footer {
+      border-top: 1px solid var(--border-soft);
+      padding: 1.3rem 1.5rem 1.6rem;
+      background: var(--card-bg);
+      margin-top: 2.5rem;
+    }
+
+    .footer-inner {
+      max-width: 1100px;
+      margin: 0 auto;
+      display: flex;
+      flex-wrap: wrap;
+      justify-content: space-between;
+      gap: 0.7rem;
+      font-size: 0.78rem;
+      color: var(--text-muted);
+    }
+
+    @media (max-width: 800px) {
+      .hero {
+        grid-template-columns: minmax(0, 1fr);
+        padding: 1.6rem 1.2rem;
+      }
+      .hero-logo-block {
+        padding-right: 0;
+        border-right: none;
+        border-bottom: 1px solid rgba(195,154,91,0.35);
+        padding-bottom: 1.4rem;
+        margin-bottom: 1.1rem;
+      }
+      .hero-reservation {
+        padding-left: 0;
+      }
+      .menu-layout,
+      .csr-form-grid {
+        grid-template-columns: minmax(0, 1fr);
+      }
+      header {
+        position: static;
+      }
+      .nav-inner {
+        flex-direction: column;
+        align-items: flex-start;
+        gap: 0.4rem;
+      }
+      nav ul {
+        gap: 0.8rem;
+        flex-wrap: wrap;
+      }
+    }
+  </style>
 </head>
-
 <body>
+  <!-- HEADER -->
+  <header>
+    <div class="nav-inner">
+      <div class="brand-lockup">
+        <!-- Replace src with your hosted logo path when you push assets -->
+        <img src="Logo.jpg" alt="The Exchange logo">
+        <div class="brand-text">
+          <span>The Exchange</span>
+          <span>Enjoy a happy exchange</span>
+        </div>
+      </div>
+      <nav>
+        <ul>
+          <li><a href="#home">Home</a></li>
+          <li><a href="#menu">Menu</a></li>
+          <li><a href="#csr">CSR</a></li>
+          <li><a href="#reserve">Reserve</a></li>
+        </ul>
+      </nav>
+    </div>
+  </header>
 
-<nav>
-<a href="#home">Home</a>
-<a href="#menu">Menu</a>
-<a href="#csr">CSR</a>
-</nav>
+  <main>
+    <!-- HERO + RESERVATION -->
+    <section id="home" class="hero">
+      <div class="hero-logo-block">
+        <img src="Logo.jpg" alt="The Exchange logo large">
+        <div class="hero-tagline">Enjoy a happy exchange</div>
 
-<section id="home">
-<img src="logo.png" class="logo">
-<div class="tagline">Enjoy a happy exchange</div>
+        <p class="hero-philosophy">
+          The Exchange is a 15-seat intentional dining room in Chennai where <em>food is the medium</em> and conversation is the product.
+          Every service is designed around warm hospitality, small-batch menus, and guided conversation cards that make it easy to share
+          stories, beliefs, and memories with the people at your table.
+        </p>
 
-<h2>Our Philosophy</h2>
-<p style="text-align:center; max-width:700px; margin:auto;">
-At The Exchange, hospitality is not service — it is presence.
-We create a space where conversations unfold naturally, where ideas are shared,
-and where food becomes the medium of meaningful human connection.
-</p>
+        <p class="hero-meta">
+          Tamil-rooted, globally inspired food, fixed three-course menus, and just 15 seats per service to keep every exchange human and unhurried.
+        </p>
 
-<div class="card">
-<h3>Reserve Your Exchange</h3>
-<form onsubmit="submitReservation(event)">
-<input type="text" placeholder="Full Name" required>
-<input type="email" placeholder="Email" required>
-<input type="date" required>
-<select>
-<option>Lunch (12PM - 3PM)</option>
-<option>Dinner (5PM - 11PM)</option>
-</select>
-<textarea placeholder="Occasion (Optional)"></textarea>
-<button type="submit">Reserve</button>
-</form>
-</div>
-</section>
+        <div class="pill-row">
+          <span class="pill">Hospitality-first</span>
+          <span class="pill">Conversation Cards</span>
+          <span class="pill">Limited Seats</span>
+          <span class="pill">Tamil-rooted</span>
+        </div>
+      </div>
 
-<section id="menu">
-<h2>Our Menu</h2>
+      <div class="hero-reservation" id="reserve">
+        <div class="section-label">Reservations</div>
+        <div class="section-title">Book your Exchange for the next 7 days</div>
+        <p class="helper">
+          This is a placeholder reservation form. When we open doors, this will plug into a live booking system with real-time seat availability.
+        </p>
 
-<div class="menu-grid">
+        <form>
+          <div class="form-grid">
+            <div>
+              <label for="name">Name</label>
+              <input id="name" type="text" name="name" placeholder="Your full name" required>
+            </div>
 
-<div class="menu-item card">
-<img src="https://source.unsplash.com/400x300/?french-onion-soup">
-<h4>French Onion Soup (V/NV)</h4>
-<p>Caramelized onions in a rich broth.</p>
-</div>
+            <div>
+              <label for="phone">Phone</label>
+              <input id="phone" type="tel" name="phone" placeholder="+91…" required>
+            </div>
 
-<div class="menu-item card">
-<img src="https://source.unsplash.com/400x300/?fried-chicken">
-<h4>Fried Chicken Assortment</h4>
-<p>Crispy bites with house dips.</p>
-</div>
+            <div>
+              <label for="email">Email</label>
+              <input id="email" type="email" name="email" placeholder="you@example.com">
+            </div>
 
-<div class="menu-item card">
-<img src="https://source.unsplash.com/400x300/?burger">
-<h4>Rice Burger (V/NV)</h4>
-<p>Grilled patty between rice buns. Served with fries.</p>
-</div>
+            <div>
+              <label for="date">Preferred date</label>
+              <input id="date" type="date" name="date" required>
+              <p class="helper">Bookings open for the coming week only.</p>
+            </div>
 
-<div class="menu-item card">
-<img src="https://source.unsplash.com/400x300/?tacos">
-<h4>Birria Tacos</h4>
-<p>Slow-cooked spiced meat with consommé. Served with fries.</p>
-</div>
+            <div>
+              <label for="time">Time</label>
+              <select id="time" name="time" required>
+                <option value="">Select a slot</option>
+                <option>12:00 PM</option>
+                <option>1:30 PM</option>
+                <option>7:00 PM</option>
+                <option>8:30 PM</option>
+              </select>
+            </div>
 
-<div class="menu-item card">
-<img src="https://source.unsplash.com/400x300/?chicken-parmesan">
-<h4>Chicken Parm</h4>
-<p>Crispy chicken with marinara & cheese. Served with fries.</p>
-</div>
+            <div>
+              <label for="guests">Guests</label>
+              <select id="guests" name="guests">
+                <option>2</option>
+                <option>3</option>
+                <option>4</option>
+                <option>5</option>
+                <option>6</option>
+              </select>
+            </div>
+          </div>
 
-<div class="menu-item card">
-<img src="https://source.unsplash.com/400x300/?chocolate-cake">
-<h4>Chocolate Layer Cake</h4>
-<p>Rich layered indulgence.</p>
-</div>
+          <div style="margin-top:0.75rem;">
+            <label for="occasion">Occasion (optional)</label>
+            <input id="occasion" type="text" name="occasion" placeholder="Birthday, anniversary, first date, catching up…">
+            <div class="chip-row">
+              <span class="chip">First date</span>
+              <span class="chip">Anniversary</span>
+              <span class="chip">Friends night</span>
+              <span class="chip">Deep catch-up</span>
+            </div>
+          </div>
 
-<div class="menu-item card">
-<img src="https://source.unsplash.com/400x300/?dessert">
-<h4>Dessert 2 Eggless</h4>
-<p>A comforting eggless delight.</p>
-</div>
+          <div style="margin-top:0.75rem;">
+            <label for="notes">Anything we should know?</label>
+            <textarea id="notes" name="notes" placeholder="Allergies, accessibility needs, or special requests."></textarea>
+          </div>
 
-</div>
+          <div class="button-row">
+            <button type="submit">Request a reservation</button>
+            <span class="note-inline">We’ll confirm over WhatsApp or email once live bookings open.</span>
+          </div>
+        </form>
+      </div>
+    </section>
 
-<div class="card" style="text-align:center;">
-<h3>Full Exchange – ₹850</h3>
-<p>Entrée + Plat + Dessert</p>
-<h3>Short Exchange – ₹650</h3>
-<p>Entrée + Plat or Plat + Dessert</p>
-</div>
+    <!-- MENU SECTION -->
+    <section id="menu" class="section-card">
+      <div class="section-header">
+        <div class="section-label">Menu</div>
+        <div class="section-title">Fixed exchanges, small menu, big conversations</div>
+        <p>
+          Our menu is intentionally compact, inspired by Tamil home-style comfort and crowd-favourite global dishes.
+          Portions are limited each day, so once a dish is gone, it’s gone for that service.
+        </p>
+      </div>
 
-</section>
+      <div class="menu-layout">
+        <!-- Left: textual menu -->
+        <div class="menu-column">
+          <h3>Entrée</h3>
+          <div class="menu-divider"></div>
 
-<section id="csr">
-<h2>CSR Initiative</h2>
+          <div class="menu-item">
+            <div class="menu-item-header">
+              <div>
+                <div class="menu-item-title">French Onion Soup</div>
+                <div class="menu-item-tag">(V / NV)</div>
+              </div>
+            </div>
+            <div class="menu-item-desc">
+              Caramelized onions in a rich broth, finished with toasted bread and cheese, guided by Tamil kitchen warmth.
+            </div>
+          </div>
 
-<div class="card">
-<h3>Total CSR Collected</h3>
-<p style="font-size:24px;" id="csrTotal">₹0</p>
-</div>
+          <div class="menu-item">
+            <div class="menu-item-header">
+              <div class="menu-item-title">Fried Chicken Assortment</div>
+            </div>
+            <div class="menu-item-desc">
+              Crispy fried chicken bites with house dips, made for sharing before the conversations get deeper.
+            </div>
+          </div>
 
-<div class="card">
-<h3>Contribute</h3>
-<input type="number" id="donationAmount" placeholder="Enter amount">
-<button onclick="donate()">Donate</button>
-</div>
+          <div class="menu-item">
+            <div class="menu-item-header">
+              <div class="menu-item-title">Veg Entrée</div>
+            </div>
+            <div class="menu-item-desc">
+              A rotating vegetarian small plate celebrating seasonal produce and home-style flavours.
+            </div>
+          </div>
 
-<div class="card">
-<h3>Vote for a Cause</h3>
+          <h3 style="margin-top:1.2rem;">Plat</h3>
+          <div class="menu-divider"></div>
+          <p class="helper" style="margin-bottom:0.6rem;">All plats are served with French fries.</p>
 
-<div>
-<label><input type="radio" name="charity" value="Education"> Children Education</label>
-<div class="progress-bar"><div class="progress" id="Education"></div></div>
-</div>
+          <div class="menu-item">
+            <div class="menu-item-header">
+              <div class="menu-item-title">Rice Burger</div>
+              <div class="menu-item-tag">(V / NV)</div>
+            </div>
+            <div class="menu-item-desc">
+              Grilled patty tucked between crisp rice “buns” with Asian slaw – a nod to comfort food and curiosity.
+            </div>
+          </div>
 
-<div>
-<label><input type="radio" name="charity" value="Healthcare"> Rural Healthcare</label>
-<div class="progress-bar"><div class="progress" id="Healthcare"></div></div>
-</div>
+          <div class="menu-item">
+            <div class="menu-item-header">
+              <div class="menu-item-title">Birria Tacos</div>
+            </div>
+            <div class="menu-item-desc">
+              Slow-cooked spiced meat in corn tortillas with consommé for dipping, rich enough to pause the table talk.
+            </div>
+          </div>
 
-<div>
-<label><input type="radio" name="charity" value="Animal"> Animal Shelter</label>
-<div class="progress-bar"><div class="progress" id="Animal"></div></div>
-</div>
+          <div class="menu-item">
+            <div class="menu-item-header">
+              <div class="menu-item-title">Chicken Parm</div>
+            </div>
+            <div class="menu-item-desc">
+              Crispy chicken topped with marinara and melted cheese, fries on the side for shared snacking.
+            </div>
+          </div>
 
-<div>
-<label><input type="radio" name="charity" value="Women"> Women Empowerment</label>
-<div class="progress-bar"><div class="progress" id="Women"></div></div>
-</div>
+          <h3 style="margin-top:1.2rem;">Dessert</h3>
+          <div class="menu-divider"></div>
 
-<div>
-<label><input type="radio" name="charity" value="Environment"> Environmental Action</label>
-<div class="progress-bar"><div class="progress" id="Environment"></div></div>
-</div>
+          <div class="menu-item">
+            <div class="menu-item-header">
+              <div class="menu-item-title">Chocolate Layer Cake</div>
+            </div>
+            <div class="menu-item-desc">
+              Dark chocolate sponge and ganache layers, sized perfectly to linger over your last Exchange card.
+            </div>
+          </div>
 
-<button onclick="vote()">Vote</button>
+          <div class="menu-item">
+            <div class="menu-item-header">
+              <div class="menu-item-title">Eggless Dessert</div>
+            </div>
+            <div class="menu-item-desc">
+              Eggless, seasonal dessert changing through the year – always comforting, never an afterthought.
+            </div>
+          </div>
 
-</div>
+          <div class="set-pricing">
+            <div class="set-line">
+              <div>
+                <div class="set-name">Full Exchange</div>
+                <div class="set-meta">Entrée + Plat + Dessert</div>
+              </div>
+              <div class="set-price">₹ 850</div>
+            </div>
+            <div class="set-line" style="margin-top:0.4rem;">
+              <div>
+                <div class="set-name">Short Exchange</div>
+                <div class="set-meta">Entrée + Plat <span style="opacity:0.7;">or</span> Plat + Dessert</div>
+              </div>
+              <div class="set-price">₹ 650</div>
+            </div>
+            <p class="helper" style="margin-top:0.5rem;">
+              Most guests choose the Full Exchange to experience the complete three-course conversation arc.
+            </p>
+          </div>
+        </div>
 
-</section>
+        <!-- Right: AI-image placeholder cards -->
+        <div class="menu-column">
+          <h3>Dish previews</h3>
+          <div class="menu-divider"></div>
+          <p class="helper">
+            When we go live, each card below will be replaced with an AI-generated visual of the dish, styled to match our brand.
+          </p>
 
-<footer>
-© 2026 The Exchange
-</footer>
+          <div class="dish-gallery">
+            <div class="dish-card">
+              <div class="dish-pill">Entrée</div>
+              <div class="dish-name">French Onion Soup</div>
+              <p class="dish-ai-note">
+                Imagine a warm ceramic bowl on a wooden table, cream background, soft gold lighting and melted cheese on top.
+              </p>
+            </div>
 
-<script>
-let csrAmount = 0;
-let votes = {Education:0, Healthcare:0, Animal:0, Women:0, Environment:0};
+            <div class="dish-card">
+              <div class="dish-pill">Entrée</div>
+              <div class="dish-name">Fried Chicken Assortment</div>
+              <p class="dish-ai-note">
+                Rustic platter of golden fried chicken bites, three dipping sauces, photographed overhead on a wooden board.
+              </p>
+            </div>
 
-function submitReservation(e){
-e.preventDefault();
-alert("Reservation request received. We look forward to your Exchange.");
-}
+            <div class="dish-card">
+              <div class="dish-pill">Plat</div>
+              <div class="dish-name">Rice Burger</div>
+              <p class="dish-ai-note">
+                Stacked rice “buns” with a juicy patty, Asian slaw spilling slightly, fries on the side, soft depth of field.
+              </p>
+            </div>
 
-function donate(){
-let amount = parseInt(document.getElementById("donationAmount").value);
-if(amount > 0){
-csrAmount += amount;
-document.getElementById("csrTotal").innerText = "₹" + csrAmount;
-alert("Thank you for contributing!");
-}
-}
+            <div class="dish-card">
+              <div class="dish-pill">Plat</div>
+              <div class="dish-name">Birria Tacos</div>
+              <p class="dish-ai-note">
+                Three tacos in a row, steam rising, a small bowl of consommé, warm brown tones with gold highlights.
+              </p>
+            </div>
 
-function vote(){
-let selected = document.querySelector('input[name="charity"]:checked');
-if(selected){
-votes[selected.value]++;
-updateBars();
-alert("Your vote has been counted!");
-}
-}
+            <div class="dish-card">
+              <div class="dish-pill">Plat</div>
+              <div class="dish-name">Chicken Parm</div>
+              <p class="dish-ai-note">
+                Bubbly cheese-topped chicken cutlet on a cream plate, fries and a small salad, cozy candlelight.
+              </p>
+            </div>
 
-function updateBars(){
-let totalVotes = Object.values(votes).reduce((a,b)=>a+b,0);
-for(let key in votes){
-let percent = totalVotes ? (votes[key]/totalVotes)*100 : 0;
-document.getElementById(key).style.width = percent + "%";
-}
-}
-</script>
+            <div class="dish-card">
+              <div class="dish-pill">Dessert</div>
+              <div class="dish-name">Chocolate Layer Cake</div>
+              <p class="dish-ai-note">
+                A neat slice of dark chocolate cake on an off-white plate, fork resting on the edge, gold speck details.
+              </p>
+            </div>
 
+            <div class="dish-card">
+              <div class="dish-pill">Dessert</div>
+              <div class="dish-name">Eggless Dessert</div>
+              <p class="dish-ai-note">
+                Seasonal eggless dessert in a small bowl, simple plating, photographed against a cream backdrop.
+              </p>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- CSR SECTION -->
+    <section id="csr" class="section-card">
+      <div class="section-header">
+        <div class="section-label">CSR</div>
+        <div class="section-title">Every exchange leaves something behind</div>
+        <p>
+          A portion of our revenue – plus anything guests choose to add – goes into The Exchange CSR pool.
+          Once a month, we direct that pool to causes chosen by our guests through a simple, playful vote.
+        </p>
+      </div>
+
+      <div class="csr-stats">
+        <div>
+          <div class="helper">CSR collected so far (demo)</div>
+          <div class="csr-amount">₹ 0</div>
+        </div>
+        <div class="csr-pill">Live tracking will switch on once we open</div>
+      </div>
+
+      <div class="csr-form-grid">
+        <!-- Donation column -->
+        <div>
+          <h3 style="font-family:Georgia,serif;font-size:1rem;color:var(--brown-dark);margin-bottom:0.4rem;">
+            Add to the CSR pool
+          </h3>
+          <p class="helper">
+            This is a mock interface; payment will connect to Razorpay / Stripe on launch. You’ll be able to add a small amount at the end of your meal.
+          </p>
+
+          <div class="amount-row">
+            <input type="number" min="50" step="50" placeholder="Amount in ₹">
+            <div class="quick-amount">+ ₹50</div>
+            <div class="quick-amount">+ ₹100</div>
+            <div class="quick-amount">+ ₹250</div>
+          </div>
+
+          <div style="margin-top:0.8rem;">
+            <label for="csr-name">Name (optional)</label>
+            <input id="csr-name" type="text" placeholder="You can also stay anonymous">
+          </div>
+
+          <div style="margin-top:0.8rem;">
+            <button type="button">Donate (demo)</button>
+            <span class="note-inline">In the live site this will trigger a secure payment flow.</span>
+          </div>
+        </div>
+
+        <!-- Voting / gamified org list -->
+        <div>
+          <h3 style="font-family:Georgia,serif;font-size:1rem;color:var(--brown-dark);margin-bottom:0.4rem;">
+            Help decide where it goes
+          </h3>
+          <p class="helper">
+            Each visit, you get one vote. At the end of the month, the highest‑voted cause receives the largest share of the CSR pool.
+          </p>
+
+          <div class="org-list">
+            <label class="org-card">
+              <input class="org-radio" type="radio" name="csr-org">
+              <div class="org-main">
+                <div class="org-name">Bright Futures Classroom Fund</div>
+                <div class="org-tags">Children’s education · After-school learning centres in Tamil Nadu</div>
+              </div>
+              <div class="org-score">Current rank: 1</div>
+            </label>
+
+            <label class="org-card">
+              <input class="org-radio" type="radio" name="csr-org">
+              <div class="org-main">
+                <div class="org-name">Safe Steps Women’s Collective</div>
+                <div class="org-tags">Women’s empowerment · Skills, support and micro-grants</div>
+              </div>
+              <div class="org-score">Current rank: 2</div>
+            </label>
+
+            <label class="org-card">
+              <input class="org-radio" type="radio" name="csr-org">
+              <div class="org-main">
+                <div class="org-name">Paws & Whiskers Shelter</div>
+                <div class="org-tags">Animal shelter · Rescue, food and medical care</div>
+              </div>
+              <div class="org-score">Current rank: 3</div>
+            </label>
+
+            <label class="org-card">
+              <input class="org-radio" type="radio" name="csr-org">
+              <div class="org-main">
+                <div class="org-name">Village Health Access Fund</div>
+                <div class="org-tags">Rural healthcare · Clinics and medical camps</div>
+              </div>
+              <div class="org-score">Current rank: 4</div>
+            </label>
+
+            <label class="org-card">
+              <input class="org-radio" type="radio" name="csr-org">
+              <div class="org-main">
+                <div class="org-name">Green Canopy Initiative</div>
+                <div class="org-tags">Environment · Urban tree planting and lake cleanups</div>
+              </div>
+              <div class="org-score">Current rank: 5</div>
+            </label>
+          </div>
+
+          <p class="leaderboard-note">
+            Once the site is connected to our backend, this section will show a live leaderboard so you can see how your vote nudges your chosen cause up the table.
+          </p>
+        </div>
+      </div>
+    </section>
+  </main>
+
+  <footer>
+    <div class="footer-inner">
+      <span>© <span id="year"></span> The Exchange, Chennai.</span>
+      <span>Food is the medium. Conversation is the product. Hospitality is the differentiator.</span>
+    </div>
+  </footer>
+
+  <script>
+    // Basic script to keep year current
+    document.getElementById('year').textContent = new Date().getFullYear();
+  </script>
 </body>
 </html>
