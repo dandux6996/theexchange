@@ -1,0 +1,232 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>The Exchange — Logo Options</title>
+<link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;1,300;1,400&family=Cormorant+Upright:ital,wght@1,300&family=Jost:wght@300;400&display=swap" rel="stylesheet">
+<style>
+  * { margin: 0; padding: 0; box-sizing: border-box; }
+  body {
+    background: #E8E3D9;
+    min-height: 100vh;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    padding: 72px 40px;
+    font-family: 'Jost', sans-serif;
+    gap: 0;
+  }
+  .page-label {
+    font-family: 'Cormorant Garamond', serif;
+    font-size: 12px; letter-spacing: 5px;
+    text-transform: uppercase; color: #9A7B5C;
+    margin-bottom: 64px; text-align: center;
+  }
+  .row {
+    display: flex; gap: 56px;
+    align-items: flex-start; justify-content: center;
+    flex-wrap: wrap;
+  }
+  .logo-col {
+    display: flex; flex-direction: column; align-items: center; gap: 20px;
+  }
+  .version-label {
+    font-size: 10px; letter-spacing: 4px; text-transform: uppercase;
+    color: #9A7B5C; text-align: center;
+  }
+  .card {
+    background: #F7F2E8;
+    display: flex; flex-direction: column;
+    align-items: center; justify-content: center;
+    padding: 56px 64px 48px;
+    box-shadow: 0 4px 60px rgba(60,40,20,0.09);
+  }
+  .rule {
+    width: 52px; height: 0.6px;
+    background: #7B4F2E; opacity: 0.32;
+    margin: 22px 0 14px;
+  }
+  .the {
+    font-family: 'Jost', sans-serif;
+    font-size: 10px; font-weight: 400;
+    letter-spacing: 7px; color: #4A3728;
+    text-transform: uppercase; margin-bottom: 2px;
+  }
+  .exchange {
+    font-family: 'Cormorant Upright', serif;
+    font-style: italic; font-size: 50px;
+    font-weight: 300; color: #7B4F2E;
+    line-height: 1; letter-spacing: 0.5px;
+  }
+</style>
+</head>
+<body>
+
+<div class="page-label">The Exchange — Logo Options</div>
+
+<div class="row">
+
+  <!-- ── VERSION 1: DOTS + WAVES ── -->
+  <div class="logo-col">
+    <div class="version-label">Version 1 — Dots</div>
+    <div class="card">
+      <svg width="200" height="200" viewBox="0 0 200 200" xmlns="http://www.w3.org/2000/svg">
+
+        <!-- Outer ring -->
+        <circle cx="100" cy="100" r="90" fill="none" stroke="#7B4F2E" stroke-width="1.3"/>
+        <!-- Inner ring faint -->
+        <circle cx="100" cy="100" r="80" fill="none" stroke="#7B4F2E" stroke-width="0.5" opacity="0.20"/>
+
+        <!--
+          Triangle points (inverted ஃ):
+            A = (76,  84)  top-left
+            B = (124, 84)  top-right
+            C = (100, 124) bottom-center
+
+          Dot r = 8
+
+          Waves connect each pair with a 3px gap from each shape edge.
+          Each wave has 2 gentle oscillations, ±5px amplitude.
+        -->
+
+        <!-- ── WAVE A→B (horizontal, above) ──
+             A right edge: 76+8=84, + 3gap = start x=87
+             B left  edge: 124-8=116, - 3gap = end x=113
+             y=84, oscillates ±5 in y
+        -->
+        <path
+          d="M 87,84
+             C 91,78  97,90  100,84
+             C 103,78  109,90  113,84"
+          fill="none" stroke="#7B4F2E"
+          stroke-width="1.1" stroke-linecap="round" opacity="0.55"
+        />
+
+        <!-- ── WAVE A→C (diagonal, left side) ──
+             Direction A(76,84)→C(100,124): dx=24,dy=40, len=46.6
+             Unit=(0.515,0.857), Perp=(-0.857,0.515)
+             Start: A + 11*unit = (81.7, 93.4) ≈ (82, 93)
+             End:   C - 11*unit = (94.3,114.6) ≈ (94, 115)
+             2 oscillations, ±5px perpendicular to direction
+        -->
+        <path
+          d="M 82,93
+             C 88,89  91,101  88,104
+             C 85,107  88,115  94,115"
+          fill="none" stroke="#7B4F2E"
+          stroke-width="1.1" stroke-linecap="round" opacity="0.55"
+        />
+
+        <!-- ── WAVE B→C (diagonal, right side — mirror of A→C) ──
+             Direction B(124,84)→C(100,124): dx=-24,dy=40
+             Start: B + 11*unit = (118.3,93.4) ≈ (118,93)
+             End:   C - 11*unit = (105.7,114.6) ≈ (106,115)
+        -->
+        <path
+          d="M 118,93
+             C 112,89  109,101  112,104
+             C 115,107  112,115  106,115"
+          fill="none" stroke="#7B4F2E"
+          stroke-width="1.1" stroke-linecap="round" opacity="0.55"
+        />
+
+        <!-- ── THREE DOTS (exact ஃ triangle, r=8) ── -->
+        <circle cx="76"  cy="84"  r="8" fill="#7B4F2E"/>
+        <circle cx="124" cy="84"  r="8" fill="#7B4F2E"/>
+        <circle cx="100" cy="124" r="8" fill="#7B4F2E"/>
+
+      </svg>
+      <div class="rule"></div>
+      <div class="the">The</div>
+      <div class="exchange">Exchange</div>
+    </div>
+  </div>
+
+  <!-- ── VERSION 2: HEARTS + WAVES ── -->
+  <div class="logo-col">
+    <div class="version-label">Version 2 — Hearts</div>
+    <div class="card">
+      <svg width="200" height="200" viewBox="0 0 200 200" xmlns="http://www.w3.org/2000/svg">
+
+        <!-- Outer ring -->
+        <circle cx="100" cy="100" r="90" fill="none" stroke="#7B4F2E" stroke-width="1.3"/>
+        <!-- Inner ring faint -->
+        <circle cx="100" cy="100" r="80" fill="none" stroke="#7B4F2E" stroke-width="0.5" opacity="0.20"/>
+
+        <!--
+          Same triangle positions and wave paths as Version 1.
+          Shapes replaced with hearts (point-down), bounding box ~r=9.
+          Gap from heart edge to wave start/end: 3px → use 12 (9+3) as offset.
+
+          Heart A centered (76,84):
+            Rightmost point ≈ x=85 → wave starts at x=88 (gap)
+          Heart B centered (124,84):
+            Leftmost point ≈ x=115 → wave ends at x=112 (gap)
+
+          A→B wave (y=84, same oscillation):
+        -->
+
+        <!-- ── WAVE A→B ── -->
+        <path
+          d="M 88,84
+             C 92,78  98,90  100,84
+             C 102,78  108,90  112,84"
+          fill="none" stroke="#7B4F2E"
+          stroke-width="1.1" stroke-linecap="round" opacity="0.55"
+        />
+
+        <!-- ── WAVE A→C ── (same as v1, hearts have similar footprint) -->
+        <path
+          d="M 82,93
+             C 88,89  91,101  88,104
+             C 85,107  88,115  94,115"
+          fill="none" stroke="#7B4F2E"
+          stroke-width="1.1" stroke-linecap="round" opacity="0.55"
+        />
+
+        <!-- ── WAVE B→C ── -->
+        <path
+          d="M 118,93
+             C 112,89  109,101  112,104
+             C 115,107  112,115  106,115"
+          fill="none" stroke="#7B4F2E"
+          stroke-width="1.1" stroke-linecap="round" opacity="0.55"
+        />
+
+        <!--
+          ── HEART A — centered (76, 84), point down, r≈9 bounding ──
+          ── HEART B — centered (124, 84) ──
+          ── HEART C — centered (100, 124) ──
+
+          Heart path (origin 0,0, point at bottom):
+            M 0,7 C -3,2 -10,-1 -10,-5 C -10,-12 -3,-13 0,-8 C 3,-13 10,-12 10,-5 C 10,-1 3,2 0,7 Z
+        -->
+
+        <g transform="translate(76,84)">
+          <path d="M 0,7 C -3,2 -10,-1 -10,-5 C -10,-12 -3,-13 0,-8 C 3,-13 10,-12 10,-5 C 10,-1 3,2 0,7 Z"
+            fill="#7B4F2E"/>
+        </g>
+
+        <g transform="translate(124,84)">
+          <path d="M 0,7 C -3,2 -10,-1 -10,-5 C -10,-12 -3,-13 0,-8 C 3,-13 10,-12 10,-5 C 10,-1 3,2 0,7 Z"
+            fill="#7B4F2E"/>
+        </g>
+
+        <g transform="translate(100,124)">
+          <path d="M 0,7 C -3,2 -10,-1 -10,-5 C -10,-12 -3,-13 0,-8 C 3,-13 10,-12 10,-5 C 10,-1 3,2 0,7 Z"
+            fill="#7B4F2E"/>
+        </g>
+
+      </svg>
+      <div class="rule"></div>
+      <div class="the">The</div>
+      <div class="exchange">Exchange</div>
+    </div>
+  </div>
+
+</div>
+
+</body>
+</html>
