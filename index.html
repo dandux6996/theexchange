@@ -1,0 +1,302 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>The Exchange</title>
+
+<style>
+:root {
+    --bg: #f4efe7;
+    --primary: #7b4b2a;
+    --accent: #a97449;
+    --text: #3e2a1d;
+}
+
+body {
+    margin: 0;
+    font-family: 'Georgia', serif;
+    background-color: var(--bg);
+    color: var(--text);
+}
+
+nav {
+    text-align: center;
+    padding: 20px;
+}
+
+nav a {
+    margin: 0 15px;
+    text-decoration: none;
+    color: var(--primary);
+    font-weight: bold;
+}
+
+section {
+    padding: 60px 20px;
+    max-width: 1000px;
+    margin: auto;
+}
+
+.logo {
+    display: block;
+    margin: 0 auto 20px auto;
+    width: 180px;
+}
+
+.tagline {
+    text-align: center;
+    font-style: italic;
+    margin-bottom: 40px;
+}
+
+h2 {
+    text-align: center;
+    color: var(--primary);
+}
+
+.card {
+    background: white;
+    padding: 25px;
+    margin: 20px 0;
+    border-radius: 10px;
+    box-shadow: 0 4px 12px rgba(0,0,0,0.05);
+}
+
+input, select, textarea {
+    width: 100%;
+    padding: 10px;
+    margin: 10px 0;
+    border: 1px solid #ccc;
+    border-radius: 5px;
+}
+
+button {
+    background-color: var(--primary);
+    color: white;
+    border: none;
+    padding: 10px 20px;
+    cursor: pointer;
+    border-radius: 5px;
+}
+
+button:hover {
+    background-color: var(--accent);
+}
+
+.menu-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+    gap: 20px;
+}
+
+.menu-item img {
+    width: 100%;
+    border-radius: 10px;
+}
+
+.progress-bar {
+    height: 20px;
+    background-color: #ddd;
+    border-radius: 10px;
+    overflow: hidden;
+    margin-top: 5px;
+}
+
+.progress {
+    height: 100%;
+    background-color: var(--primary);
+    width: 0%;
+}
+
+footer {
+    text-align: center;
+    padding: 30px;
+    background: #eee;
+}
+</style>
+</head>
+
+<body>
+
+<nav>
+<a href="#home">Home</a>
+<a href="#menu">Menu</a>
+<a href="#csr">CSR</a>
+</nav>
+
+<section id="home">
+<img src="logo.png" class="logo">
+<div class="tagline">Enjoy a happy exchange</div>
+
+<h2>Our Philosophy</h2>
+<p style="text-align:center; max-width:700px; margin:auto;">
+At The Exchange, hospitality is not service — it is presence.
+We create a space where conversations unfold naturally, where ideas are shared,
+and where food becomes the medium of meaningful human connection.
+</p>
+
+<div class="card">
+<h3>Reserve Your Exchange</h3>
+<form onsubmit="submitReservation(event)">
+<input type="text" placeholder="Full Name" required>
+<input type="email" placeholder="Email" required>
+<input type="date" required>
+<select>
+<option>Lunch (12PM - 3PM)</option>
+<option>Dinner (5PM - 11PM)</option>
+</select>
+<textarea placeholder="Occasion (Optional)"></textarea>
+<button type="submit">Reserve</button>
+</form>
+</div>
+</section>
+
+<section id="menu">
+<h2>Our Menu</h2>
+
+<div class="menu-grid">
+
+<div class="menu-item card">
+<img src="https://source.unsplash.com/400x300/?french-onion-soup">
+<h4>French Onion Soup (V/NV)</h4>
+<p>Caramelized onions in a rich broth.</p>
+</div>
+
+<div class="menu-item card">
+<img src="https://source.unsplash.com/400x300/?fried-chicken">
+<h4>Fried Chicken Assortment</h4>
+<p>Crispy bites with house dips.</p>
+</div>
+
+<div class="menu-item card">
+<img src="https://source.unsplash.com/400x300/?burger">
+<h4>Rice Burger (V/NV)</h4>
+<p>Grilled patty between rice buns. Served with fries.</p>
+</div>
+
+<div class="menu-item card">
+<img src="https://source.unsplash.com/400x300/?tacos">
+<h4>Birria Tacos</h4>
+<p>Slow-cooked spiced meat with consommé. Served with fries.</p>
+</div>
+
+<div class="menu-item card">
+<img src="https://source.unsplash.com/400x300/?chicken-parmesan">
+<h4>Chicken Parm</h4>
+<p>Crispy chicken with marinara & cheese. Served with fries.</p>
+</div>
+
+<div class="menu-item card">
+<img src="https://source.unsplash.com/400x300/?chocolate-cake">
+<h4>Chocolate Layer Cake</h4>
+<p>Rich layered indulgence.</p>
+</div>
+
+<div class="menu-item card">
+<img src="https://source.unsplash.com/400x300/?dessert">
+<h4>Dessert 2 Eggless</h4>
+<p>A comforting eggless delight.</p>
+</div>
+
+</div>
+
+<div class="card" style="text-align:center;">
+<h3>Full Exchange – ₹850</h3>
+<p>Entrée + Plat + Dessert</p>
+<h3>Short Exchange – ₹650</h3>
+<p>Entrée + Plat or Plat + Dessert</p>
+</div>
+
+</section>
+
+<section id="csr">
+<h2>CSR Initiative</h2>
+
+<div class="card">
+<h3>Total CSR Collected</h3>
+<p style="font-size:24px;" id="csrTotal">₹0</p>
+</div>
+
+<div class="card">
+<h3>Contribute</h3>
+<input type="number" id="donationAmount" placeholder="Enter amount">
+<button onclick="donate()">Donate</button>
+</div>
+
+<div class="card">
+<h3>Vote for a Cause</h3>
+
+<div>
+<label><input type="radio" name="charity" value="Education"> Children Education</label>
+<div class="progress-bar"><div class="progress" id="Education"></div></div>
+</div>
+
+<div>
+<label><input type="radio" name="charity" value="Healthcare"> Rural Healthcare</label>
+<div class="progress-bar"><div class="progress" id="Healthcare"></div></div>
+</div>
+
+<div>
+<label><input type="radio" name="charity" value="Animal"> Animal Shelter</label>
+<div class="progress-bar"><div class="progress" id="Animal"></div></div>
+</div>
+
+<div>
+<label><input type="radio" name="charity" value="Women"> Women Empowerment</label>
+<div class="progress-bar"><div class="progress" id="Women"></div></div>
+</div>
+
+<div>
+<label><input type="radio" name="charity" value="Environment"> Environmental Action</label>
+<div class="progress-bar"><div class="progress" id="Environment"></div></div>
+</div>
+
+<button onclick="vote()">Vote</button>
+
+</div>
+
+</section>
+
+<footer>
+© 2026 The Exchange
+</footer>
+
+<script>
+let csrAmount = 0;
+let votes = {Education:0, Healthcare:0, Animal:0, Women:0, Environment:0};
+
+function submitReservation(e){
+e.preventDefault();
+alert("Reservation request received. We look forward to your Exchange.");
+}
+
+function donate(){
+let amount = parseInt(document.getElementById("donationAmount").value);
+if(amount > 0){
+csrAmount += amount;
+document.getElementById("csrTotal").innerText = "₹" + csrAmount;
+alert("Thank you for contributing!");
+}
+}
+
+function vote(){
+let selected = document.querySelector('input[name="charity"]:checked');
+if(selected){
+votes[selected.value]++;
+updateBars();
+alert("Your vote has been counted!");
+}
+}
+
+function updateBars(){
+let totalVotes = Object.values(votes).reduce((a,b)=>a+b,0);
+for(let key in votes){
+let percent = totalVotes ? (votes[key]/totalVotes)*100 : 0;
+document.getElementById(key).style.width = percent + "%";
+}
+}
+</script>
+
+</body>
+</html>
