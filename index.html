@@ -142,7 +142,25 @@ footer{border-top:1px solid var(--border);padding:48px clamp(24px,5vw,80px);disp
 .footer-brand{font-family:'Cormorant Garamond',serif;font-style:italic;font-size:22px;color:var(--brown);}
 .footer-info{font-size:12.5px;color:var(--text-muted);text-align:right;line-height:1.9;}
 .footer-info strong{color:var(--brown-dark);}
-@media(max-width:680px){.form-row,.sets-row{grid-template-columns:1fr;}.dishes-grid{grid-template-columns:1fr;}.philosophy-grid{grid-template-columns:1fr;}.nav-link{padding:8px 12px;font-size:10px;letter-spacing:2px;}.footer-info{text-align:left;}}
+@media(max-width:680px){.form-row,.sets-row{grid-template-columns:1fr;}.dishes-grid{grid-template-columns:1fr;}.philosophy-grid{grid-template-columns:1fr;}.collab-cards{grid-template-columns:1fr;}.nav-link{padding:8px 12px;font-size:10px;letter-spacing:2px;}.footer-info{text-align:left;}}
+.collab-section{background:var(--brown-dark);padding:clamp(56px,8vw,96px) clamp(24px,5vw,80px);}
+.collab-inner{max-width:900px;margin:0 auto;}
+.collab-label{text-align:center;font-family:'Jost',sans-serif;font-size:10px;letter-spacing:5px;text-transform:uppercase;color:var(--gold);margin-bottom:12px;opacity:0.8;}
+.collab-title{text-align:center;font-family:'Cormorant Garamond',serif;font-size:clamp(28px,4vw,42px);font-weight:400;color:var(--cream);line-height:1.25;margin-bottom:20px;}
+.collab-body{text-align:center;font-family:'Cormorant Garamond',serif;font-style:italic;font-size:clamp(15px,2vw,18px);color:var(--gold-light);opacity:0.75;max-width:620px;margin:0 auto 52px;line-height:1.9;}
+.collab-cards{display:grid;grid-template-columns:1fr 1fr 1fr;gap:1px;background:rgba(201,152,90,0.15);border:1px solid rgba(201,152,90,0.15);margin-bottom:52px;}
+.collab-card{background:rgba(74,55,40,0.6);padding:32px 24px;text-align:center;transition:background 0.3s;}
+.collab-card:hover{background:rgba(123,79,46,0.5);}
+.collab-card-icon{font-size:28px;margin-bottom:14px;opacity:0.85;}
+.collab-card h3{font-family:'Cormorant Garamond',serif;font-size:19px;font-weight:500;color:var(--cream);margin-bottom:10px;}
+.collab-card p{font-size:13px;color:var(--gold-light);opacity:0.65;line-height:1.8;}
+.collab-card-tag{display:inline-block;margin-top:14px;font-family:'Jost',sans-serif;font-size:9px;letter-spacing:3px;text-transform:uppercase;color:var(--gold);border:1px solid rgba(201,152,90,0.35);padding:4px 10px;}
+.collab-divider{width:48px;height:1px;background:var(--gold);opacity:0.3;margin:0 auto 32px;}
+.collab-cta-wrap{text-align:center;}
+.collab-cta-text{font-family:'Cormorant Garamond',serif;font-style:italic;font-size:clamp(15px,1.8vw,17px);color:var(--cream);opacity:0.7;margin-bottom:20px;}
+.collab-cta{display:inline-block;font-family:'Jost',sans-serif;font-size:11px;letter-spacing:3px;text-transform:uppercase;color:var(--cream);border:1px solid rgba(247,242,232,0.35);padding:14px 36px;text-decoration:none;transition:background 0.3s,border-color 0.3s;cursor:pointer;background:none;}
+.collab-cta:hover{background:rgba(201,152,90,0.15);border-color:var(--gold);}
+@media(max-width:680px){.collab-cards{grid-template-columns:1fr;}.collab-section{padding:48px 24px;}}
 .reveal{opacity:0;transform:translateY(20px);transition:opacity 0.6s ease,transform 0.6s ease;}
 .reveal.visible{opacity:1;transform:translateY(0);}
 </style>
@@ -403,6 +421,40 @@ footer{border-top:1px solid var(--border);padding:48px clamp(24px,5vw,80px);disp
         <div class="vote-card" onclick="castVote(4)"><div class="vote-card-inner"><div class="vote-icon">&#127973;</div><div class="vote-info"><h4>Rural Healthcare</h4><p>Mobile medical camps and primary care access for villages in Tamil Nadu's interior districts.</p><div class="vote-bar-wrap"><div class="vote-bar-bg"><div class="vote-bar-fill" id="bar-4"></div></div><div class="vote-count"><span id="vc-4">0 votes</span><span id="vp-4">0%</span></div></div></div><button class="vote-btn" id="vbtn-4">Vote</button></div></div>
       </div>
       <p class="vote-disclaimer">Votes are tallied monthly. Funds are distributed to the leading cause at the end of each quarter.</p>
+    </div>
+  </div>
+</section>
+
+
+<section class="collab-section reveal">
+  <div class="collab-inner">
+    <div class="collab-label">Private &amp; Corporate</div>
+    <h2 class="collab-title">The Exchange,<br>made entirely yours.</h2>
+    <p class="collab-body">The fifteen seats. The three courses. The question for the evening &mdash; chosen by you, for your people.</p>
+    <div class="collab-divider"></div>
+    <div class="collab-cards">
+      <div class="collab-card">
+        <div class="collab-card-icon">&#x1f4bc;</div>
+        <h3>Corporate Lunches &amp; Dinners</h3>
+        <p>A private setting for teams, leadership offsites, or client evenings. Your leadership sets the Exchange Card question. The conversation that follows is yours to keep.</p>
+        <span class="collab-card-tag">Weekday availability</span>
+      </div>
+      <div class="collab-card">
+        <div class="collab-card-icon">&#x1f382;</div>
+        <h3>Birthday &amp; Celebration Evenings</h3>
+        <p>The whole space, reserved for the people who matter. A custom question written for the person you&rsquo;re celebrating. An evening that feels genuinely unlike any other.</p>
+        <span class="collab-card-tag">Full buyout available</span>
+      </div>
+      <div class="collab-card">
+        <div class="collab-card-icon">&#x1f5d3;</div>
+        <h3>Themed Exchange Days</h3>
+        <p>A curated theme &mdash; a decade, a place, a feeling &mdash; woven through the menu and the question for the evening. For groups who want to arrive somewhere together.</p>
+        <span class="collab-card-tag">Bespoke format</span>
+      </div>
+    </div>
+    <div class="collab-cta-wrap">
+      <p class="collab-cta-text">All private bookings are handled directly. No forms, no portals &mdash; just a conversation.</p>
+      <a class="collab-cta" href="mailto:hello@theexchange.in">Write to us</a>
     </div>
   </div>
 </section>
