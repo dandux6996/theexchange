@@ -90,6 +90,14 @@ nav{position:sticky;top:0;z-index:100;background:var(--cream);border-bottom:1px 
 .dish-info h3{font-family:'Cormorant Garamond',serif;font-size:21px;font-weight:500;color:var(--brown-dark);margin-bottom:6px;}
 .dish-veg{display:inline-block;font-size:9px;letter-spacing:2px;text-transform:uppercase;color:var(--gold);margin-bottom:8px;}
 .dish-info p{font-size:13px;color:var(--text-muted);line-height:1.7;}
+.dish-origin{display:block;font-family:'Cormorant Garamond',serif;font-style:italic;font-size:11.5px;color:var(--gold);margin-top:7px;letter-spacing:0.2px;opacity:0.9;}
+.mom-banner{max-width:900px;margin:0 auto;padding:0 clamp(24px,5vw,48px) 56px;}
+.mom-banner-inner{background:var(--brown-dark);padding:40px 48px;display:flex;align-items:center;gap:36px;}
+.mom-banner-inner .mom-quote{flex:1;}
+.mom-banner-inner .mom-quote blockquote{font-family:'Cormorant Garamond',serif;font-style:italic;font-size:clamp(17px,2.2vw,22px);color:var(--cream);line-height:1.8;margin-bottom:12px;}
+.mom-banner-inner .mom-quote p{font-size:12px;color:var(--gold-light);opacity:0.7;letter-spacing:1px;text-transform:uppercase;}
+.mom-banner-icon{flex-shrink:0;opacity:0.18;}
+@media(max-width:640px){.mom-banner-inner{flex-direction:column;padding:32px 28px;}.mom-banner-icon{display:none;}}
 .csr-hero{background:linear-gradient(160deg,var(--brown-dark) 0%,#2C1A10 100%);text-align:center;padding:clamp(60px,8vw,100px) 24px 80px;}
 .csr-hero-label{font-size:10px;letter-spacing:6px;text-transform:uppercase;color:var(--gold);opacity:0.8;margin-bottom:16px;}
 .csr-hero-title{font-family:'Cormorant Garamond',serif;font-size:clamp(30px,5vw,52px);font-weight:300;color:var(--cream);margin-bottom:16px;line-height:1.2;}
@@ -184,23 +192,23 @@ footer{border-top:1px solid var(--border);padding:48px clamp(24px,5vw,80px);disp
   </div>
   <div class="section">
     <div class="section-label">Our Philosophy</div>
-    <h2 class="section-title">Food is the medium.<br>Conversation is the product.</h2>
-    <p class="philosophy-body">We built The Exchange around a simple belief — that the most nourishing thing about a meal is not what's on the plate, but <em>who you become</em> at the table. In a world that moves fast and speaks louder, we offer fifteen seats, three courses, and the unhurried space to actually connect.</p>
+    <h2 class="section-title">It started in my mother's kitchen.<br>It lives in yours.</h2>
+    <p class="philosophy-body">Every dish at The Exchange begins the same way — with a recipe my mother made at home, in Chennai, for as long as I can remember. Not inspiration. Not influence. <em>Her actual recipe.</em> We take that recipe and give it a new form — a French frame, a Mexican vessel, a Japanese fold — but the soul inside it is unchanged. The Kozhi Rasam she made when someone was unwell becomes the broth of our French Onion Soup. The mutton chukka she made on Sundays becomes the heart of our Birria Tacos. This is what we mean by Tamil-rooted, globally positioned. The roots are real. They belong to one woman's kitchen. The Exchange exists to share them with yours.</p>
     <div class="philosophy-grid reveal">
       <div class="philosophy-card">
         <div class="philosophy-icon"><svg viewBox="0 0 44 44" fill="none"><circle cx="14" cy="16" r="6" stroke="#7B4F2E" stroke-width="1.2"/><circle cx="30" cy="16" r="6" stroke="#7B4F2E" stroke-width="1.2"/><circle cx="22" cy="30" r="6" stroke="#7B4F2E" stroke-width="1.2"/></svg></div>
         <h3>Hospitality First</h3>
-        <p>Every guest is met by the owner, every visit is personal. We don't serve tables — we host people.</p>
+        <p>Every guest is met by the owner, every visit is personal. We don't serve tables &mdash; we host people, the way my mother hosted every person who walked into her kitchen.</p>
       </div>
       <div class="philosophy-card">
         <div class="philosophy-icon"><svg viewBox="0 0 44 44" fill="none"><path d="M8 22 Q22 8 36 22 Q22 36 8 22Z" stroke="#7B4F2E" stroke-width="1.2"/><circle cx="22" cy="22" r="4" fill="#7B4F2E"/></svg></div>
-        <h3>Intentional Dining</h3>
-        <p>A structured three-course journey that encourages you to slow down, look up, and be present.</p>
+        <h3>Food is the Medium</h3>
+        <p>A structured three-course journey &mdash; each dish a Tamil recipe given a new form. The food is the opening. The conversation that follows is the point.</p>
       </div>
       <div class="philosophy-card">
         <div class="philosophy-icon"><svg viewBox="0 0 44 44" fill="none"><path d="M12 32 L22 12 L32 32" stroke="#7B4F2E" stroke-width="1.2" stroke-linecap="round"/><path d="M15 26 L29 26" stroke="#7B4F2E" stroke-width="1.2" stroke-linecap="round"/></svg></div>
         <h3>Tamil Roots</h3>
-        <p>Globally inspired dishes grounded in the warmth and hospitality of Tamil culinary tradition.</p>
+        <p>Not Tamil as aesthetic. Tamil as origin. Every recipe here traces back to one woman&rsquo;s kitchen in Chennai &mdash; and carries that lineage forward, honestly.</p>
       </div>
     </div>
     <div class="section-label reveal">Reserve Your Table</div>
@@ -253,7 +261,27 @@ footer{border-top:1px solid var(--border);padding:48px clamp(24px,5vw,80px);disp
 
   <div class="freshness-banner">
     <div class="freshness-inner">
-      <p>Each dish is prepared in <strong>limited portions</strong> daily. When it's gone, it's gone.<br>That's not a constraint &mdash; it's a promise of <strong>freshness</strong>.</p>
+      <p>Each dish is prepared in <strong>limited portions</strong> daily. When it&rsquo;s gone, it&rsquo;s gone.<br>That&rsquo;s not a constraint &mdash; it&rsquo;s a promise of <strong>freshness</strong>.</p>
+    </div>
+  </div>
+
+  <div class="mom-banner">
+    <div class="mom-banner-inner">
+      <div class="mom-quote">
+        <blockquote>&ldquo;Every dish on this menu starts with my mother&rsquo;s recipe. Not inspired by it. Not a reinterpretation of it. Her actual recipe &mdash; the one she cooked in our Chennai kitchen for as long as I can remember. We give it a new form. We never touch the soul.&rdquo;</blockquote>
+        <p>&mdash; The Owner, The Exchange</p>
+      </div>
+      <div class="mom-banner-icon">
+        <svg width="72" height="72" viewBox="0 0 200 200" xmlns="http://www.w3.org/2000/svg">
+          <circle cx="100" cy="100" r="90" fill="none" stroke="#F7F2E8" stroke-width="1.3"/>
+          <path d="M 88,84 C 92,78 98,90 100,84 C 102,78 108,90 112,84" fill="none" stroke="#F7F2E8" stroke-width="1.1" stroke-linecap="round" opacity="0.55"/>
+          <path d="M 82,93 C 88,89 91,101 88,104 C 85,107 88,115 94,115" fill="none" stroke="#F7F2E8" stroke-width="1.1" stroke-linecap="round" opacity="0.55"/>
+          <path d="M 118,93 C 112,89 109,101 112,104 C 115,107 112,115 106,115" fill="none" stroke="#F7F2E8" stroke-width="1.1" stroke-linecap="round" opacity="0.55"/>
+          <circle cx="76" cy="84" r="8" fill="#F7F2E8"/>
+          <circle cx="124" cy="84" r="8" fill="#F7F2E8"/>
+          <circle cx="100" cy="124" r="8" fill="#F7F2E8"/>
+        </svg>
+      </div>
     </div>
   </div>
 
@@ -272,21 +300,21 @@ footer{border-top:1px solid var(--border);padding:48px clamp(24px,5vw,80px);disp
           <img src="https://images.unsplash.com/photo-1547592166-23ac45744acd?w=600&q=85&auto=format&fit=crop" alt="French Onion Soup" onerror="this.style.display='none'">
           <div class="dish-img-label"><span>French Onion Soup</span></div>
         </div>
-        <div class="dish-info"><span class="dish-veg">V / NV</span><h3>French Onion Soup</h3><p>Slow-caramelised onions in a rich broth, crowned with a toasted cro&ucirc;ton and melted gruy&egrave;re.</p></div>
+        <div class="dish-info"><span class="dish-veg">V / NV</span><h3>French Onion Soup</h3><p>At its heart is my mother&rsquo;s Kozhi Rasam &mdash; her chicken broth, built slow and spiced with Tamil instinct. We give it a French coat: caramelised onions, a gruy&egrave;re-laden cro&ucirc;ton, the gratinéed top. The soul is entirely hers.</p><span class="dish-origin">&#x2B61; Amma&rsquo;s Kozhi Rasam, in a French frame</span></div>
       </div>
       <div class="dish-card">
         <div class="dish-img" style="background:linear-gradient(140deg,#3A1A05,#8B4010 60%,#C06020);">
           <img src="https://images.unsplash.com/photo-1562967916-eb82221dfb92?w=600&q=85&auto=format&fit=crop" alt="Fried Chicken" onerror="this.style.display='none'">
           <div class="dish-img-label"><span>Fried Chicken Assortment</span></div>
         </div>
-        <div class="dish-info"><h3>Fried Chicken Assortment</h3><p>A curated mix of crispy fried chicken bites &mdash; seasoned with house spice blend, served with signature dips.</p></div>
+        <div class="dish-info"><h3>Fried Chicken Assortment</h3><p>My mother&rsquo;s fried chicken recipe &mdash; her marinade, her spice ratios, her intuition about heat and time. Cut into an assortment of pieces, fried to order, served with dips that carry the same spice vocabulary. Nothing borrowed. Nothing added that she wouldn&rsquo;t recognise.</p><span class="dish-origin">&#x2B61; Amma&rsquo;s Fried Chicken, unmodified</span></div>
       </div>
       <div class="dish-card">
         <div class="dish-img" style="background:linear-gradient(140deg,#142810,#2E6020 60%,#4A8030);">
           <img src="https://images.unsplash.com/photo-1540189549336-e6e99c3679fe?w=600&q=85&auto=format&fit=crop" alt="Veg Entree" onerror="this.style.display='none'">
           <div class="dish-img-label"><span>Veg Entr&eacute;e</span></div>
         </div>
-        <div class="dish-info"><span class="dish-veg">Vegetarian</span><h3>Veg Entr&eacute;e</h3><p>A seasonal vegetarian opening &mdash; crafted around what's fresh, vibrant, and in conversation with the day's Plat.</p></div>
+        <div class="dish-info"><span class="dish-veg">Vegetarian</span><h3>Veg Entr&eacute;e</h3><p>We are still searching my mother&rsquo;s recipe book for the right dish to hold this seat. When we find it, it will be here &mdash; and it will be worth the wait. Until then, ask us what the kitchen is working with today.</p><span class="dish-origin">&#x2B61; Coming from Amma&rsquo;s kitchen, soon</span></div>
       </div>
     </div>
 
@@ -298,21 +326,21 @@ footer{border-top:1px solid var(--border);padding:48px clamp(24px,5vw,80px);disp
           <img src="https://images.unsplash.com/photo-1611143669185-af224c5e3252?w=600&q=85&auto=format&fit=crop" alt="Rice Burger" onerror="this.style.display='none'">
           <div class="dish-img-label"><span>Rice Burger</span></div>
         </div>
-        <div class="dish-info"><span class="dish-veg">V / NV</span><h3>Rice Burger</h3><p>A grilled patty nestled between compressed rice buns with Asian slaw and house sauce.</p></div>
+        <div class="dish-info"><span class="dish-veg">V / NV</span><h3>Rice Burger</h3><p>My mother&rsquo;s chicken fry &mdash; her masala, her technique, her crisp &mdash; pressed between compressed rice buns with a sharp Asian slaw. A Japanese format carrying a Tamil filling. The rice bun is the vehicle. What&rsquo;s inside is entirely home.</p><span class="dish-origin">&#x2B61; Amma&rsquo;s Chicken Fry, in a rice bun</span></div>
       </div>
       <div class="dish-card">
         <div class="dish-img" style="background:linear-gradient(140deg,#3A0A05,#8B1A10 60%,#B03020);">
           <img src="https://images.unsplash.com/photo-1624300629298-e9de39c13be5?w=600&q=85&auto=format&fit=crop" alt="Birria Tacos" onerror="this.style.display='none'">
           <div class="dish-img-label"><span>Birria Tacos</span></div>
         </div>
-        <div class="dish-info"><h3>Birria Tacos</h3><p>Slow-braised spiced meat in corn tortillas, served with consomm&eacute; for dipping. Rich, deep, indulgent.</p></div>
+        <div class="dish-info"><h3>Birria Tacos</h3><p>My mother&rsquo;s mutton chukka &mdash; slow-cooked, deeply spiced, falling apart &mdash; folded into charred corn tortillas. The consomm&eacute; for dipping is built from her chicken gravy reduction: dark, aromatic, unmistakably Tamil. Birria in form. Chennai in flavour. Our most indulgent Plat, made with lamb.</p><span class="dish-origin">&#x2B61; Amma&rsquo;s Mutton Chukka meets Birria</span></div>
       </div>
       <div class="dish-card">
         <div class="dish-img" style="background:linear-gradient(140deg,#2A1005,#7A3010 60%,#A04820);">
           <img src="https://images.unsplash.com/photo-1632778149955-e80f8ceca2e8?w=600&q=85&auto=format&fit=crop" alt="Chicken Parm" onerror="this.style.display='none'">
           <div class="dish-img-label"><span>Chicken Parm</span></div>
         </div>
-        <div class="dish-info"><h3>Chicken Parm</h3><p>Crispy golden chicken breast topped with house marinara and a blanket of melted aged cheese.</p></div>
+        <div class="dish-info"><h3>Chicken Parm</h3><p>The crumb and the fry are my mother&rsquo;s. The marinara and the cheese are Italian. The result is a Chicken Parm that tastes more confident than it has any right to &mdash; because the foundation underneath the sauce is built on forty years of knowing exactly how to fry a piece of chicken.</p><span class="dish-origin">&#x2B61; Amma&rsquo;s crumb, an Italian coat</span></div>
       </div>
     </div>
 
@@ -323,14 +351,14 @@ footer{border-top:1px solid var(--border);padding:48px clamp(24px,5vw,80px);disp
           <img src="https://images.unsplash.com/photo-1578985545062-69928b1d9587?w=600&q=85&auto=format&fit=crop" alt="Chocolate Layer Cake" onerror="this.style.display='none'">
           <div class="dish-img-label"><span>Chocolate Layer Cake</span></div>
         </div>
-        <div class="dish-info"><h3>Chocolate Layer Cake</h3><p>Dark chocolate sponge layered with velvety ganache frosting. A quiet, final luxury.</p></div>
+        <div class="dish-info"><h3>Chocolate Layer Cake</h3><p>My mother&rsquo;s chocolate cake &mdash; the one she made for every birthday in our house. We have not changed the recipe. We have only made it more precisely what it always was: dark, layered, unapologetically rich. The right way to end an exchange.</p><span class="dish-origin">&#x2B61; Amma&rsquo;s Birthday Cake, as it always was</span></div>
       </div>
       <div class="dish-card">
         <div class="dish-img" style="background:linear-gradient(140deg,#2A1E08,#7A5820 60%,#A07838);">
           <img src="https://images.unsplash.com/photo-1488477181946-6428a0291777?w=600&q=85&auto=format&fit=crop" alt="Eggless Dessert" onerror="this.style.display='none'">
           <div class="dish-img-label"><span>Eggless Dessert</span></div>
         </div>
-        <div class="dish-info"><span class="dish-veg">Eggless</span><h3>Seasonal Eggless Dessert</h3><p>A thoughtfully crafted dessert for those who prefer eggless &mdash; rotates with the season.</p></div>
+        <div class="dish-info"><span class="dish-veg">Eggless</span><h3>Seasonal Eggless Dessert</h3><p>My mother&rsquo;s recipe book has no shortage of eggless sweets. This seat belongs to whichever one the season and the kitchen call for. Ask us tonight &mdash; we will tell you exactly what it is and exactly where it comes from.</p><span class="dish-origin">&#x2B61; Rotating from Amma&rsquo;s eggless repertoire</span></div>
       </div>
     </div>
   </div>
