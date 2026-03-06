@@ -62,7 +62,7 @@ nav{position:sticky;top:0;z-index:100;background:var(--cream);border-bottom:1px 
 .freshness-inner{border:1px solid var(--border);background:var(--cream-dark);padding:28px 36px;display:block;}
 .freshness-inner p{font-family:'Cormorant Garamond',serif;font-style:italic;font-size:clamp(15px,2vw,18px);color:var(--brown-dark);line-height:1.85;text-align:center;}
 .freshness-inner strong{font-weight:500;color:var(--brown);font-style:normal;}
-.sets-row{display:grid;grid-template-columns:1fr 1fr;gap:24px;max-width:640px;margin:0 auto 72px;}
+.sets-row{display:grid;grid-template-columns:1fr 1fr 1fr;gap:20px;max-width:900px;margin:0 auto 72px;}
 .set-card{border:1px solid var(--border);padding:32px 28px;text-align:center;background:var(--cream);transition:box-shadow 0.3s,transform 0.3s;}
 .set-card:hover{transform:translateY(-3px);box-shadow:0 12px 40px var(--shadow);}
 .set-card.featured{background:var(--brown-dark);border-color:var(--brown-dark);}
@@ -377,12 +377,13 @@ footer{border-top:1px solid var(--border);padding:48px clamp(24px,5vw,80px);disp
     <div class="section-label">Exchange Sets</div>
     <h2 class="section-title">Choose Your Exchange</h2>
     <div class="sets-row">
-      <div class="set-card featured"><span class="set-tag">&#9733; Most Popular</span><div class="set-name">Full Exchange</div><div class="set-courses">Entr&eacute;e &middot; Plat &middot; Dessert</div><div class="set-price">&#8377;850<small>per person</small></div></div>
-      <div class="set-card"><span class="set-tag" style="color:var(--text-muted)">Two Course</span><div class="set-name" style="color:var(--brown-dark)">Short Exchange</div><div class="set-courses">Entr&eacute;e + Plat <em>or</em> Plat + Dessert</div><div class="set-price">&#8377;650<small>per person</small></div></div>
+      <div class="set-card"><span class="set-tag" style="color:var(--text-muted)">Two Course</span><div class="set-name" style="color:var(--brown-dark)">Short Exchange</div><div class="set-courses">Starter + Plat <em>or</em> Plat + Dessert</div><div class="set-price">&#8377;650<small>per person</small></div></div>
+      <div class="set-card featured"><span class="set-tag">&#9733; Most Popular</span><div class="set-name">Full Exchange</div><div class="set-courses">Soup <em>or</em> Starter &middot; Plat &middot; Dessert</div><div class="set-price">&#8377;850<small>per person</small></div></div>
+      <div class="set-card" style="border-color:var(--gold);"><span class="set-tag" style="color:var(--gold)">&#10022; Four Course</span><div class="set-name" style="color:var(--brown-dark)">Grand Exchange</div><div class="set-courses">Soup &middot; Starter &middot; Plat &middot; Dessert</div><div class="set-price">&#8377;1,050<small>per person</small></div></div>
     </div>
 
-    <div class="menu-course-label"><span>Entr&eacute;e</span></div>
-    <div class="xcard-grid-dishes">
+    <div class="menu-course-label"><span>Soup</span></div>
+    <div class="xcard-grid-dishes" style="max-width:560px;margin-left:auto;margin-right:auto;">
       <div class="xcard">
         <div class="xcard-img" style="background:linear-gradient(140deg,#2E1200,#7A3A10 60%,#A05020);">
           <img src="https://images.unsplash.com/photo-1547592166-23ac45744acd?w=600&q=85&auto=format&fit=crop" alt="French Onion Soup" onerror="this.style.display='none'">
@@ -395,6 +396,10 @@ footer{border-top:1px solid var(--border);padding:48px clamp(24px,5vw,80px);disp
         <span class="xcard-origin">&#x2B61; Amma&rsquo;s Kozhi Rasam, in a French frame</span>
         <div class="xcard-rule"></div>
       </div>
+    </div>
+
+    <div class="menu-course-label"><span>Starter</span></div>
+    <div class="xcard-grid-dishes">
       <div class="xcard">
         <div class="xcard-img" style="background:linear-gradient(140deg,#3A1A05,#8B4010 60%,#C06020);">
           <img src="https://images.unsplash.com/photo-1562967916-eb82221dfb92?w=600&q=85&auto=format&fit=crop" alt="Fried Chicken" onerror="this.style.display='none'">
@@ -408,12 +413,12 @@ footer{border-top:1px solid var(--border);padding:48px clamp(24px,5vw,80px);disp
       </div>
       <div class="xcard">
         <div class="xcard-img" style="background:linear-gradient(140deg,#142810,#2E6020 60%,#4A8030);">
-          <img src="https://images.unsplash.com/photo-1540189549336-e6e99c3679fe?w=600&q=85&auto=format&fit=crop" alt="Veg Entree" onerror="this.style.display='none'">
-          <div class="xcard-img-label"><span>Veg Entr&eacute;e</span></div>
+          <img src="https://images.unsplash.com/photo-1540189549336-e6e99c3679fe?w=600&q=85&auto=format&fit=crop" alt="Veg Starter" onerror="this.style.display='none'">
+          <div class="xcard-img-label"><span>Veg Starter</span></div>
         </div>
         <div class="xcard-dots"><span class="xcard-dot"></span><span class="xcard-dot"></span></div>
         <span class="xcard-veg">Vegetarian</span>
-        <div class="xcard-title">Veg Entr&eacute;e</div>
+        <div class="xcard-title">Veg Starter</div>
         <p class="xcard-body">We are still searching my mother&rsquo;s recipe book for the right dish to hold this seat. When we find it, it will be here &mdash; and it will be worth the wait. Until then, ask us what the kitchen is working with today.</p>
         <span class="xcard-origin">&#x2B61; Coming from Amma&rsquo;s kitchen, soon</span>
         <div class="xcard-rule"></div>
@@ -581,17 +586,25 @@ footer{border-top:1px solid var(--border);padding:48px clamp(24px,5vw,80px);disp
 function showTab(t){document.querySelectorAll('.tab-section').forEach(s=>s.classList.remove('active'));document.querySelectorAll('.nav-link').forEach(l=>l.classList.remove('active'));document.getElementById('tab-'+t).classList.add('active');document.getElementById('nav-'+t).classList.add('active');window.scrollTo({top:0,behavior:'smooth'});if(t==='csr')initCSR();}
 (function(){const today=new Date(),max=new Date();max.setDate(today.getDate()+7);const fmt=d=>d.toISOString().split('T')[0];const el=document.getElementById('res-date');el.min=fmt(today);el.max=fmt(max);el.value=fmt(today);})();
 function submitReservation(){const name=document.getElementById('res-name').value.trim();const phone=document.getElementById('res-phone').value.trim();const email=document.getElementById('res-email').value.trim();const size=document.getElementById('res-size').value;const date=document.getElementById('res-date').value;const time=document.getElementById('res-time').value;const errEl=document.getElementById('res-error');if(!name||!phone||!email||!size||!date||!time){errEl.textContent='Please fill in all required fields.';errEl.style.display='block';return;}if(!/^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(email)){errEl.textContent='Please enter a valid email address.';errEl.style.display='block';return;}errEl.style.display='none';const d=new Date(date);const dStr=d.toLocaleDateString('en-IN',{weekday:'long',month:'long',day:'numeric'});document.getElementById('success-msg').textContent='Your table is held, '+name.split(' ')[0]+'.';document.getElementById('success-sub').textContent='We\'ll see you on '+dStr+' at '+time+'.';document.getElementById('reservation-form-wrap').style.display='none';document.getElementById('reservation-success').style.display='block';}
-let selectedAmt=0,votes=[12,8,15,6,9],totalRaised=47250,userVoted=false;
+let selectedAmt=0,votes=[12,8,15,6,9],totalRaised=190796,userVoted=false;
 function initCSR(){const stored=localStorage.getItem('exchange_csr');if(stored){const data=JSON.parse(stored);totalRaised=data.total||totalRaised;votes=data.votes||votes;userVoted=data.userVoted||false;}animateTotal();updateVoteBars();if(userVoted)markVoted(localStorage.getItem('exchange_voted_idx'));}
-function animateTotal(){const el=document.getElementById('csr-total');let current=0;const step=Math.ceil(totalRaised/80);const timer=setInterval(()=>{current=Math.min(current+step,totalRaised);el.textContent='&#8377;'+current.toLocaleString('en-IN');if(current>=totalRaised)clearInterval(timer);},18);}
+function animateTotal(){const el=document.getElementById('csr-total');let current=0;const step=Math.ceil(totalRaised/80);const timer=setInterval(()=>{current=Math.min(current+step,totalRaised);el.textContent='₹'+current.toLocaleString('en-IN');if(current>=totalRaised)clearInterval(timer);},18);}
 function selectAmt(btn,amt){document.querySelectorAll('.amt-btn').forEach(b=>b.classList.remove('selected'));btn.classList.add('selected');selectedAmt=amt;document.getElementById('donate-custom').value='';}
 function clearAmtBtns(){document.querySelectorAll('.amt-btn').forEach(b=>b.classList.remove('selected'));selectedAmt=0;}
-function submitDonation(){const custom=parseInt(document.getElementById('donate-custom').value)||0;const amount=selectedAmt||custom;if(!amount||amount<1){alert('Please select or enter a donation amount.');return;}totalRaised+=amount;saveCSR();const el=document.getElementById('csr-total');el.style.transform='scale(1.08)';el.textContent='&#8377;'+totalRaised.toLocaleString('en-IN');setTimeout(()=>{el.style.transform='scale(1)';},300);document.getElementById('donate-success').style.display='block';document.querySelector('.donate-btn').textContent='Thank you \u2736';document.querySelector('.donate-btn').disabled=true;}
+function submitDonation(){const custom=parseInt(document.getElementById('donate-custom').value)||0;const amount=selectedAmt||custom;if(!amount||amount<1){alert('Please select or enter a donation amount.');return;}totalRaised+=amount;saveCSR();const el=document.getElementById('csr-total');el.style.transform='scale(1.08)';el.textContent='₹'+totalRaised.toLocaleString('en-IN');setTimeout(()=>{el.style.transform='scale(1)';},300);document.getElementById('donate-success').style.display='block';document.querySelector('.donate-btn').textContent='Thank you \u2736';document.querySelector('.donate-btn').disabled=true;}
 function castVote(idx){if(userVoted)return;votes[idx]++;userVoted=true;localStorage.setItem('exchange_voted_idx',idx);saveCSR();updateVoteBars();markVoted(idx);}
 function markVoted(idx){document.querySelectorAll('#vote-cards .xcard').forEach((c,i)=>c.classList.toggle('voted',i==idx));document.querySelectorAll('.xcard-vote-btn').forEach((b,i)=>{b.textContent=i==idx?'Voted \u2736':'Vote';});}
 function updateVoteBars(){const total=votes.reduce((a,b)=>a+b,0)||1;votes.forEach((v,i)=>{const pct=Math.round((v/total)*100);document.getElementById('bar-'+i).style.width=pct+'%';document.getElementById('vc-'+i).textContent=v+(v===1?' vote':' votes');document.getElementById('vp-'+i).textContent=pct+'%';});}
 function saveCSR(){localStorage.setItem('exchange_csr',JSON.stringify({total:totalRaised,votes,userVoted}));}
 const observer=new IntersectionObserver(entries=>{entries.forEach(e=>{if(e.isIntersecting)e.target.classList.add('visible');});},{threshold:0.12});document.querySelectorAll('.reveal').forEach(el=>observer.observe(el));
+</script>
+
+</body>
+</html>rget.classList.add('visible');});},{threshold:0.12});document.querySelectorAll('.reveal').forEach(el=>observer.observe(el));
+</script>
+
+</body>
+</html>rget.classList.add('visible');});},{threshold:0.12});document.querySelectorAll('.reveal').forEach(el=>observer.observe(el));
 </script>
 
 </body>
