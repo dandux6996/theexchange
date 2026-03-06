@@ -163,6 +163,35 @@ footer{border-top:1px solid var(--border);padding:48px clamp(24px,5vw,80px);disp
 @media(max-width:680px){.collab-cards{grid-template-columns:1fr;}.collab-section{padding:48px 24px;}}
 .reveal{opacity:0;transform:translateY(20px);transition:opacity 0.6s ease,transform 0.6s ease;}
 .reveal.visible{opacity:1;transform:translateY(0);}
+/* ── Exchange Card component ── */
+.xcard-grid-3{display:grid;grid-template-columns:repeat(3,1fr);gap:22px;margin-bottom:64px;}
+.xcard-grid-dishes{display:grid;grid-template-columns:repeat(auto-fill,minmax(255px,1fr));gap:22px;margin-bottom:64px;}
+.xcard-grid-vote{display:grid;grid-template-columns:repeat(auto-fill,minmax(200px,1fr));gap:20px;}
+.xcard{background:#F9F6EF;border-radius:16px;border:1px solid rgba(123,79,46,0.14);padding:28px 22px 22px;text-align:center;display:flex;flex-direction:column;align-items:center;box-shadow:0 3px 24px rgba(74,55,40,0.07);transition:transform 0.3s,box-shadow 0.3s;overflow:hidden;}
+.xcard:hover{transform:translateY(-4px);box-shadow:0 12px 40px rgba(74,55,40,0.12);}
+.xcard.voted{border-color:var(--brown);}
+.xcard-dots{display:flex;gap:7px;margin-bottom:18px;}
+.xcard-dot{width:8px;height:8px;border-radius:50%;background:var(--gold);opacity:0.9;}
+.xcard-icon{width:38px;height:38px;margin:0 auto 12px;}
+.xcard-emoji{font-size:28px;margin-bottom:10px;}
+.xcard-title{font-family:'Cormorant Garamond',serif;font-size:18px;font-weight:500;color:var(--brown-dark);margin-bottom:9px;line-height:1.3;}
+.xcard-body{font-size:13px;color:var(--text-muted);line-height:1.75;flex:1;}
+.xcard-veg{display:inline-block;font-size:9px;letter-spacing:2px;text-transform:uppercase;color:var(--gold);margin-bottom:8px;}
+.xcard-origin{display:block;font-family:'Cormorant Garamond',serif;font-style:italic;font-size:12px;color:var(--gold);margin-top:8px;opacity:0.9;}
+.xcard-rule{width:44px;height:1px;background:var(--gold);opacity:0.45;margin:16px auto 12px;}
+.xcard-footer{font-family:'Cormorant Garamond',serif;font-style:italic;font-size:13px;color:var(--gold);opacity:0.85;}
+.xcard-img{width:calc(100% + 44px);margin:-28px -22px 20px;aspect-ratio:4/3;position:relative;overflow:hidden;border-radius:16px 16px 0 0;}
+.xcard-img img{position:absolute;inset:0;width:100%;height:100%;object-fit:cover;transition:transform 0.5s ease;}
+.xcard:hover .xcard-img img{transform:scale(1.04);}
+.xcard-img-label{position:absolute;bottom:0;left:0;right:0;background:linear-gradient(to top,rgba(40,20,8,0.55) 0%,transparent 100%);padding:14px 12px 8px;}
+.xcard-img-label span{font-family:'Cormorant Garamond',serif;font-style:italic;font-size:12px;color:rgba(255,255,255,0.85);}
+.xcard-bar-wrap{width:100%;margin-top:10px;}
+.xcard-bar-bg{height:3px;background:var(--cream-dark);border-radius:2px;overflow:hidden;}
+.xcard-bar-fill{height:100%;background:linear-gradient(90deg,var(--brown-light),var(--gold));border-radius:2px;width:0;transition:width 0.8s cubic-bezier(0.4,0,0.2,1);}
+.xcard-count{font-size:11px;color:var(--text-muted);margin-top:5px;display:flex;justify-content:space-between;}
+.xcard-vote-btn{margin-top:14px;padding:7px 22px;background:none;border:1px solid rgba(123,79,46,0.25);font-family:'Jost',sans-serif;font-size:10px;letter-spacing:2.5px;text-transform:uppercase;color:var(--brown);cursor:pointer;transition:all 0.2s;}
+.xcard:hover .xcard-vote-btn,.xcard.voted .xcard-vote-btn{background:var(--brown);color:var(--cream);border-color:var(--brown);}
+@media(max-width:680px){.xcard-grid-3,.xcard-grid-dishes,.xcard-grid-vote{grid-template-columns:1fr;}}
 </style>
 </head>
 <body>
@@ -212,21 +241,27 @@ footer{border-top:1px solid var(--border);padding:48px clamp(24px,5vw,80px);disp
     <div class="section-label">Our Philosophy</div>
     <h2 class="section-title">Food is the medium.<br>Conversation is the product.</h2>
     <p class="philosophy-body">The Exchange is fifteen seats in Chennai, built around a simple belief &mdash; that a meal is only the beginning. Each dish carries a Tamil soul: recipes from home, given new forms, served with care. We set the table. You do the rest.</p>
-    <div class="philosophy-grid reveal">
-      <div class="philosophy-card">
-        <div class="philosophy-icon"><svg viewBox="0 0 44 44" fill="none"><circle cx="14" cy="16" r="6" stroke="#7B4F2E" stroke-width="1.2"/><circle cx="30" cy="16" r="6" stroke="#7B4F2E" stroke-width="1.2"/><circle cx="22" cy="30" r="6" stroke="#7B4F2E" stroke-width="1.2"/></svg></div>
-        <h3>Hospitality First</h3>
-        <p>Every guest is met by the owner. Every visit is personal. We don&rsquo;t serve tables &mdash; we host people.</p>
+    <div class="xcard-grid-3 reveal">
+      <div class="xcard">
+        <div class="xcard-dots"><span class="xcard-dot"></span><span class="xcard-dot"></span></div>
+        <div class="xcard-icon"><svg viewBox="0 0 44 44" fill="none"><circle cx="14" cy="16" r="6" stroke="#7B4F2E" stroke-width="1.2"/><circle cx="30" cy="16" r="6" stroke="#7B4F2E" stroke-width="1.2"/><circle cx="22" cy="30" r="6" stroke="#7B4F2E" stroke-width="1.2"/></svg></div>
+        <div class="xcard-title">Hospitality First</div>
+        <p class="xcard-body">Every guest is met by the owner. Every visit is personal. We don&rsquo;t serve tables &mdash; we host people.</p>
+        <div class="xcard-rule"></div>
       </div>
-      <div class="philosophy-card">
-        <div class="philosophy-icon"><svg viewBox="0 0 44 44" fill="none"><path d="M8 22 Q22 8 36 22 Q22 36 8 22Z" stroke="#7B4F2E" stroke-width="1.2"/><circle cx="22" cy="22" r="4" fill="#7B4F2E"/></svg></div>
-        <h3>Rooted Recipes</h3>
-        <p>Tamil home cooking at the core &mdash; given global forms, served with honesty. The food carries a lineage. You can taste it.</p>
+      <div class="xcard">
+        <div class="xcard-dots"><span class="xcard-dot"></span><span class="xcard-dot"></span></div>
+        <div class="xcard-icon"><svg viewBox="0 0 44 44" fill="none"><path d="M8 22 Q22 8 36 22 Q22 36 8 22Z" stroke="#7B4F2E" stroke-width="1.2"/><circle cx="22" cy="22" r="4" fill="#7B4F2E"/></svg></div>
+        <div class="xcard-title">Rooted Recipes</div>
+        <p class="xcard-body">Tamil home cooking at the core &mdash; given global forms, served with honesty. The food carries a lineage. You can taste it.</p>
+        <div class="xcard-rule"></div>
       </div>
-      <div class="philosophy-card">
-        <div class="philosophy-icon"><svg viewBox="0 0 44 44" fill="none"><path d="M12 32 L22 12 L32 32" stroke="#7B4F2E" stroke-width="1.2" stroke-linecap="round"/><path d="M15 26 L29 26" stroke="#7B4F2E" stroke-width="1.2" stroke-linecap="round"/></svg></div>
-        <h3>The Exchange Card</h3>
-        <p>Every table gets a question for the evening. You don&rsquo;t have to answer it. Most people do.</p>
+      <div class="xcard">
+        <div class="xcard-dots"><span class="xcard-dot"></span><span class="xcard-dot"></span></div>
+        <div class="xcard-icon"><svg viewBox="0 0 44 44" fill="none"><circle cx="22" cy="22" r="12" stroke="#7B4F2E" stroke-width="1.2"/><line x1="22" y1="10" x2="22" y2="14" stroke="#7B4F2E" stroke-width="1.2" stroke-linecap="round"/><line x1="22" y1="30" x2="22" y2="34" stroke="#7B4F2E" stroke-width="1.2" stroke-linecap="round"/><line x1="10" y1="22" x2="14" y2="22" stroke="#7B4F2E" stroke-width="1.2" stroke-linecap="round"/><line x1="30" y1="22" x2="34" y2="22" stroke="#7B4F2E" stroke-width="1.2" stroke-linecap="round"/></svg></div>
+        <div class="xcard-title">Scarcity by Design</div>
+        <p class="xcard-body">Fifteen seats. A short menu. Limited portions daily. Not a constraint &mdash; a choice. Small is how we stay honest.</p>
+        <div class="xcard-rule"></div>
       </div>
     </div>
     <div class="section-label reveal">Reserve Your Table</div>
@@ -257,6 +292,41 @@ footer{border-top:1px solid var(--border);padding:48px clamp(24px,5vw,80px);disp
       </div>
     </div>
   </div>
+
+
+
+  <section class="collab-section reveal">
+    <div class="collab-inner">
+    <div class="collab-label">Private &amp; Corporate</div>
+    <h2 class="collab-title">The Exchange,<br>made entirely yours.</h2>
+    <p class="collab-body">The fifteen seats. The three courses. The question for the evening &mdash; chosen by you, for your people.</p>
+    <div class="collab-divider"></div>
+    <div class="collab-cards">
+      <div class="collab-card">
+        <div class="collab-card-icon">&#x1f4bc;</div>
+        <h3>Corporate Lunches &amp; Dinners</h3>
+        <p>A private setting for teams, leadership offsites, or client evenings. Your leadership sets the Exchange Card question. The conversation that follows is yours to keep.</p>
+        <span class="collab-card-tag">Weekday availability</span>
+      </div>
+      <div class="collab-card">
+        <div class="collab-card-icon">&#x1f382;</div>
+        <h3>Birthday &amp; Celebration Evenings</h3>
+        <p>The whole space, reserved for the people who matter. A custom question written for the person you&rsquo;re celebrating. An evening that feels genuinely unlike any other.</p>
+        <span class="collab-card-tag">Full buyout available</span>
+      </div>
+      <div class="collab-card">
+        <div class="collab-card-icon">&#x1f5d3;</div>
+        <h3>Themed Exchange Days</h3>
+        <p>A curated theme &mdash; a decade, a place, a feeling &mdash; woven through the menu and the question for the evening. For groups who want to arrive somewhere together.</p>
+        <span class="collab-card-tag">Bespoke format</span>
+      </div>
+    </div>
+    <div class="collab-cta-wrap">
+      <p class="collab-cta-text">All private bookings are handled directly. No forms, no portals &mdash; just a conversation.</p>
+      <a class="collab-cta" href="/cdn-cgi/l/email-protection#84ece1e8e8ebc4f0ece1e1fce7ece5eae3e1aaedea">Write to us</a>
+    </div>
+  </div>
+  </section>
 </section>
 
 <section id="tab-menu" class="tab-section">
@@ -312,71 +382,107 @@ footer{border-top:1px solid var(--border);padding:48px clamp(24px,5vw,80px);disp
     </div>
 
     <div class="menu-course-label"><span>Entr&eacute;e</span></div>
-    <div class="dishes-grid">
-      <div class="dish-card">
-        <div class="dish-img" style="background:linear-gradient(140deg,#2E1200,#7A3A10 60%,#A05020);">
+    <div class="xcard-grid-dishes">
+      <div class="xcard">
+        <div class="xcard-img" style="background:linear-gradient(140deg,#2E1200,#7A3A10 60%,#A05020);">
           <img src="https://images.unsplash.com/photo-1547592166-23ac45744acd?w=600&q=85&auto=format&fit=crop" alt="French Onion Soup" onerror="this.style.display='none'">
-          <div class="dish-img-label"><span>French Onion Soup</span></div>
+          <div class="xcard-img-label"><span>French Onion Soup</span></div>
         </div>
-        <div class="dish-info"><span class="dish-veg">V / NV</span><h3>French Onion Soup</h3><p>At its heart is my mother&rsquo;s Kozhi Rasam &mdash; her chicken broth, built slow and spiced with Tamil instinct. We give it a French coat: caramelised onions, a gruy&egrave;re-laden cro&ucirc;ton, the gratinéed top. The soul is entirely hers.</p><span class="dish-origin">&#x2B61; Amma&rsquo;s Kozhi Rasam, in a French frame</span></div>
+        <div class="xcard-dots"><span class="xcard-dot"></span><span class="xcard-dot"></span></div>
+        <span class="xcard-veg">V / NV</span>
+        <div class="xcard-title">French Onion Soup</div>
+        <p class="xcard-body">At its heart is my mother&rsquo;s Kozhi Rasam &mdash; her chicken broth, built slow and spiced with Tamil instinct. We give it a French coat: caramelised onions, a gruy&egrave;re-laden cro&ucirc;ton, the gratinéed top. The soul is entirely hers.</p>
+        <span class="xcard-origin">&#x2B61; Amma&rsquo;s Kozhi Rasam, in a French frame</span>
+        <div class="xcard-rule"></div>
       </div>
-      <div class="dish-card">
-        <div class="dish-img" style="background:linear-gradient(140deg,#3A1A05,#8B4010 60%,#C06020);">
+      <div class="xcard">
+        <div class="xcard-img" style="background:linear-gradient(140deg,#3A1A05,#8B4010 60%,#C06020);">
           <img src="https://images.unsplash.com/photo-1562967916-eb82221dfb92?w=600&q=85&auto=format&fit=crop" alt="Fried Chicken" onerror="this.style.display='none'">
-          <div class="dish-img-label"><span>Fried Chicken Assortment</span></div>
+          <div class="xcard-img-label"><span>Fried Chicken Assortment</span></div>
         </div>
-        <div class="dish-info"><h3>Fried Chicken Assortment</h3><p>My mother&rsquo;s fried chicken recipe &mdash; her marinade, her spice ratios, her intuition about heat and time. Cut into an assortment of pieces, fried to order, served with dips that carry the same spice vocabulary. Nothing borrowed. Nothing added that she wouldn&rsquo;t recognise.</p><span class="dish-origin">&#x2B61; Amma&rsquo;s Fried Chicken, unmodified</span></div>
+        <div class="xcard-dots"><span class="xcard-dot"></span><span class="xcard-dot"></span></div>
+        <div class="xcard-title">Fried Chicken Assortment</div>
+        <p class="xcard-body">My mother&rsquo;s fried chicken recipe &mdash; her marinade, her spice ratios, her intuition about heat and time. Cut into an assortment of pieces, fried to order, served with dips that carry the same spice vocabulary. Nothing borrowed. Nothing added that she wouldn&rsquo;t recognise.</p>
+        <span class="xcard-origin">&#x2B61; Amma&rsquo;s Fried Chicken, unmodified</span>
+        <div class="xcard-rule"></div>
       </div>
-      <div class="dish-card">
-        <div class="dish-img" style="background:linear-gradient(140deg,#142810,#2E6020 60%,#4A8030);">
+      <div class="xcard">
+        <div class="xcard-img" style="background:linear-gradient(140deg,#142810,#2E6020 60%,#4A8030);">
           <img src="https://images.unsplash.com/photo-1540189549336-e6e99c3679fe?w=600&q=85&auto=format&fit=crop" alt="Veg Entree" onerror="this.style.display='none'">
-          <div class="dish-img-label"><span>Veg Entr&eacute;e</span></div>
+          <div class="xcard-img-label"><span>Veg Entr&eacute;e</span></div>
         </div>
-        <div class="dish-info"><span class="dish-veg">Vegetarian</span><h3>Veg Entr&eacute;e</h3><p>We are still searching my mother&rsquo;s recipe book for the right dish to hold this seat. When we find it, it will be here &mdash; and it will be worth the wait. Until then, ask us what the kitchen is working with today.</p><span class="dish-origin">&#x2B61; Coming from Amma&rsquo;s kitchen, soon</span></div>
+        <div class="xcard-dots"><span class="xcard-dot"></span><span class="xcard-dot"></span></div>
+        <span class="xcard-veg">Vegetarian</span>
+        <div class="xcard-title">Veg Entr&eacute;e</div>
+        <p class="xcard-body">We are still searching my mother&rsquo;s recipe book for the right dish to hold this seat. When we find it, it will be here &mdash; and it will be worth the wait. Until then, ask us what the kitchen is working with today.</p>
+        <span class="xcard-origin">&#x2B61; Coming from Amma&rsquo;s kitchen, soon</span>
+        <div class="xcard-rule"></div>
       </div>
     </div>
 
     <div class="menu-course-label"><span>Plat</span></div>
     <p style="text-align:center;font-family:'Cormorant Garamond',serif;font-style:italic;color:var(--gold);margin-bottom:36px;font-size:15px;">All Plats are served with French fries.</p>
-    <div class="dishes-grid">
-      <div class="dish-card">
-        <div class="dish-img" style="background:linear-gradient(140deg,#1C1005,#5C3810 60%,#8B5C28);">
+    <div class="xcard-grid-dishes">
+      <div class="xcard">
+        <div class="xcard-img" style="background:linear-gradient(140deg,#1C1005,#5C3810 60%,#8B5C28);">
           <img src="https://images.unsplash.com/photo-1611143669185-af224c5e3252?w=600&q=85&auto=format&fit=crop" alt="Rice Burger" onerror="this.style.display='none'">
-          <div class="dish-img-label"><span>Rice Burger</span></div>
+          <div class="xcard-img-label"><span>Rice Burger</span></div>
         </div>
-        <div class="dish-info"><span class="dish-veg">V / NV</span><h3>Rice Burger</h3><p>My mother&rsquo;s chicken fry &mdash; her masala, her technique, her crisp &mdash; pressed between compressed rice buns with a sharp Asian slaw. A Japanese format carrying a Tamil filling. The rice bun is the vehicle. What&rsquo;s inside is entirely home.</p><span class="dish-origin">&#x2B61; Amma&rsquo;s Chicken Fry, in a rice bun</span></div>
+        <div class="xcard-dots"><span class="xcard-dot"></span><span class="xcard-dot"></span></div>
+        <span class="xcard-veg">V / NV</span>
+        <div class="xcard-title">Rice Burger</div>
+        <p class="xcard-body">My mother&rsquo;s chicken fry &mdash; her masala, her technique, her crisp &mdash; pressed between compressed rice buns with a sharp Asian slaw. A Japanese format carrying a Tamil filling. The rice bun is the vehicle. What&rsquo;s inside is entirely home.</p>
+        <span class="xcard-origin">&#x2B61; Amma&rsquo;s Chicken Fry, in a rice bun</span>
+        <div class="xcard-rule"></div>
       </div>
-      <div class="dish-card">
-        <div class="dish-img" style="background:linear-gradient(140deg,#3A0A05,#8B1A10 60%,#B03020);">
+      <div class="xcard">
+        <div class="xcard-img" style="background:linear-gradient(140deg,#3A0A05,#8B1A10 60%,#B03020);">
           <img src="https://images.unsplash.com/photo-1624300629298-e9de39c13be5?w=600&q=85&auto=format&fit=crop" alt="Birria Tacos" onerror="this.style.display='none'">
-          <div class="dish-img-label"><span>Birria Tacos</span></div>
+          <div class="xcard-img-label"><span>Birria Tacos</span></div>
         </div>
-        <div class="dish-info"><h3>Birria Tacos</h3><p>My mother&rsquo;s mutton chukka &mdash; slow-cooked, deeply spiced, falling apart &mdash; folded into charred corn tortillas. The consomm&eacute; for dipping is built from her chicken gravy reduction: dark, aromatic, unmistakably Tamil. Birria in form. Chennai in flavour. Our most indulgent Plat, made with lamb.</p><span class="dish-origin">&#x2B61; Amma&rsquo;s Mutton Chukka meets Birria</span></div>
+        <div class="xcard-dots"><span class="xcard-dot"></span><span class="xcard-dot"></span></div>
+        <div class="xcard-title">Birria Tacos</div>
+        <p class="xcard-body">My mother&rsquo;s mutton chukka &mdash; slow-cooked, deeply spiced, falling apart &mdash; folded into charred corn tortillas. The consomm&eacute; for dipping is built from her chicken gravy reduction: dark, aromatic, unmistakably Tamil. Birria in form. Chennai in flavour.</p>
+        <span class="xcard-origin">&#x2B61; Amma&rsquo;s Mutton Chukka meets Birria</span>
+        <div class="xcard-rule"></div>
       </div>
-      <div class="dish-card">
-        <div class="dish-img" style="background:linear-gradient(140deg,#2A1005,#7A3010 60%,#A04820);">
+      <div class="xcard">
+        <div class="xcard-img" style="background:linear-gradient(140deg,#2A1005,#7A3010 60%,#A04820);">
           <img src="https://images.unsplash.com/photo-1632778149955-e80f8ceca2e8?w=600&q=85&auto=format&fit=crop" alt="Chicken Parm" onerror="this.style.display='none'">
-          <div class="dish-img-label"><span>Chicken Parm</span></div>
+          <div class="xcard-img-label"><span>Chicken Parm</span></div>
         </div>
-        <div class="dish-info"><h3>Chicken Parm</h3><p>The crumb and the fry are my mother&rsquo;s. The marinara and the cheese are Italian. The result is a Chicken Parm that tastes more confident than it has any right to &mdash; because the foundation underneath the sauce is built on forty years of knowing exactly how to fry a piece of chicken.</p><span class="dish-origin">&#x2B61; Amma&rsquo;s crumb, an Italian coat</span></div>
+        <div class="xcard-dots"><span class="xcard-dot"></span><span class="xcard-dot"></span></div>
+        <div class="xcard-title">Chicken Parm</div>
+        <p class="xcard-body">The crumb and the fry are my mother&rsquo;s. The marinara and the cheese are Italian. The result is a Chicken Parm that tastes more confident than it has any right to &mdash; because the foundation is built on forty years of knowing exactly how to fry a piece of chicken.</p>
+        <span class="xcard-origin">&#x2B61; Amma&rsquo;s crumb, an Italian coat</span>
+        <div class="xcard-rule"></div>
       </div>
     </div>
 
     <div class="menu-course-label"><span>Dessert</span></div>
-    <div class="dishes-grid" style="max-width:560px;margin-left:auto;margin-right:auto;">
-      <div class="dish-card">
-        <div class="dish-img" style="background:linear-gradient(140deg,#100404,#3A1010 60%,#5A1818);">
+    <div class="xcard-grid-dishes" style="max-width:560px;margin-left:auto;margin-right:auto;">
+      <div class="xcard">
+        <div class="xcard-img" style="background:linear-gradient(140deg,#100404,#3A1010 60%,#5A1818);">
           <img src="https://images.unsplash.com/photo-1578985545062-69928b1d9587?w=600&q=85&auto=format&fit=crop" alt="Chocolate Layer Cake" onerror="this.style.display='none'">
-          <div class="dish-img-label"><span>Chocolate Layer Cake</span></div>
+          <div class="xcard-img-label"><span>Chocolate Layer Cake</span></div>
         </div>
-        <div class="dish-info"><h3>Chocolate Layer Cake</h3><p>My mother&rsquo;s chocolate cake &mdash; the one she made for every birthday in our house. We have not changed the recipe. We have only made it more precisely what it always was: dark, layered, unapologetically rich. The right way to end an exchange.</p><span class="dish-origin">&#x2B61; Amma&rsquo;s Birthday Cake, as it always was</span></div>
+        <div class="xcard-dots"><span class="xcard-dot"></span><span class="xcard-dot"></span></div>
+        <div class="xcard-title">Chocolate Layer Cake</div>
+        <p class="xcard-body">My mother&rsquo;s chocolate cake &mdash; the one she made for every birthday in our house. We have not changed the recipe. We have only made it more precisely what it always was: dark, layered, unapologetically rich. The right way to end an exchange.</p>
+        <span class="xcard-origin">&#x2B61; Amma&rsquo;s Birthday Cake, as it always was</span>
+        <div class="xcard-rule"></div>
       </div>
-      <div class="dish-card">
-        <div class="dish-img" style="background:linear-gradient(140deg,#2A1E08,#7A5820 60%,#A07838);">
+      <div class="xcard">
+        <div class="xcard-img" style="background:linear-gradient(140deg,#2A1E08,#7A5820 60%,#A07838);">
           <img src="https://images.unsplash.com/photo-1488477181946-6428a0291777?w=600&q=85&auto=format&fit=crop" alt="Eggless Dessert" onerror="this.style.display='none'">
-          <div class="dish-img-label"><span>Eggless Dessert</span></div>
+          <div class="xcard-img-label"><span>Eggless Dessert</span></div>
         </div>
-        <div class="dish-info"><span class="dish-veg">Eggless</span><h3>Seasonal Eggless Dessert</h3><p>My mother&rsquo;s recipe book has no shortage of eggless sweets. This seat belongs to whichever one the season and the kitchen call for. Ask us tonight &mdash; we will tell you exactly what it is and exactly where it comes from.</p><span class="dish-origin">&#x2B61; Rotating from Amma&rsquo;s eggless repertoire</span></div>
+        <div class="xcard-dots"><span class="xcard-dot"></span><span class="xcard-dot"></span></div>
+        <span class="xcard-veg">Eggless</span>
+        <div class="xcard-title">Seasonal Eggless Dessert</div>
+        <p class="xcard-body">My mother&rsquo;s recipe book has no shortage of eggless sweets. This seat belongs to whichever one the season and the kitchen call for. Ask us tonight &mdash; we will tell you exactly what it is and exactly where it comes from.</p>
+        <span class="xcard-origin">&#x2B61; Rotating from Amma&rsquo;s eggless repertoire</span>
+        <div class="xcard-rule"></div>
       </div>
     </div>
   </div>
@@ -413,12 +519,52 @@ footer{border-top:1px solid var(--border);padding:48px clamp(24px,5vw,80px);disp
     <div class="voting-section">
       <h2 class="voting-title">Where Should It Go?</h2>
       <p class="voting-subtitle">Vote for the cause closest to your heart. You guide where the funds flow.</p>
-      <div id="vote-cards">
-        <div class="vote-card" onclick="castVote(0)"><div class="vote-card-inner"><div class="vote-icon">&#128218;</div><div class="vote-info"><h4>Children's Education</h4><p>Funding school supplies, mid-day meals, and tutoring for underprivileged children in Tamil Nadu.</p><div class="vote-bar-wrap"><div class="vote-bar-bg"><div class="vote-bar-fill" id="bar-0"></div></div><div class="vote-count"><span id="vc-0">0 votes</span><span id="vp-0">0%</span></div></div></div><button class="vote-btn" id="vbtn-0">Vote</button></div></div>
-        <div class="vote-card" onclick="castVote(1)"><div class="vote-card-inner"><div class="vote-icon">&#128062;</div><div class="vote-info"><h4>Animal Shelter &amp; Welfare</h4><p>Supporting Chennai's street animals with food, medical care, and adoption drives.</p><div class="vote-bar-wrap"><div class="vote-bar-bg"><div class="vote-bar-fill" id="bar-1"></div></div><div class="vote-count"><span id="vc-1">0 votes</span><span id="vp-1">0%</span></div></div></div><button class="vote-btn" id="vbtn-1">Vote</button></div></div>
-        <div class="vote-card" onclick="castVote(2)"><div class="vote-card-inner"><div class="vote-icon">&#128105;</div><div class="vote-info"><h4>Women's Empowerment</h4><p>Skill-building programs, microfinance access, and safe spaces for women in rural Tamil Nadu.</p><div class="vote-bar-wrap"><div class="vote-bar-bg"><div class="vote-bar-fill" id="bar-2"></div></div><div class="vote-count"><span id="vc-2">0 votes</span><span id="vp-2">0%</span></div></div></div><button class="vote-btn" id="vbtn-2">Vote</button></div></div>
-        <div class="vote-card" onclick="castVote(3)"><div class="vote-card-inner"><div class="vote-icon">&#127807;</div><div class="vote-info"><h4>Environmental Action</h4><p>Tree planting, beach clean-ups, and urban green initiatives around Chennai.</p><div class="vote-bar-wrap"><div class="vote-bar-bg"><div class="vote-bar-fill" id="bar-3"></div></div><div class="vote-count"><span id="vc-3">0 votes</span><span id="vp-3">0%</span></div></div></div><button class="vote-btn" id="vbtn-3">Vote</button></div></div>
-        <div class="vote-card" onclick="castVote(4)"><div class="vote-card-inner"><div class="vote-icon">&#127973;</div><div class="vote-info"><h4>Rural Healthcare</h4><p>Mobile medical camps and primary care access for villages in Tamil Nadu's interior districts.</p><div class="vote-bar-wrap"><div class="vote-bar-bg"><div class="vote-bar-fill" id="bar-4"></div></div><div class="vote-count"><span id="vc-4">0 votes</span><span id="vp-4">0%</span></div></div></div><button class="vote-btn" id="vbtn-4">Vote</button></div></div>
+      <div id="vote-cards" class="xcard-grid-vote">
+        <div class="xcard" style="cursor:pointer" onclick="castVote(0)">
+          <div class="xcard-dots"><span class="xcard-dot"></span><span class="xcard-dot"></span></div>
+          <div class="xcard-emoji">&#128218;</div>
+          <div class="xcard-title">Children&rsquo;s Education</div>
+          <p class="xcard-body">Funding school supplies, mid-day meals, and tutoring for underprivileged children in Tamil Nadu.</p>
+          <div class="xcard-bar-wrap"><div class="xcard-bar-bg"><div class="xcard-bar-fill" id="bar-0"></div></div><div class="xcard-count"><span id="vc-0">0 votes</span><span id="vp-0">0%</span></div></div>
+          <button class="xcard-vote-btn" id="vbtn-0" onclick="event.stopPropagation();castVote(0)">Vote</button>
+          <div class="xcard-rule"></div>
+        </div>
+        <div class="xcard" style="cursor:pointer" onclick="castVote(1)">
+          <div class="xcard-dots"><span class="xcard-dot"></span><span class="xcard-dot"></span></div>
+          <div class="xcard-emoji">&#128062;</div>
+          <div class="xcard-title">Animal Shelter &amp; Welfare</div>
+          <p class="xcard-body">Supporting Chennai&rsquo;s street animals with food, medical care, and adoption drives.</p>
+          <div class="xcard-bar-wrap"><div class="xcard-bar-bg"><div class="xcard-bar-fill" id="bar-1"></div></div><div class="xcard-count"><span id="vc-1">0 votes</span><span id="vp-1">0%</span></div></div>
+          <button class="xcard-vote-btn" id="vbtn-1" onclick="event.stopPropagation();castVote(1)">Vote</button>
+          <div class="xcard-rule"></div>
+        </div>
+        <div class="xcard" style="cursor:pointer" onclick="castVote(2)">
+          <div class="xcard-dots"><span class="xcard-dot"></span><span class="xcard-dot"></span></div>
+          <div class="xcard-emoji">&#128105;</div>
+          <div class="xcard-title">Women&rsquo;s Empowerment</div>
+          <p class="xcard-body">Skill-building programs, microfinance access, and safe spaces for women in rural Tamil Nadu.</p>
+          <div class="xcard-bar-wrap"><div class="xcard-bar-bg"><div class="xcard-bar-fill" id="bar-2"></div></div><div class="xcard-count"><span id="vc-2">0 votes</span><span id="vp-2">0%</span></div></div>
+          <button class="xcard-vote-btn" id="vbtn-2" onclick="event.stopPropagation();castVote(2)">Vote</button>
+          <div class="xcard-rule"></div>
+        </div>
+        <div class="xcard" style="cursor:pointer" onclick="castVote(3)">
+          <div class="xcard-dots"><span class="xcard-dot"></span><span class="xcard-dot"></span></div>
+          <div class="xcard-emoji">&#127807;</div>
+          <div class="xcard-title">Environmental Action</div>
+          <p class="xcard-body">Tree planting, beach clean-ups, and urban green initiatives around Chennai.</p>
+          <div class="xcard-bar-wrap"><div class="xcard-bar-bg"><div class="xcard-bar-fill" id="bar-3"></div></div><div class="xcard-count"><span id="vc-3">0 votes</span><span id="vp-3">0%</span></div></div>
+          <button class="xcard-vote-btn" id="vbtn-3" onclick="event.stopPropagation();castVote(3)">Vote</button>
+          <div class="xcard-rule"></div>
+        </div>
+        <div class="xcard" style="cursor:pointer" onclick="castVote(4)">
+          <div class="xcard-dots"><span class="xcard-dot"></span><span class="xcard-dot"></span></div>
+          <div class="xcard-emoji">&#127973;</div>
+          <div class="xcard-title">Rural Healthcare</div>
+          <p class="xcard-body">Mobile medical camps and primary care access for villages in Tamil Nadu&rsquo;s interior districts.</p>
+          <div class="xcard-bar-wrap"><div class="xcard-bar-bg"><div class="xcard-bar-fill" id="bar-4"></div></div><div class="xcard-count"><span id="vc-4">0 votes</span><span id="vp-4">0%</span></div></div>
+          <button class="xcard-vote-btn" id="vbtn-4" onclick="event.stopPropagation();castVote(4)">Vote</button>
+          <div class="xcard-rule"></div>
+        </div>
       </div>
       <p class="vote-disclaimer">Votes are tallied monthly. Funds are distributed to the leading cause at the end of each quarter.</p>
     </div>
@@ -426,45 +572,12 @@ footer{border-top:1px solid var(--border);padding:48px clamp(24px,5vw,80px);disp
 </section>
 
 
-<section class="collab-section reveal">
-  <div class="collab-inner">
-    <div class="collab-label">Private &amp; Corporate</div>
-    <h2 class="collab-title">The Exchange,<br>made entirely yours.</h2>
-    <p class="collab-body">The fifteen seats. The three courses. The question for the evening &mdash; chosen by you, for your people.</p>
-    <div class="collab-divider"></div>
-    <div class="collab-cards">
-      <div class="collab-card">
-        <div class="collab-card-icon">&#x1f4bc;</div>
-        <h3>Corporate Lunches &amp; Dinners</h3>
-        <p>A private setting for teams, leadership offsites, or client evenings. Your leadership sets the Exchange Card question. The conversation that follows is yours to keep.</p>
-        <span class="collab-card-tag">Weekday availability</span>
-      </div>
-      <div class="collab-card">
-        <div class="collab-card-icon">&#x1f382;</div>
-        <h3>Birthday &amp; Celebration Evenings</h3>
-        <p>The whole space, reserved for the people who matter. A custom question written for the person you&rsquo;re celebrating. An evening that feels genuinely unlike any other.</p>
-        <span class="collab-card-tag">Full buyout available</span>
-      </div>
-      <div class="collab-card">
-        <div class="collab-card-icon">&#x1f5d3;</div>
-        <h3>Themed Exchange Days</h3>
-        <p>A curated theme &mdash; a decade, a place, a feeling &mdash; woven through the menu and the question for the evening. For groups who want to arrive somewhere together.</p>
-        <span class="collab-card-tag">Bespoke format</span>
-      </div>
-    </div>
-    <div class="collab-cta-wrap">
-      <p class="collab-cta-text">All private bookings are handled directly. No forms, no portals &mdash; just a conversation.</p>
-      <a class="collab-cta" href="mailto:hello@theexchange.in">Write to us</a>
-    </div>
-  </div>
-</section>
-
 <footer>
   <div class="footer-brand">The Exchange</div>
   <div class="footer-info"><strong>Chennai, Tamil Nadu</strong><br>Weekdays 12&ndash;3 PM &middot; 5&ndash;11 PM<br>Weekends 11 AM&ndash;11 PM<br><span style="font-style:italic;color:var(--gold)">Opening 2025</span></div>
 </footer>
 
-<script>
+<script data-cfasync="false" src="/cdn-cgi/scripts/5c5dd728/cloudflare-static/email-decode.min.js"></script><script data-cfasync="false" src="/cdn-cgi/scripts/5c5dd728/cloudflare-static/email-decode.min.js"></script><script>
 function showTab(t){document.querySelectorAll('.tab-section').forEach(s=>s.classList.remove('active'));document.querySelectorAll('.nav-link').forEach(l=>l.classList.remove('active'));document.getElementById('tab-'+t).classList.add('active');document.getElementById('nav-'+t).classList.add('active');window.scrollTo({top:0,behavior:'smooth'});if(t==='csr')initCSR();}
 (function(){const today=new Date(),max=new Date();max.setDate(today.getDate()+7);const fmt=d=>d.toISOString().split('T')[0];const el=document.getElementById('res-date');el.min=fmt(today);el.max=fmt(max);el.value=fmt(today);})();
 function submitReservation(){const name=document.getElementById('res-name').value.trim();const phone=document.getElementById('res-phone').value.trim();const email=document.getElementById('res-email').value.trim();const size=document.getElementById('res-size').value;const date=document.getElementById('res-date').value;const time=document.getElementById('res-time').value;const errEl=document.getElementById('res-error');if(!name||!phone||!email||!size||!date||!time){errEl.textContent='Please fill in all required fields.';errEl.style.display='block';return;}if(!/^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(email)){errEl.textContent='Please enter a valid email address.';errEl.style.display='block';return;}errEl.style.display='none';const d=new Date(date);const dStr=d.toLocaleDateString('en-IN',{weekday:'long',month:'long',day:'numeric'});document.getElementById('success-msg').textContent='Your table is held, '+name.split(' ')[0]+'.';document.getElementById('success-sub').textContent='We\'ll see you on '+dStr+' at '+time+'.';document.getElementById('reservation-form-wrap').style.display='none';document.getElementById('reservation-success').style.display='block';}
@@ -475,11 +588,15 @@ function selectAmt(btn,amt){document.querySelectorAll('.amt-btn').forEach(b=>b.c
 function clearAmtBtns(){document.querySelectorAll('.amt-btn').forEach(b=>b.classList.remove('selected'));selectedAmt=0;}
 function submitDonation(){const custom=parseInt(document.getElementById('donate-custom').value)||0;const amount=selectedAmt||custom;if(!amount||amount<1){alert('Please select or enter a donation amount.');return;}totalRaised+=amount;saveCSR();const el=document.getElementById('csr-total');el.style.transform='scale(1.08)';el.textContent='&#8377;'+totalRaised.toLocaleString('en-IN');setTimeout(()=>{el.style.transform='scale(1)';},300);document.getElementById('donate-success').style.display='block';document.querySelector('.donate-btn').textContent='Thank you \u2736';document.querySelector('.donate-btn').disabled=true;}
 function castVote(idx){if(userVoted)return;votes[idx]++;userVoted=true;localStorage.setItem('exchange_voted_idx',idx);saveCSR();updateVoteBars();markVoted(idx);}
-function markVoted(idx){document.querySelectorAll('.vote-card').forEach((c,i)=>c.classList.toggle('voted',i==idx));document.querySelectorAll('.vote-btn').forEach((b,i)=>{b.textContent=i==idx?'Voted \u2736':'Vote';});}
+function markVoted(idx){document.querySelectorAll('#vote-cards .xcard').forEach((c,i)=>c.classList.toggle('voted',i==idx));document.querySelectorAll('.xcard-vote-btn').forEach((b,i)=>{b.textContent=i==idx?'Voted \u2736':'Vote';});}
 function updateVoteBars(){const total=votes.reduce((a,b)=>a+b,0)||1;votes.forEach((v,i)=>{const pct=Math.round((v/total)*100);document.getElementById('bar-'+i).style.width=pct+'%';document.getElementById('vc-'+i).textContent=v+(v===1?' vote':' votes');document.getElementById('vp-'+i).textContent=pct+'%';});}
 function saveCSR(){localStorage.setItem('exchange_csr',JSON.stringify({total:totalRaised,votes,userVoted}));}
-const observer=new IntersectionObserver(entries=>{entries.forEach(e=>{if(e.isIntersecting)e.target.classList.add('visible');});},{threshold:0.12});
-document.querySelectorAll('.reveal').forEach(el=>observer.observe(el));
+const observer=new IntersectionObserver(entries=>{entries.forEach(e=>{if(e.isIntersecting)e.target.classList.add('visible');});},{threshold:0.12});document.querySelectorAll('.reveal').forEach(el=>observer.observe(el));
 </script>
+
+</body>
+</html>rget.classList.add('visible');});},{threshold:0.12});document.querySelectorAll('.reveal').forEach(el=>observer.observe(el));
+</script>
+
 </body>
 </html>
