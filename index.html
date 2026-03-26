@@ -423,6 +423,18 @@ footer{border-top:1px solid var(--border);padding:48px clamp(24px,5vw,80px);disp
         <span class="xcard-origin">&#x2B61; Amma&rsquo;s Vegetable Masala, in a soup dumpling</span>
         <div class="xcard-rule"></div>
       </div>
+      <div class="xcard">
+        <div class="xcard-img" style="background:linear-gradient(140deg,#3A1A05,#8B4010 60%,#C06020);">
+          <img src="https://images.unsplash.com/photo-1562967916-eb82221dfb92?w=600&q=85&auto=format&fit=crop" alt="Fried Chicken Assortment" onerror="this.style.display='none'">
+          <div class="xcard-img-label"><span>Fried Chicken Assortment</span></div>
+        </div>
+        <div class="xcard-dots"><span class="xcard-dot"></span><span class="xcard-dot"></span></div>
+        <div class="xcard-title">Fried Chicken Assortment</div>
+        <p class="xcard-body">Four traditions of frying a piece of chicken &mdash; Indian masala-marinated, Classic American buttermilk, Korean double-fried with a gochujang glaze, Japanese panko-light &mdash; served together as an assortment with dipping sauces. One plate. Four philosophies. All built on Amma&rsquo;s marinade underneath.</p>
+        <div class="xcard-options"><span>Indian</span><span>Classic American</span><span>Korean</span><span>Japanese</span></div>
+        <span class="xcard-origin">&#x2B61; Amma&rsquo;s marinade, four traditions of the fry</span>
+        <div class="xcard-rule"></div>
+      </div>
     </div>
 
     <div class="menu-course-label"><span>Plat</span></div>
@@ -460,9 +472,8 @@ footer{border-top:1px solid var(--border);padding:48px clamp(24px,5vw,80px);disp
         </div>
         <div class="xcard-dots"><span class="xcard-dot"></span><span class="xcard-dot"></span></div>
         <div class="xcard-title">Chicken Parm</div>
-        <p class="xcard-body">Amma&rsquo;s crumb, an Italian coat &mdash; marinara, melted cheese, and a fried chicken base you choose. Korean double-fried with a gochujang glaze, Indian masala-marinated, Japanese panko-light, or Classic American buttermilk. Four traditions. One Parm.</p>
-        <div class="xcard-options"><span>Korean</span><span>Indian</span><span>Japanese</span><span>Classic American</span></div>
-        <span class="xcard-origin">&#x2B61; Amma&rsquo;s crumb, your choice of tradition</span>
+        <p class="xcard-body">Amma&rsquo;s Chicken 65 &mdash; her spice-marinated, deep-fried Tamil chicken &mdash; given an Italian coat: marinara, melted mozzarella, grated parmesan, finished under the grill. The crumb is hers. The cheese is Italy&rsquo;s. The result belongs to neither and both.</p>
+        <span class="xcard-origin">&#x2B61; Amma&rsquo;s Chicken 65, in an Italian frame</span>
         <div class="xcard-rule"></div>
       </div>
     </div>
@@ -589,22 +600,6 @@ function markVoted(idx){document.querySelectorAll('#vote-cards .xcard').forEach(
 function updateVoteBars(){const total=votes.reduce((a,b)=>a+b,0)||1;votes.forEach((v,i)=>{const pct=Math.round((v/total)*100);document.getElementById('bar-'+i).style.width=pct+'%';document.getElementById('vc-'+i).textContent=v+(v===1?' vote':' votes');document.getElementById('vp-'+i).textContent=pct+'%';});}
 function saveCSR(){localStorage.setItem('exchange_csr',JSON.stringify({total:totalRaised,votes,userVoted}));}
 const observer=new IntersectionObserver(entries=>{entries.forEach(e=>{if(e.isIntersecting)e.target.classList.add('visible');});},{threshold:0.12});document.querySelectorAll('.reveal').forEach(el=>observer.observe(el));
-</script>
-
-</body>
-</html>rget.classList.add('visible');});},{threshold:0.12});document.querySelectorAll('.reveal').forEach(el=>observer.observe(el));
-</script>
-
-</body>
-</html>rget.classList.add('visible');});},{threshold:0.12});document.querySelectorAll('.reveal').forEach(el=>observer.observe(el));
-</script>
-
-</body>
-</html>rget.classList.add('visible');});},{threshold:0.12});document.querySelectorAll('.reveal').forEach(el=>observer.observe(el));
-</script>
-
-</body>
-</html>rget.classList.add('visible');});},{threshold:0.12});document.querySelectorAll('.reveal').forEach(el=>observer.observe(el));
 </script>
 
 </body>
