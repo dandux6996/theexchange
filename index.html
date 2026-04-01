@@ -214,6 +214,7 @@ footer{border-top:1px solid var(--border);padding:48px clamp(24px,5vw,80px);disp
   <div class="nav-links">
     <button class="nav-link active" onclick="showTab('home')" id="nav-home">Home</button>
     <button class="nav-link" onclick="showTab('menu')" id="nav-menu">Menu</button>
+    <button class="nav-link" onclick="showTab('reservations')" id="nav-reservations">Reserve</button>
     <button class="nav-link" onclick="showTab('csr')" id="nav-csr">Our Exchange</button>
   </div>
 </nav>
@@ -264,9 +265,16 @@ footer{border-top:1px solid var(--border);padding:48px clamp(24px,5vw,80px);disp
         <div class="xcard-rule"></div>
       </div>
     </div>
-    <div class="section-label reveal">Reserve Your Table</div>
-    <h2 class="section-title reveal">Join Us</h2>
-    <div class="reservation-box reveal">
+
+
+<section id="tab-reservations" class="tab-section">
+  <div class="menu-hero">
+    <div class="section-label" style="color:var(--gold);font-size:10px;letter-spacing:3px;text-transform:uppercase;margin-bottom:12px;">Reserve</div>
+    <h1 class="hero-title" style="font-family:'Cormorant Garamond',serif;font-size:clamp(36px,6vw,64px);font-weight:400;color:var(--cream);line-height:1.1;margin-bottom:16px;">Join Us</h1>
+    <p class="hero-sub" style="font-family:'Cormorant Garamond',serif;font-style:italic;font-size:clamp(16px,2.5vw,22px);color:rgba(245,240,232,0.65);max-width:520px;margin:0 auto;">Fifteen seats. A table held for you.</p>
+  </div>
+  <div class="section-wrap" style="max-width:900px;margin:0 auto;padding:clamp(48px,7vw,80px) clamp(24px,5vw,48px);">
+    <div class="reservation-box">
       <div id="reservation-form-wrap">
         <div class="form-row">
           <div class="form-group"><label>Full Name</label><input type="text" id="res-name" placeholder="Your name"></div>
@@ -281,7 +289,6 @@ footer{border-top:1px solid var(--border);padding:48px clamp(24px,5vw,80px);disp
           <div class="form-group"><label>Time</label><select id="res-time"><option value="">Select a time</option><option>12:00 PM</option><option>12:30 PM</option><option>1:00 PM</option><option>1:30 PM</option><option>2:00 PM</option><option>2:30 PM</option><option>5:30 PM</option><option>6:00 PM</option><option>6:30 PM</option><option>7:00 PM</option><option>7:30 PM</option><option>8:00 PM</option><option>8:30 PM</option><option>9:00 PM</option><option>9:30 PM</option><option>10:00 PM</option></select></div>
         </div>
         <div class="form-row single"><div class="form-group"><label>Occasion &amp; Notes (Optional)</label><textarea id="res-occasion" placeholder="Birthday, anniversary, dietary restrictions, anything we should know..."></textarea></div></div>
-        
         <button class="btn-primary" onclick="submitReservation()">Confirm Reservation</button>
         <p id="res-error" style="color:#c0392b;font-size:12px;text-align:center;margin-top:12px;display:none;"></p>
       </div>
@@ -292,10 +299,7 @@ footer{border-top:1px solid var(--border);padding:48px clamp(24px,5vw,80px);disp
       </div>
     </div>
   </div>
-
-
-
-  <section class="collab-section reveal">
+  <section class="collab-section">
     <div class="collab-inner">
     <div class="collab-label">Private &amp; Corporate</div>
     <h2 class="collab-title">The Exchange,<br>made entirely yours.</h2>
@@ -323,7 +327,7 @@ footer{border-top:1px solid var(--border);padding:48px clamp(24px,5vw,80px);disp
     </div>
     <div class="collab-cta-wrap">
       <p class="collab-cta-text">All private bookings are handled directly. No forms, no portals &mdash; just a conversation.</p>
-      <a class="collab-cta" href="/cdn-cgi/l/email-protection#84ece1e8e8ebc4f0ece1e1fce7ece5eae3e1aaedea">Write to us</a>
+      <a class="collab-cta" href="mailto:hello@theexchange.in">Write to us</a>
     </div>
   </div>
   </section>
