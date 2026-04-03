@@ -328,7 +328,7 @@ footer{border-top:1px solid var(--border);padding:48px clamp(24px,5vw,80px);disp
     </div>
     <div class="collab-cta-wrap">
       <p class="collab-cta-text">All private bookings are handled directly. No forms, no portals &mdash; just a conversation.</p>
-      <a class="collab-cta" href="mailto:hello@theexchange.in">Write to us</a>
+      <a class="collab-cta" href="/cdn-cgi/l/email-protection#cda5a8a1a1a28db9a5a8a8b5aea5aca3aaa8e3a4a3">Write to us</a>
     </div>
   </div>
   </section>
@@ -590,7 +590,7 @@ footer{border-top:1px solid var(--border);padding:48px clamp(24px,5vw,80px);disp
   <div class="footer-info"><strong>Chennai, Tamil Nadu</strong><br>Weekdays 12&ndash;3 PM &middot; 5&ndash;11 PM<br>Weekends 11 AM&ndash;11 PM<br><span style="font-style:italic;color:var(--gold)">Opening 2025</span></div>
 </footer>
 
-<script data-cfasync="false" src="/cdn-cgi/scripts/5c5dd728/cloudflare-static/email-decode.min.js"></script><script data-cfasync="false" src="/cdn-cgi/scripts/5c5dd728/cloudflare-static/email-decode.min.js"></script><script>
+<script data-cfasync="false" src="/cdn-cgi/scripts/5c5dd728/cloudflare-static/email-decode.min.js"></script><script data-cfasync="false" src="/cdn-cgi/scripts/5c5dd728/cloudflare-static/email-decode.min.js"></script><script data-cfasync="false" src="/cdn-cgi/scripts/5c5dd728/cloudflare-static/email-decode.min.js"></script><script>
 function showTab(t){document.querySelectorAll('.tab-section').forEach(s=>s.classList.remove('active'));document.querySelectorAll('.nav-link').forEach(l=>l.classList.remove('active'));document.getElementById('tab-'+t).classList.add('active');document.getElementById('nav-'+t).classList.add('active');window.scrollTo({top:0,behavior:'smooth'});if(t==='csr')initCSR();}
 (function(){const today=new Date(),max=new Date();max.setDate(today.getDate()+7);const fmt=d=>d.toISOString().split('T')[0];const el=document.getElementById('res-date');el.min=fmt(today);el.max=fmt(max);el.value=fmt(today);})();
 function submitReservation(){
@@ -616,14 +616,7 @@ function submitReservation(){
      5. Replace the values below with your real IDs
      ============================================================ */
 
-  const FORM_ID        = '1FAIpQLScE8bGnp2WAGeRo29ojfS7gHevZ2tdpTamd6nTwO6o8ROyVmg';
-  const ENTRY_NAME     = 'entry.825262078';
-  const ENTRY_PHONE    = 'entry.349416797';
-  const ENTRY_EMAIL    = 'entry.1541634746';
-  const ENTRY_SIZE     = 'entry.454483348';
-  const ENTRY_DATE     = 'entry.315621013';
-  const ENTRY_TIME     = 'entry.830557481';
-  const ENTRY_OCCASION = 'entry.726968074'; // Occasion + special notes combined
+
 
   const name     = document.getElementById('res-name').value.trim();
   const phone    = document.getElementById('res-phone').value.trim();
@@ -650,21 +643,29 @@ function submitReservation(){
   btn.textContent = 'Confirming...';
   btn.disabled = true;
 
-  const formData = new FormData();
-  formData.append(ENTRY_NAME,     name);
-  formData.append(ENTRY_PHONE,    phone);
-  formData.append(ENTRY_EMAIL,    email);
-  formData.append(ENTRY_SIZE,     size);
-  formData.append(ENTRY_DATE,     date);
-  formData.append(ENTRY_TIME,     time);
-  formData.append(ENTRY_OCCASION, occasion);
+  /* ============================================================
+     GOOGLE APPS SCRIPT ENDPOINT
+     Replace SCRIPT_URL with your deployed Apps Script Web App URL.
+     Steps: script.google.com → New project → paste doPost function
+     → Deploy → New deployment → Web app → Anyone → Deploy → copy URL
+     ============================================================ */
+  const SCRIPT_URL = 'https://script.google.com/macros/s/AKfycbwo1VwQ8Xt0ZZRcqxY8MegHgHB34JPSvqBGVval1ySQiIEz1fKLevthTlOVD9OMCmhL4A/exec';
 
-  const SUBMIT_URL = 'https://docs.google.com/forms/d/e/' + FORM_ID + '/formResponse';
+  const payload = new URLSearchParams({
+    name:     name,
+    phone:    phone,
+    email:    email,
+    size:     size,
+    date:     date,
+    time:     time,
+    occasion: occasion
+  });
 
-  fetch(SUBMIT_URL, {
+  fetch(SCRIPT_URL, {
     method: 'POST',
-    mode: 'no-cors',
-    body: formData
+    mode:   'no-cors',
+    headers: { 'Content-Type': 'application/x-www-form-urlencoded' },
+    body:    payload.toString()
   })
   .then(function(){
     showSuccess(name, date, time);
