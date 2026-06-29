@@ -233,6 +233,80 @@ footer{border-top:1px solid var(--border);padding:36px clamp(24px,5vw,80px);disp
   .reserve-panel{padding:40px 24px;}
   .reserve-panel-left{border-right:none;border-bottom:1px solid var(--border);}
 }
+/* ══════════════════ MENU: pinned scroll-driven courses ══════════════════ */
+.menu-scroll-root{position:relative;background:var(--cream);}
+.menu-top-banner{background:var(--brown-dark);text-align:center;padding:clamp(48px,7vw,80px) 24px clamp(32px,5vw,56px);position:relative;z-index:5;}
+.menu-top-banner .hero-the{color:rgba(232,201,138,0.55);}
+.menu-top-banner .hero-name{color:#C9985A;font-size:clamp(30px,5vw,48px);}
+.menu-scroll-hint{margin-top:18px;font-family:'Jost',sans-serif;font-size:10px;letter-spacing:3px;text-transform:uppercase;color:rgba(232,201,138,0.45);}
+.menu-scroll-hint::after{content:'';display:block;width:1px;height:22px;background:rgba(232,201,138,0.35);margin:10px auto 0;animation:hintPulse 1.8s ease-in-out infinite;}
+@keyframes hintPulse{0%,100%{opacity:0.3;}50%{opacity:1;}}
+
+/* Generic pinned-course scaffold */
+.course-pin{position:relative;}
+.course-pin-sticky{position:sticky;top:68px;height:calc(100vh - 68px);overflow:hidden;display:flex;align-items:center;justify-content:center;}
+.course-pin-bg{position:absolute;inset:0;z-index:0;transition:background 0.6s ease;}
+.course-eyebrow{position:absolute;top:clamp(28px,5vh,56px);left:50%;transform:translateX(-50%);z-index:3;text-align:center;width:100%;pointer-events:none;}
+.course-eyebrow span{font-family:'Jost',sans-serif;font-size:11px;letter-spacing:5px;text-transform:uppercase;}
+.course-progress-rail{position:absolute;bottom:clamp(24px,5vh,48px);left:50%;transform:translateX(-50%);z-index:3;display:flex;gap:8px;}
+.course-progress-dot{width:7px;height:7px;border-radius:50%;background:rgba(123,79,46,0.18);transition:background 0.3s,transform 0.3s;}
+.course-progress-dot.active{transform:scale(1.3);}
+
+/* Slide stack inside a pinned course */
+.beat-stack{position:relative;width:100%;max-width:1000px;margin:0 auto;padding:0 clamp(24px,5vw,56px);height:100%;display:flex;align-items:center;justify-content:center;}
+.beat-slide{position:absolute;inset:0;display:flex;align-items:center;justify-content:center;will-change:transform,opacity;pointer-events:none;}
+.beat-slide.is-active{pointer-events:auto;}
+
+/* Beat content layout: image + text side by side */
+.beat-inner{display:grid;grid-template-columns:1fr 1fr;gap:clamp(28px,5vw,64px);align-items:center;width:100%;}
+.beat-media{position:relative;aspect-ratio:4/3;border-radius:18px;overflow:hidden;box-shadow:0 24px 70px rgba(74,55,40,0.18);}
+.beat-media img{position:absolute;inset:0;width:100%;height:100%;object-fit:cover;}
+.beat-media-fallback{position:absolute;inset:0;}
+.beat-media-tag{position:absolute;bottom:0;left:0;right:0;background:linear-gradient(to top,rgba(40,20,8,0.6),transparent);padding:18px 20px 12px;}
+.beat-media-tag span{font-family:'Cormorant Garamond',serif;font-style:italic;font-size:14px;color:rgba(255,255,255,0.88);}
+.beat-text{text-align:left;}
+.beat-num{font-family:'Jost',sans-serif;font-size:10px;letter-spacing:4px;text-transform:uppercase;color:var(--gold);margin-bottom:10px;display:block;}
+.beat-veg{display:inline-block;font-size:9px;letter-spacing:2px;text-transform:uppercase;color:var(--gold);margin-bottom:8px;}
+.beat-title{font-family:'Cormorant Garamond',serif;font-size:clamp(28px,4vw,44px);font-weight:400;color:var(--brown-dark);line-height:1.1;margin-bottom:14px;}
+.beat-body{font-family:'Cormorant Garamond',serif;font-size:clamp(15px,1.8vw,19px);font-weight:300;color:var(--text);line-height:1.85;margin-bottom:16px;max-width:480px;}
+.beat-options{display:flex;flex-wrap:wrap;gap:8px;margin-bottom:14px;}
+.beat-options span{font-size:10px;letter-spacing:1.5px;text-transform:uppercase;color:var(--brown);border:1px solid var(--border);padding:5px 12px;font-family:'Jost',sans-serif;}
+.beat-price{font-family:'Jost',sans-serif;font-size:11px;letter-spacing:2px;text-transform:uppercase;color:var(--text-muted);opacity:0.7;}
+
+@media(max-width:780px){
+  .beat-inner{grid-template-columns:1fr;text-align:center;gap:20px;}
+  .beat-text{text-align:center;}
+  .beat-body{margin-left:auto;margin-right:auto;}
+  .beat-options{justify-content:center;}
+  .beat-media{aspect-ratio:5/4;}
+}
+
+/* Sets intro beat (special: 3 cards instead of image/text) */
+.sets-beat-inner{width:100%;text-align:center;}
+.sets-beat-inner .home-section-label{justify-content:center;margin-bottom:clamp(4px,1vh,10px);}
+.sets-beat-title{font-family:'Cormorant Garamond',serif;font-size:clamp(22px,3.4vw,38px);font-weight:400;color:var(--brown-dark);margin-bottom:clamp(4px,1vh,8px);}
+.sets-beat-sub{font-family:'Jost',sans-serif;font-size:10px;letter-spacing:4px;text-transform:uppercase;color:var(--brown);margin-bottom:clamp(16px,3.5vh,36px);}
+.sets-beat-cards{display:grid;grid-template-columns:1fr 1fr 1fr;gap:16px;max-width:860px;margin:0 auto;}
+.sets-beat-cards .set-card{padding:clamp(16px,3vh,32px) clamp(14px,2vw,28px);}
+.sets-beat-cards .set-name{font-size:clamp(18px,2.2vw,26px);margin-bottom:clamp(4px,1vh,8px);}
+.sets-beat-cards .set-courses{font-size:11px;margin-bottom:clamp(8px,2vh,20px);}
+.sets-beat-cards .set-price{font-size:clamp(22px,3vw,36px);}
+@media(max-width:680px){.sets-beat-cards{grid-template-columns:1fr;}}
+@media(max-height:760px){
+  .sets-beat-cards .set-courses{display:none;}
+}
+
+/* Mom quote closing beat */
+.mom-beat-inner{max-width:680px;text-align:center;margin:0 auto;}
+.mom-beat-inner blockquote{font-family:'Cormorant Garamond',serif;font-style:italic;font-size:clamp(19px,2.6vw,28px);color:var(--brown-dark);line-height:1.7;margin-bottom:18px;}
+.mom-beat-inner p{font-size:12px;color:var(--brown);letter-spacing:1px;text-transform:uppercase;}
+
+.menu-bottom-cta{text-align:center;padding:clamp(56px,8vw,88px) 24px;position:relative;z-index:5;background:var(--cream);}
+.menu-bottom-cta p{font-family:'Cormorant Garamond',serif;font-style:italic;font-size:clamp(15px,2vw,18px);color:var(--text-muted);margin-bottom:0;}
+
+@media(prefers-reduced-motion: reduce){
+  .beat-slide{transition:none !important;}
+}
 </style>
 </head>
 <body>
@@ -352,161 +426,226 @@ footer{border-top:1px solid var(--border);padding:36px clamp(24px,5vw,80px);disp
 
 <!-- ══════════════════ MENU ══════════════════ -->
 <section id="tab-menu" class="tab-section">
-  <div class="menu-hero">
-    <svg width="90" height="90" viewBox="0 0 200 200" xmlns="http://www.w3.org/2000/svg">
+<div class="menu-scroll-root">
+
+  <div class="menu-top-banner">
+    <svg width="80" height="80" viewBox="0 0 200 200" xmlns="http://www.w3.org/2000/svg">
       <circle cx="100" cy="100" r="90" fill="none" stroke="#C9985A" stroke-width="1.3" opacity="0.6"/>
       <circle cx="100" cy="100" r="80" fill="none" stroke="#C9985A" stroke-width="0.5" opacity="0.18"/>
       <path d="M 88,84 C 92,78 98,90 100,84 C 102,78 108,90 112,84" fill="none" stroke="#C9985A" stroke-width="1.1" stroke-linecap="round" opacity="0.65"/>
-      <path d="M 82,93 C 88,89 91,101 88,104 C 115,107 112,115 106,115" fill="none" stroke="#C9985A" stroke-width="1.1" stroke-linecap="round" opacity="0.65"/>
+      <path d="M 82,93 C 88,89 91,101 88,104 C 85,107 88,115 94,115" fill="none" stroke="#C9985A" stroke-width="1.1" stroke-linecap="round" opacity="0.65"/>
       <path d="M 118,93 C 112,89 109,101 112,104 C 115,107 112,115 106,115" fill="none" stroke="#C9985A" stroke-width="1.1" stroke-linecap="round" opacity="0.65"/>
       <circle cx="76" cy="84" r="8" fill="#C9985A"/>
       <circle cx="124" cy="84" r="8" fill="#C9985A"/>
       <circle cx="100" cy="124" r="8" fill="#C9985A"/>
     </svg>
-    <div style="margin-top:20px;">
-      <div class="hero-the" style="color:rgba(232,201,138,0.55);">The Exchange</div>
-      <div class="hero-name" style="color:#C9985A;font-size:clamp(32px,5vw,52px);">Our Menu</div>
+    <div style="margin-top:18px;">
+      <div class="hero-the">The Exchange</div>
+      <div class="hero-name">Our Menu</div>
+    </div>
+    <div class="menu-scroll-hint">Scroll to begin</div>
+  </div>
+
+  <!-- ── COURSE 1: Sets Intro (1 beat) ── -->
+  <div class="course-pin" data-course="sets" data-beats="1">
+    <div class="course-pin-sticky">
+      <div class="course-pin-bg" style="background:var(--cream);"></div>
+      <div class="beat-stack">
+        <div class="beat-slide is-active" data-beat="0">
+          <div class="sets-beat-inner">
+            <div class="home-section-label" style="justify-content:center;display:flex;">Exchange Sets</div>
+            <h2 class="sets-beat-title">Choose Your Exchange</h2>
+            <div class="sets-beat-sub">Three courses. One conversation.</div>
+            <div class="sets-beat-cards">
+              <div class="set-card"><span class="set-tag" style="color:var(--text-muted)">Two Course</span><div class="set-name" style="color:var(--brown-dark)">Short Exchange</div><div class="set-courses">Starter + Plat <em>or</em> Plat + Dessert</div><div class="set-price">&#8377;650<small>per person</small></div></div>
+              <div class="set-card featured"><span class="set-tag">&#9733; Most Popular</span><div class="set-name">Full Exchange</div><div class="set-courses">Soup <em>or</em> Starter &middot; Plat &middot; Dessert</div><div class="set-price">&#8377;850<small>per person</small></div></div>
+              <div class="set-card" style="border-color:var(--gold);"><span class="set-tag" style="color:var(--gold)">&#10022; Four Course</span><div class="set-name" style="color:var(--brown-dark)">Grand Exchange</div><div class="set-courses">Soup &middot; Starter &middot; Plat &middot; Dessert</div><div class="set-price">&#8377;1,050<small>per person</small></div></div>
+            </div>
+          </div>
+        </div>
+      </div>
     </div>
   </div>
 
-  <div class="mom-banner">
-    <div class="mom-banner-inner">
-      <div class="mom-quote">
-        <blockquote>&ldquo;Every dish on this menu starts with my mother&rsquo;s recipe. Not inspired by it. Not a reinterpretation of it. Her actual recipe &mdash; the one she cooked in our kitchen for as long as I can remember. We give it a new form. We never touch the soul.&rdquo;</blockquote>
-        <p>&mdash; Founder, The Exchange</p>
-      </div>
-      <div class="mom-banner-icon">
-        <svg width="72" height="72" viewBox="0 0 200 200" xmlns="http://www.w3.org/2000/svg">
-          <circle cx="100" cy="100" r="90" fill="none" stroke="#F7F2E8" stroke-width="1.3"/>
-          <path d="M 88,84 C 92,78 98,90 100,84 C 102,78 108,90 112,84" fill="none" stroke="#F7F2E8" stroke-width="1.1" stroke-linecap="round" opacity="0.55"/>
-          <path d="M 82,93 C 88,89 91,101 88,104 C 85,107 88,115 94,115" fill="none" stroke="#F7F2E8" stroke-width="1.1" stroke-linecap="round" opacity="0.55"/>
-          <path d="M 118,93 C 112,89 109,101 112,104 C 115,107 112,115 106,115" fill="none" stroke="#F7F2E8" stroke-width="1.1" stroke-linecap="round" opacity="0.55"/>
-          <circle cx="76" cy="84" r="8" fill="#F7F2E8"/>
-          <circle cx="124" cy="84" r="8" fill="#F7F2E8"/>
-          <circle cx="100" cy="124" r="8" fill="#F7F2E8"/>
-        </svg>
+  <!-- ── COURSE 2: Soup (1 beat) ── -->
+  <div class="course-pin" data-course="soup" data-beats="1">
+    <div class="course-pin-sticky">
+      <div class="course-pin-bg" style="background:linear-gradient(160deg,#FBF7EE,#F2E9D8);"></div>
+      <div class="course-eyebrow"><span style="color:var(--gold);">Soup</span></div>
+      <div class="beat-stack">
+        <div class="beat-slide is-active" data-beat="0">
+          <div class="beat-inner">
+            <div class="beat-media">
+              <div class="beat-media-fallback" style="background:linear-gradient(140deg,#2E1200,#7A3A10 60%,#A05020);"></div>
+              <!-- REPLACE src WITH YOUR OWN IMAGE: dish_french_onion_soup.jpg -->
+              <img src="French-Onion-Soup-S1.jpg" alt="French Onion Soup" onerror="this.style.display='none'">
+              <div class="beat-media-tag"><span>French Onion Soup</span></div>
+            </div>
+            <div class="beat-text">
+              <span class="beat-veg">V / NV</span>
+              <h3 class="beat-title">French Onion Soup</h3>
+              <p class="beat-body">At its heart is my mother&rsquo;s Kozhi Rasam &mdash; her chicken broth, built slow and spiced with Tamil instinct. We give it a French coat: caramelised onions, a gruy&egrave;re-laden cro&ucirc;ton, the gratin&eacute;ed top. The soul is entirely hers.</p>
+              <div class="beat-price">Price TBD</div>
+            </div>
+          </div>
+        </div>
       </div>
     </div>
   </div>
 
-  <div class="section">
-    <div class="section-label">Exchange Sets</div>
-    <h2 class="section-title">Choose Your Exchange</h2>
-    <div class="sets-row">
-      <div class="set-card"><span class="set-tag" style="color:var(--text-muted)">Two Course</span><div class="set-name" style="color:var(--brown-dark)">Short Exchange</div><div class="set-courses">Starter + Plat <em>or</em> Plat + Dessert</div><div class="set-price">&#8377;650<small>per person</small></div></div>
-      <div class="set-card featured"><span class="set-tag">&#9733; Most Popular</span><div class="set-name">Full Exchange</div><div class="set-courses">Soup <em>or</em> Starter &middot; Plat &middot; Dessert</div><div class="set-price">&#8377;850<small>per person</small></div></div>
-      <div class="set-card" style="border-color:var(--gold);"><span class="set-tag" style="color:var(--gold)">&#10022; Four Course</span><div class="set-name" style="color:var(--brown-dark)">Grand Exchange</div><div class="set-courses">Soup &middot; Starter &middot; Plat &middot; Dessert</div><div class="set-price">&#8377;1,050<small>per person</small></div></div>
-    </div>
-
-    <div class="menu-course-label"><span>Soup</span></div>
-    <div class="xcard-grid-dishes" style="max-width:420px;margin-left:auto;margin-right:auto;">
-      <div class="xcard">
-        <div class="xcard-img" style="background:linear-gradient(140deg,#2E1200,#7A3A10 60%,#A05020);">
-          <!-- REPLACE src WITH YOUR OWN IMAGE: dish_french_onion_soup.jpg -->
-          <img src="French-Onion-Soup-S1.jpg" alt="French Onion Soup" onerror="this.style.display='none'">
-          <div class="xcard-img-label"><span>French Onion Soup</span></div>
-        </div>
-        <div class="xcard-dots"><span class="xcard-dot"></span><span class="xcard-dot"></span></div>
-        <span class="xcard-veg">V / NV</span>
-        <div class="xcard-title">French Onion Soup</div>
-        <p class="xcard-body">At its heart is my mother&rsquo;s Kozhi Rasam &mdash; her chicken broth, built slow and spiced with Tamil instinct. We give it a French coat: caramelised onions, a gruy&egrave;re-laden cro&ucirc;ton, the gratin&eacute;ed top. The soul is entirely hers.</p>
-        <div class="xcard-price-tbd">Price TBD</div>
-        <div class="xcard-rule"></div>
+  <!-- ── COURSE 3: Starter (2 beats) ── -->
+  <div class="course-pin" data-course="starter" data-beats="2">
+    <div class="course-pin-sticky">
+      <div class="course-pin-bg" style="background:linear-gradient(160deg,#F7F2E8,#EDE2CC);"></div>
+      <div class="course-eyebrow"><span style="color:var(--gold);">Starter</span></div>
+      <div class="course-progress-rail">
+        <div class="course-progress-dot active" data-dot="0"></div>
+        <div class="course-progress-dot" data-dot="1"></div>
       </div>
-    </div>
-
-    <div class="menu-course-label"><span>Starter</span></div>
-    <div class="xcard-grid-dishes">
-      <div class="xcard">
-        <div class="xcard-img" style="background:linear-gradient(140deg,#0A1A2E,#1A3A5C 60%,#2A5A7A);">
-          <!-- REPLACE src WITH YOUR OWN IMAGE: dish_xlb.jpg -->
-          <img src="Xiao Long Bao.jpg" alt="Xiao Long Bao" onerror="this.style.display='none'">
-          <div class="xcard-img-label"><span>Xiao Long Bao</span></div>
+      <div class="beat-stack">
+        <div class="beat-slide is-active" data-beat="0">
+          <div class="beat-inner">
+            <div class="beat-media">
+              <div class="beat-media-fallback" style="background:linear-gradient(140deg,#0A1A2E,#1A3A5C 60%,#2A5A7A);"></div>
+              <!-- REPLACE src WITH YOUR OWN IMAGE: dish_xlb.jpg -->
+              <img src="Xiao Long Bao.jpg" alt="Xiao Long Bao" onerror="this.style.display='none'">
+              <div class="beat-media-tag"><span>Xiao Long Bao</span></div>
+            </div>
+            <div class="beat-text">
+              <span class="beat-num">1 / 2</span>
+              <span class="beat-veg">V / NV</span>
+              <h3 class="beat-title">Xiao Long Bao</h3>
+              <p class="beat-body">The Shanghai soup dumpling, filled with a Chettinad pepper masala built on my mother&rsquo;s recipe. The broth inside is her doing; the fold is Chinese. Each dumpling carries a small storm. Bite carefully.</p>
+              <div class="beat-options"><span>Pepper Chicken</span><span>Vegetarian</span></div>
+              <div class="beat-price">Price TBD</div>
+            </div>
+          </div>
         </div>
-        <div class="xcard-dots"><span class="xcard-dot"></span><span class="xcard-dot"></span></div>
-        <span class="xcard-veg">V / NV</span>
-        <div class="xcard-title">Xiao Long Bao</div>
-        <p class="xcard-body">The Shanghai soup dumpling, filled with a Chettinad pepper masala built on my mother&rsquo;s recipe. The broth inside is her doing; the fold is Chinese. Each dumpling carries a small storm. Bite carefully.</p>
-        <div class="xcard-options"><span>Pepper Chicken</span><span>Vegetarian</span></div>
-        <div class="xcard-price-tbd">Price TBD</div>
-        <div class="xcard-rule"></div>
-      </div>
-      <div class="xcard">
-        <div class="xcard-img" style="background:linear-gradient(140deg,#3A1A05,#8B4010 60%,#C06020);">
-          <!-- REPLACE src WITH YOUR OWN IMAGE: dish_fried_assortment.jpg -->
-          <img src="Fried Chickem.jpg" alt="Fried Assortment" onerror="this.style.display='none'">
-          <div class="xcard-img-label"><span>Fried Assortment</span></div>
+        <div class="beat-slide" data-beat="1">
+          <div class="beat-inner">
+            <div class="beat-media">
+              <div class="beat-media-fallback" style="background:linear-gradient(140deg,#3A1A05,#8B4010 60%,#C06020);"></div>
+              <!-- REPLACE src WITH YOUR OWN IMAGE: dish_fried_assortment.jpg -->
+              <img src="Fried Chickem.jpg" alt="Fried Assortment" onerror="this.style.display='none'">
+              <div class="beat-media-tag"><span>Fried Assortment</span></div>
+            </div>
+            <div class="beat-text">
+              <span class="beat-num">2 / 2</span>
+              <span class="beat-veg">V / NV</span>
+              <h3 class="beat-title">Fried Assortment</h3>
+              <p class="beat-body">Four traditions of frying &mdash; Indian masala-marinated, Classic American buttermilk, Korean double-fried with a gochujang glaze, Japanese panko-light &mdash; served together with dipping sauces. One plate. Four philosophies. All built on Amma&rsquo;s marinade underneath.</p>
+              <div class="beat-options"><span>Chicken</span><span>Paneer</span></div>
+              <div class="beat-price">Price TBD</div>
+            </div>
+          </div>
         </div>
-        <div class="xcard-dots"><span class="xcard-dot"></span><span class="xcard-dot"></span></div>
-        <span class="xcard-veg">V / NV</span>
-        <div class="xcard-title">Fried Assortment</div>
-        <p class="xcard-body">Four traditions of frying &mdash; Indian masala-marinated, Classic American buttermilk, Korean double-fried with a gochujang glaze, Japanese panko-light &mdash; served together with dipping sauces. One plate. Four philosophies. All built on Amma&rsquo;s marinade underneath.</p>
-        <div class="xcard-options"><span>Chicken</span><span>Paneer</span></div>
-        <div class="xcard-price-tbd">Price TBD</div>
-        <div class="xcard-rule"></div>
-      </div>
-    </div>
-
-    <div class="menu-course-label"><span>Plat</span></div>
-    <p style="text-align:center;font-family:'Cormorant Garamond',serif;font-style:italic;color:var(--gold);margin-bottom:36px;font-size:15px;">All Plats are served with French fries.</p>
-    <div class="xcard-grid-dishes">
-      <div class="xcard">
-        <div class="xcard-img" style="background:linear-gradient(140deg,#1C1005,#5C3810 60%,#8B5C28);">
-          <!-- REPLACE src WITH YOUR OWN IMAGE: dish_rice_burger.jpg -->
-          <img src="Rice Burger.jpg" alt="Rice Burger" onerror="this.style.display='none'">
-          <div class="xcard-img-label"><span>Rice Burger</span></div>
-        </div>
-        <div class="xcard-dots"><span class="xcard-dot"></span><span class="xcard-dot"></span></div>
-        <span class="xcard-veg">V / NV</span>
-        <div class="xcard-title">Rice Burger</div>
-        <p class="xcard-body">Compressed rice buns &mdash; the Japanese format &mdash; holding a filling that is entirely Tamil. Three ways to order: Amma&rsquo;s Signature Chicken, Prawn Ghee Roast, or Paneer Ghee Roast. The bun is the constant. What&rsquo;s inside is your choice.</p>
-        <div class="xcard-options"><span>Amma&rsquo;s Signature Chicken</span><span>Prawn Ghee Roast</span><span>Paneer Ghee Roast</span></div>
-        <div class="xcard-price-tbd">Price TBD</div>
-        <div class="xcard-rule"></div>
-      </div>
-      <div class="xcard">
-        <div class="xcard-img" style="background:linear-gradient(140deg,#3A0A05,#8B1A10 60%,#B03020);">
-          <!-- REPLACE src WITH YOUR OWN IMAGE: dish_birria_tacos.jpg -->
-          <img src="Birria Tacos.jpg" alt="Birria Tacos" onerror="this.style.display='none'">
-          <div class="xcard-img-label"><span>Birria Tacos</span></div>
-        </div>
-        <div class="xcard-dots"><span class="xcard-dot"></span><span class="xcard-dot"></span></div>
-        <div class="xcard-title">Birria Tacos</div>
-        <p class="xcard-body">Slow-cooked, deeply spiced filling folded into charred corn tortillas, with a Tamil consomm&eacute; for dipping. Two ways: Amma&rsquo;s Signature Mutton, slow-braised and falling apart, or Mushroom &mdash; carrying the same depth without the meat. Birria in form. Chennai in flavour.</p>
-        <div class="xcard-options"><span>Amma&rsquo;s Signature Mutton</span><span>Mushroom</span></div>
-        <div class="xcard-price-tbd">Price TBD</div>
-        <div class="xcard-rule"></div>
-      </div>
-      <div class="xcard">
-        <div class="xcard-img" style="background:linear-gradient(140deg,#2A1005,#7A3010 60%,#A04820);">
-          <!-- REPLACE src WITH YOUR OWN IMAGE: dish_chicken_parm.jpg -->
-          <img src="Chicken Parm.jpg" alt="Chicken Parm" onerror="this.style.display='none'">
-          <div class="xcard-img-label"><span>Chicken Parm</span></div>
-        </div>
-        <div class="xcard-dots"><span class="xcard-dot"></span><span class="xcard-dot"></span></div>
-        <div class="xcard-title">Chicken Parm</div>
-        <p class="xcard-body">Amma&rsquo;s Chicken 65 &mdash; her spice-marinated, deep-fried Tamil chicken &mdash; given an Italian coat: marinara, melted mozzarella, grated parmesan, finished under the grill. The crumb is hers. The cheese is Italy&rsquo;s. The result belongs to neither and both.</p>
-        <div class="xcard-price-tbd">Price TBD</div>
-        <div class="xcard-rule"></div>
-      </div>
-    </div>
-
-    <div class="menu-course-label"><span>Dessert</span></div>
-    <div class="xcard-grid-dishes" style="max-width:420px;margin-left:auto;margin-right:auto;">
-      <div class="xcard">
-        <div class="xcard-img" style="background:linear-gradient(140deg,#100404,#3A1010 60%,#5A1818);">
-          <!-- REPLACE src WITH YOUR OWN IMAGE: dish_chocolate_layer_cake.jpg -->
-          <img src="Chocolate Cake.jpg" alt="Chocolate Layer Cake" onerror="this.style.display='none'">
-          <div class="xcard-img-label"><span>Chocolate Layer Cake</span></div>
-        </div>
-        <div class="xcard-dots"><span class="xcard-dot"></span><span class="xcard-dot"></span></div>
-        <div class="xcard-title">Chocolate Layer Cake</div>
-        <p class="xcard-body">My mother&rsquo;s chocolate cake &mdash; the one she made for every birthday in our house. We have not changed the recipe. We have only made it more precisely what it always was: dark, layered, unapologetically rich. The right way to end an exchange.</p>
-        <div class="xcard-price-tbd">Price TBD</div>
-        <div class="xcard-rule"></div>
       </div>
     </div>
   </div>
+
+  <!-- ── COURSE 4: Plat (3 beats) ── -->
+  <div class="course-pin" data-course="plat" data-beats="3">
+    <div class="course-pin-sticky">
+      <div class="course-pin-bg" style="background:linear-gradient(160deg,#F7F2E8,#E8DAB8);"></div>
+      <div class="course-eyebrow">
+        <span style="color:var(--gold);">Plat</span><br>
+        <span style="font-family:'Cormorant Garamond',serif;font-style:italic;font-size:13px;letter-spacing:0;text-transform:none;color:var(--text-muted);">All Plats are served with French fries.</span>
+      </div>
+      <div class="course-progress-rail">
+        <div class="course-progress-dot active" data-dot="0"></div>
+        <div class="course-progress-dot" data-dot="1"></div>
+        <div class="course-progress-dot" data-dot="2"></div>
+      </div>
+      <div class="beat-stack">
+        <div class="beat-slide is-active" data-beat="0">
+          <div class="beat-inner">
+            <div class="beat-media">
+              <div class="beat-media-fallback" style="background:linear-gradient(140deg,#1C1005,#5C3810 60%,#8B5C28);"></div>
+              <!-- REPLACE src WITH YOUR OWN IMAGE: dish_rice_burger.jpg -->
+              <img src="Rice Burger.jpg" alt="Rice Burger" onerror="this.style.display='none'">
+              <div class="beat-media-tag"><span>Rice Burger</span></div>
+            </div>
+            <div class="beat-text">
+              <span class="beat-num">1 / 3</span>
+              <span class="beat-veg">V / NV</span>
+              <h3 class="beat-title">Rice Burger</h3>
+              <p class="beat-body">Compressed rice buns &mdash; the Japanese format &mdash; holding a filling that is entirely Tamil. Three ways to order: Amma&rsquo;s Signature Chicken, Prawn Ghee Roast, or Paneer Ghee Roast. The bun is the constant. What&rsquo;s inside is your choice.</p>
+              <div class="beat-options"><span>Amma&rsquo;s Signature Chicken</span><span>Prawn Ghee Roast</span><span>Paneer Ghee Roast</span></div>
+              <div class="beat-price">Price TBD</div>
+            </div>
+          </div>
+        </div>
+        <div class="beat-slide" data-beat="1">
+          <div class="beat-inner">
+            <div class="beat-media">
+              <div class="beat-media-fallback" style="background:linear-gradient(140deg,#3A0A05,#8B1A10 60%,#B03020);"></div>
+              <!-- REPLACE src WITH YOUR OWN IMAGE: dish_birria_tacos.jpg -->
+              <img src="Birria Tacos.jpg" alt="Birria Tacos" onerror="this.style.display='none'">
+              <div class="beat-media-tag"><span>Birria Tacos</span></div>
+            </div>
+            <div class="beat-text">
+              <span class="beat-num">2 / 3</span>
+              <h3 class="beat-title">Birria Tacos</h3>
+              <p class="beat-body">Slow-cooked, deeply spiced filling folded into charred corn tortillas, with a Tamil consomm&eacute; for dipping. Two ways: Amma&rsquo;s Signature Mutton, slow-braised and falling apart, or Mushroom &mdash; carrying the same depth without the meat. Birria in form. Chennai in flavour.</p>
+              <div class="beat-options"><span>Amma&rsquo;s Signature Mutton</span><span>Mushroom</span></div>
+              <div class="beat-price">Price TBD</div>
+            </div>
+          </div>
+        </div>
+        <div class="beat-slide" data-beat="2">
+          <div class="beat-inner">
+            <div class="beat-media">
+              <div class="beat-media-fallback" style="background:linear-gradient(140deg,#2A1005,#7A3010 60%,#A04820);"></div>
+              <!-- REPLACE src WITH YOUR OWN IMAGE: dish_chicken_parm.jpg -->
+              <img src="Chicken Parm.jpg" alt="Chicken Parm" onerror="this.style.display='none'">
+              <div class="beat-media-tag"><span>Chicken Parm</span></div>
+            </div>
+            <div class="beat-text">
+              <span class="beat-num">3 / 3</span>
+              <h3 class="beat-title">Chicken Parm</h3>
+              <p class="beat-body">Amma&rsquo;s Chicken 65 &mdash; her spice-marinated, deep-fried Tamil chicken &mdash; given an Italian coat: marinara, melted mozzarella, grated parmesan, finished under the grill. The crumb is hers. The cheese is Italy&rsquo;s. The result belongs to neither and both.</p>
+              <div class="beat-price">Price TBD</div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- ── COURSE 5: Dessert (1 beat) ── -->
+  <div class="course-pin" data-course="dessert" data-beats="1">
+    <div class="course-pin-sticky">
+      <div class="course-pin-bg" style="background:linear-gradient(160deg,#3A2418,#241108);"></div>
+      <div class="course-eyebrow"><span style="color:var(--gold-light);">Dessert</span></div>
+      <div class="beat-stack">
+        <div class="beat-slide is-active" data-beat="0">
+          <div class="beat-inner">
+            <div class="beat-media">
+              <div class="beat-media-fallback" style="background:linear-gradient(140deg,#100404,#3A1010 60%,#5A1818);"></div>
+              <!-- REPLACE src WITH YOUR OWN IMAGE: dish_chocolate_layer_cake.jpg -->
+              <img src="Chocolate Cake.jpg" alt="Chocolate Layer Cake" onerror="this.style.display='none'">
+              <div class="beat-media-tag"><span>Chocolate Layer Cake</span></div>
+            </div>
+            <div class="beat-text">
+              <h3 class="beat-title" style="color:var(--cream);">Chocolate Layer Cake</h3>
+              <p class="beat-body" style="color:var(--gold-light);opacity:0.85;">My mother&rsquo;s chocolate cake &mdash; the one she made for every birthday in our house. We have not changed the recipe. We have only made it more precisely what it always was: dark, layered, unapologetically rich. The right way to end an exchange.</p>
+              <div class="beat-price" style="color:var(--gold-light);opacity:0.6;">Price TBD</div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- ── Closing beat: Mom quote (static, not pinned) ── -->
+  <div class="menu-bottom-cta">
+    <div class="mom-beat-inner">
+      <blockquote>&ldquo;Every dish on this menu starts with my mother&rsquo;s recipe. Not inspired by it. Not a reinterpretation of it. Her actual recipe &mdash; the one she cooked in our kitchen for as long as I can remember. We give it a new form. We never touch the soul.&rdquo;</blockquote>
+      <p>&mdash; Founder, The Exchange</p>
+    </div>
+  </div>
+
+</div>
 </section>
 
 <!-- ══════════════════ CSR ══════════════════ -->
@@ -604,7 +743,7 @@ footer{border-top:1px solid var(--border);padding:36px clamp(24px,5vw,80px);disp
 </footer>
 
 <script>
-function showTab(t){document.querySelectorAll('.tab-section').forEach(s=>s.classList.remove('active'));document.querySelectorAll('.nav-link').forEach(l=>l.classList.remove('active'));document.getElementById('tab-'+t).classList.add('active');var navEl=document.getElementById('nav-'+t);if(navEl)navEl.classList.add('active');window.scrollTo({top:0,behavior:'smooth'});if(t==='csr')initCSR();}
+function showTab(t){document.querySelectorAll('.tab-section').forEach(s=>s.classList.remove('active'));document.querySelectorAll('.nav-link').forEach(l=>l.classList.remove('active'));document.getElementById('tab-'+t).classList.add('active');var navEl=document.getElementById('nav-'+t);if(navEl)navEl.classList.add('active');window.scrollTo({top:0,behavior:'smooth'});if(t==='csr')initCSR();if(t==='menu'){requestAnimationFrame(initMenuScroll);}else{teardownMenuScroll();}}
 let selectedAmt=0,votes=[12,8,15,6,9],totalRaised=190796,userVoted=false;
 function initCSR(){const stored=localStorage.getItem('exchange_csr');if(stored){const data=JSON.parse(stored);totalRaised=data.total||totalRaised;votes=data.votes||votes;userVoted=data.userVoted||false;}animateTotal();updateVoteBars();if(userVoted)markVoted(localStorage.getItem('exchange_voted_idx'));}
 function animateTotal(){const el=document.getElementById('csr-total');let current=0;const step=Math.ceil(totalRaised/80);const timer=setInterval(()=>{current=Math.min(current+step,totalRaised);el.textContent='₹'+current.toLocaleString('en-IN');if(current>=totalRaised)clearInterval(timer);},18);}
@@ -616,6 +755,90 @@ function markVoted(idx){document.querySelectorAll('#vote-cards .xcard').forEach(
 function updateVoteBars(){const total=votes.reduce((a,b)=>a+b,0)||1;votes.forEach((v,i)=>{const pct=Math.round((v/total)*100);document.getElementById('bar-'+i).style.width=pct+'%';document.getElementById('vc-'+i).textContent=v+(v===1?' vote':' votes');document.getElementById('vp-'+i).textContent=pct+'%';});}
 function saveCSR(){localStorage.setItem('exchange_csr',JSON.stringify({total:totalRaised,votes,userVoted}));}
 const observer=new IntersectionObserver(entries=>{entries.forEach(e=>{if(e.isIntersecting)e.target.classList.add('visible');});},{threshold:0.12});document.querySelectorAll('.reveal').forEach(el=>observer.observe(el));
+
+/* ══════════════════ Menu: Apple-style pinned scroll engine ══════════════════ */
+var menuScrollActive=false;
+var menuRaf=null;
+var reducedMotion=window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+
+function layoutMenuCourses(){
+  var pins=document.querySelectorAll('#tab-menu .course-pin');
+  pins.forEach(function(pin){
+    var beats=parseInt(pin.getAttribute('data-beats'),10)||1;
+    // Extra +1 vh-equivalent acts as settle room so the section fully releases before the next pins.
+    pin.style.height=((beats+1)*100)+'vh';
+  });
+}
+
+function updateMenuScroll(){
+  if(!menuScrollActive)return;
+  var pins=document.querySelectorAll('#tab-menu .course-pin');
+  var viewportH=window.innerHeight;
+  // Fraction of one beat's scroll distance used for the crossfade transition at each edge.
+  // Keeping this small means each dish gets a long fully-settled dwell with no text overlap.
+  var EDGE=0.05;
+  pins.forEach(function(pin){
+    var beats=parseInt(pin.getAttribute('data-beats'),10)||1;
+    var rect=pin.getBoundingClientRect();
+    var total=rect.height-viewportH; // distance over which this pin's content scrubs
+    if(total<=0)total=1;
+    var raw=(-rect.top)/total; // 0 at start of pin, 1 at end
+    var progress=Math.max(0,Math.min(1,raw));
+    var slides=pin.querySelectorAll('.beat-slide');
+    var dots=pin.querySelectorAll('.course-progress-dot');
+    var beatProgress=progress*beats; // 0..beats
+    var activeIdx=Math.min(beats-1,Math.floor(beatProgress));
+    slides.forEach(function(slide,i){
+      var local=beatProgress-i; // -ve before this beat, 0..1 during, >1 after
+      var opacity,translate,scale;
+      if(local<=-EDGE||local>=1+EDGE){
+        // fully out of view
+        opacity=0;
+        translate=(local<0?28:-28);
+        scale=0.97;
+      }else if(local<0){ // entering: local in (-EDGE, 0)
+        var t=1+(local/EDGE); // 0..1 across the entry edge
+        opacity=t;
+        translate=(1-t)*28;
+        scale=0.97+0.03*t;
+      }else if(local<=1-EDGE){ // fully settled dwell, only gentle parallax drift
+        opacity=1;translate=-local*6;scale=1;
+      }else{ // exiting: local in (1-EDGE, 1+EDGE)
+        var te=(local-(1-EDGE))/(2*EDGE); // 0..1 across the exit edge
+        opacity=1-te;
+        translate=-6-te*28;
+        scale=1;
+      }
+      if(reducedMotion){
+        opacity=(i===activeIdx)?1:0;
+        translate=0;scale=1;
+      }
+      slide.style.opacity=opacity;
+      slide.style.transform='translateY('+translate+'px) scale('+scale+')';
+      slide.classList.toggle('is-active',i===activeIdx);
+    });
+    dots.forEach(function(dot,i){dot.classList.toggle('active',i===activeIdx);});
+  });
+  menuRaf=requestAnimationFrame(updateMenuScroll);
+}
+
+function initMenuScroll(){
+  if(menuScrollActive)return;
+  layoutMenuCourses();
+  menuScrollActive=true;
+  if(menuRaf)cancelAnimationFrame(menuRaf);
+  menuRaf=requestAnimationFrame(updateMenuScroll);
+  window.addEventListener('resize',layoutMenuCourses);
+}
+function teardownMenuScroll(){
+  menuScrollActive=false;
+  if(menuRaf){cancelAnimationFrame(menuRaf);menuRaf=null;}
+  window.removeEventListener('resize',layoutMenuCourses);
+}
+// If the menu tab happens to already be active on load, initialize it.
+if(document.getElementById('tab-menu') && document.getElementById('tab-menu').classList.contains('active')){
+  requestAnimationFrame(initMenuScroll);
+}
 </script>
 </body>
 </html>
