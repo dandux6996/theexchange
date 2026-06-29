@@ -244,16 +244,17 @@ footer{border-top:1px solid var(--border);padding:36px clamp(24px,5vw,80px);disp
 
 /* Generic pinned-course scaffold */
 .course-pin{position:relative;}
-.course-pin-sticky{position:sticky;top:68px;height:calc(100vh - 68px);overflow:hidden;display:flex;align-items:center;justify-content:center;}
+.course-pin-sticky{position:sticky;top:68px;height:calc(100vh - 68px);overflow:hidden;display:flex;flex-direction:column;align-items:center;justify-content:center;}
 .course-pin-bg{position:absolute;inset:0;z-index:0;transition:background 0.6s ease;}
-.course-eyebrow{position:absolute;top:clamp(28px,5vh,56px);left:50%;transform:translateX(-50%);z-index:3;text-align:center;width:100%;pointer-events:none;}
-.course-eyebrow span{font-family:'Jost',sans-serif;font-size:11px;letter-spacing:5px;text-transform:uppercase;}
+.course-eyebrow{position:relative;z-index:3;text-align:center;width:100%;pointer-events:none;flex-shrink:0;margin-bottom:clamp(8px,1.6vh,14px);}
+.course-eyebrow-title{display:block;font-family:'Jost',sans-serif;font-size:clamp(13px,1.6vw,15px);font-weight:500;letter-spacing:4px;text-transform:uppercase;}
+.course-eyebrow-sub{display:block;margin-top:8px;font-family:'Cormorant Garamond',serif;font-style:italic;font-size:clamp(13px,1.6vw,16px);}
 .course-progress-rail{position:absolute;bottom:clamp(24px,5vh,48px);left:50%;transform:translateX(-50%);z-index:3;display:flex;gap:8px;}
 .course-progress-dot{width:7px;height:7px;border-radius:50%;background:rgba(123,79,46,0.18);transition:background 0.3s,transform 0.3s;}
 .course-progress-dot.active{transform:scale(1.3);}
 
 /* Slide stack inside a pinned course */
-.beat-stack{position:relative;width:100%;max-width:1000px;margin:0 auto;padding:0 clamp(24px,5vw,56px);height:100%;display:flex;align-items:center;justify-content:center;}
+.beat-stack{position:relative;width:100%;max-width:1000px;margin:0 auto;padding:0 clamp(24px,5vw,56px);flex-shrink:0;height:min(420px,58vh);display:flex;align-items:center;justify-content:center;}
 .beat-slide{position:absolute;inset:0;display:flex;align-items:center;justify-content:center;will-change:transform,opacity;pointer-events:none;}
 .beat-slide.is-active{pointer-events:auto;}
 
@@ -265,7 +266,6 @@ footer{border-top:1px solid var(--border);padding:36px clamp(24px,5vw,80px);disp
 .beat-media-tag{position:absolute;bottom:0;left:0;right:0;background:linear-gradient(to top,rgba(40,20,8,0.6),transparent);padding:18px 20px 12px;}
 .beat-media-tag span{font-family:'Cormorant Garamond',serif;font-style:italic;font-size:14px;color:rgba(255,255,255,0.88);}
 .beat-text{text-align:left;}
-.beat-num{font-family:'Jost',sans-serif;font-size:10px;letter-spacing:4px;text-transform:uppercase;color:var(--gold);margin-bottom:10px;display:block;}
 .beat-veg{display:inline-block;font-size:9px;letter-spacing:2px;text-transform:uppercase;color:var(--gold);margin-bottom:8px;}
 .beat-title{font-family:'Cormorant Garamond',serif;font-size:clamp(28px,4vw,44px);font-weight:400;color:var(--brown-dark);line-height:1.1;margin-bottom:14px;}
 .beat-body{font-family:'Cormorant Garamond',serif;font-size:clamp(15px,1.8vw,19px);font-weight:300;color:var(--text);line-height:1.85;margin-bottom:16px;max-width:480px;}
@@ -471,7 +471,7 @@ footer{border-top:1px solid var(--border);padding:36px clamp(24px,5vw,80px);disp
   <div class="course-pin" data-course="soup" data-beats="1">
     <div class="course-pin-sticky">
       <div class="course-pin-bg" style="background:linear-gradient(160deg,#FBF7EE,#F2E9D8);"></div>
-      <div class="course-eyebrow"><span style="color:var(--gold);">Soup</span></div>
+      <div class="course-eyebrow"><span class="course-eyebrow-title" style="color:var(--brown-dark);">Soup</span></div>
       <div class="beat-stack">
         <div class="beat-slide is-active" data-beat="0">
           <div class="beat-inner">
@@ -497,7 +497,7 @@ footer{border-top:1px solid var(--border);padding:36px clamp(24px,5vw,80px);disp
   <div class="course-pin" data-course="starter" data-beats="2">
     <div class="course-pin-sticky">
       <div class="course-pin-bg" style="background:linear-gradient(160deg,#F7F2E8,#EDE2CC);"></div>
-      <div class="course-eyebrow"><span style="color:var(--gold);">Starter</span></div>
+      <div class="course-eyebrow"><span class="course-eyebrow-title" style="color:var(--brown-dark);">Starter</span></div>
       <div class="course-progress-rail">
         <div class="course-progress-dot active" data-dot="0"></div>
         <div class="course-progress-dot" data-dot="1"></div>
@@ -512,7 +512,6 @@ footer{border-top:1px solid var(--border);padding:36px clamp(24px,5vw,80px);disp
               <div class="beat-media-tag"><span>Xiao Long Bao</span></div>
             </div>
             <div class="beat-text">
-              <span class="beat-num">1 / 2</span>
               <span class="beat-veg">V / NV</span>
               <h3 class="beat-title">Xiao Long Bao</h3>
               <p class="beat-body">The Shanghai soup dumpling, filled with a Chettinad pepper masala built on my mother&rsquo;s recipe. The broth inside is her doing; the fold is Chinese. Each dumpling carries a small storm. Bite carefully.</p>
@@ -530,7 +529,6 @@ footer{border-top:1px solid var(--border);padding:36px clamp(24px,5vw,80px);disp
               <div class="beat-media-tag"><span>Fried Assortment</span></div>
             </div>
             <div class="beat-text">
-              <span class="beat-num">2 / 2</span>
               <span class="beat-veg">V / NV</span>
               <h3 class="beat-title">Fried Assortment</h3>
               <p class="beat-body">Four traditions of frying &mdash; Indian masala-marinated, Classic American buttermilk, Korean double-fried with a gochujang glaze, Japanese panko-light &mdash; served together with dipping sauces. One plate. Four philosophies. All built on Amma&rsquo;s marinade underneath.</p>
@@ -548,8 +546,8 @@ footer{border-top:1px solid var(--border);padding:36px clamp(24px,5vw,80px);disp
     <div class="course-pin-sticky">
       <div class="course-pin-bg" style="background:linear-gradient(160deg,#F7F2E8,#E8DAB8);"></div>
       <div class="course-eyebrow">
-        <span style="color:var(--gold);">Plat</span><br>
-        <span style="font-family:'Cormorant Garamond',serif;font-style:italic;font-size:13px;letter-spacing:0;text-transform:none;color:var(--text-muted);">All Plats are served with French fries.</span>
+        <span class="course-eyebrow-title" style="color:var(--brown-dark);">Main Course</span>
+        <span class="course-eyebrow-sub" style="color:var(--brown);">All Main Courses are served with French fries.</span>
       </div>
       <div class="course-progress-rail">
         <div class="course-progress-dot active" data-dot="0"></div>
@@ -566,7 +564,6 @@ footer{border-top:1px solid var(--border);padding:36px clamp(24px,5vw,80px);disp
               <div class="beat-media-tag"><span>Rice Burger</span></div>
             </div>
             <div class="beat-text">
-              <span class="beat-num">1 / 3</span>
               <span class="beat-veg">V / NV</span>
               <h3 class="beat-title">Rice Burger</h3>
               <p class="beat-body">Compressed rice buns &mdash; the Japanese format &mdash; holding a filling that is entirely Tamil. Three ways to order: Amma&rsquo;s Signature Chicken, Prawn Ghee Roast, or Paneer Ghee Roast. The bun is the constant. What&rsquo;s inside is your choice.</p>
@@ -584,7 +581,6 @@ footer{border-top:1px solid var(--border);padding:36px clamp(24px,5vw,80px);disp
               <div class="beat-media-tag"><span>Birria Tacos</span></div>
             </div>
             <div class="beat-text">
-              <span class="beat-num">2 / 3</span>
               <h3 class="beat-title">Birria Tacos</h3>
               <p class="beat-body">Slow-cooked, deeply spiced filling folded into charred corn tortillas, with a Tamil consomm&eacute; for dipping. Two ways: Amma&rsquo;s Signature Mutton, slow-braised and falling apart, or Mushroom &mdash; carrying the same depth without the meat. Birria in form. Chennai in flavour.</p>
               <div class="beat-options"><span>Amma&rsquo;s Signature Mutton</span><span>Mushroom</span></div>
@@ -601,7 +597,6 @@ footer{border-top:1px solid var(--border);padding:36px clamp(24px,5vw,80px);disp
               <div class="beat-media-tag"><span>Chicken Parm</span></div>
             </div>
             <div class="beat-text">
-              <span class="beat-num">3 / 3</span>
               <h3 class="beat-title">Chicken Parm</h3>
               <p class="beat-body">Amma&rsquo;s Chicken 65 &mdash; her spice-marinated, deep-fried Tamil chicken &mdash; given an Italian coat: marinara, melted mozzarella, grated parmesan, finished under the grill. The crumb is hers. The cheese is Italy&rsquo;s. The result belongs to neither and both.</p>
               <div class="beat-price">Price TBD</div>
@@ -616,7 +611,7 @@ footer{border-top:1px solid var(--border);padding:36px clamp(24px,5vw,80px);disp
   <div class="course-pin" data-course="dessert" data-beats="1">
     <div class="course-pin-sticky">
       <div class="course-pin-bg" style="background:linear-gradient(160deg,#3A2418,#241108);"></div>
-      <div class="course-eyebrow"><span style="color:var(--gold-light);">Dessert</span></div>
+      <div class="course-eyebrow"><span class="course-eyebrow-title" style="color:var(--gold-light);">Dessert</span></div>
       <div class="beat-stack">
         <div class="beat-slide is-active" data-beat="0">
           <div class="beat-inner">
