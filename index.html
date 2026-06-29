@@ -21,6 +21,24 @@ nav{position:sticky;top:0;z-index:100;background:var(--cream);border-bottom:1px 
 .nav-wordmark span{display:block;font-family:'Cormorant Upright',serif;font-style:italic;font-size:21px;letter-spacing:1px;color:var(--brown);text-transform:none;}
 .nav-links{display:flex;}
 .nav-link{background:none;border:none;cursor:pointer;font-family:'Jost',sans-serif;font-size:11px;font-weight:400;letter-spacing:3px;text-transform:uppercase;color:var(--text-muted);padding:8px 22px;position:relative;transition:color 0.3s;}
+.nav-burger{display:none;flex-direction:column;justify-content:center;gap:5px;width:32px;height:32px;background:none;border:none;cursor:pointer;padding:0;flex-shrink:0;}
+.nav-burger span{display:block;width:100%;height:1.5px;background:var(--brown-dark);transition:transform 0.3s,opacity 0.3s;}
+.nav-burger.open span:nth-child(1){transform:translateY(6.5px) rotate(45deg);}
+.nav-burger.open span:nth-child(2){opacity:0;}
+.nav-burger.open span:nth-child(3){transform:translateY(-6.5px) rotate(-45deg);}
+@media(max-width:720px){
+  nav{padding:0 20px;}
+  .nav-wordmark{font-size:10px;letter-spacing:3px;}
+  .nav-wordmark span{font-size:17px;}
+  .nav-emblem svg{width:32px;height:32px;}
+  .nav-burger{display:flex;}
+  .nav-links{position:fixed;top:68px;left:0;right:0;background:var(--cream);border-bottom:1px solid var(--border);flex-direction:column;align-items:stretch;max-height:0;overflow:hidden;transition:max-height 0.35s ease;box-shadow:0 12px 24px rgba(74,55,40,0.08);}
+  .nav-links.mobile-open{max-height:320px;}
+  .nav-link{width:100%;text-align:left;padding:16px 24px;border-bottom:1px solid var(--border);font-size:12px;letter-spacing:2px;}
+  .nav-link:last-child{border-bottom:none;}
+  .nav-link.active::after{display:none;}
+  .nav-link.active{color:var(--brown-dark);background:var(--cream-dark);}
+}
 .nav-link::after{content:'';position:absolute;bottom:0;left:50%;right:50%;height:1px;background:var(--brown);transition:left 0.3s,right 0.3s;}
 .nav-link:hover,.nav-link.active{color:var(--brown-dark);}
 .nav-link.active::after{left:20%;right:20%;}
@@ -307,6 +325,22 @@ footer{border-top:1px solid var(--border);padding:36px clamp(24px,5vw,80px);disp
 @media(prefers-reduced-motion: reduce){
   .beat-slide{transition:none !important;}
 }
+
+/* ══════════════════ Mobile fallback: no pinning, simple stacked reveal ══════════════════ */
+@media(max-width:780px){
+  .course-pin{height:auto !important;}
+  .course-pin-sticky{position:relative;top:auto;height:auto;min-height:0;overflow:visible;padding:48px 0;display:block;}
+  .course-pin-bg{position:absolute;inset:0;z-index:0;}
+  .course-eyebrow{position:relative;margin-bottom:20px;}
+  .course-progress-rail{display:none;}
+  .beat-stack{position:relative;height:auto;max-width:100%;padding:0 20px;display:block;}
+  .beat-slide{position:relative;inset:auto;display:block;opacity:1 !important;transform:none !important;pointer-events:auto;margin-bottom:56px;}
+  .beat-slide:last-child{margin-bottom:0;}
+  .beat-slide.reveal-mobile{opacity:0;transform:translateY(18px) !important;transition:opacity 0.6s ease,transform 0.6s ease;}
+  .beat-slide.reveal-mobile.visible{opacity:1;transform:translateY(0) !important;}
+  .menu-scroll-hint{display:none;}
+  .sets-beat-inner .home-section-label,.sets-beat-title,.sets-beat-sub{position:relative;}
+}
 </style>
 </head>
 <body>
@@ -326,12 +360,15 @@ footer{border-top:1px solid var(--border);padding:36px clamp(24px,5vw,80px);disp
     </div>
     <div class="nav-wordmark">The <span>Exchange</span></div>
   </a>
-  <div class="nav-links">
+  <div class="nav-links" id="nav-links">
     <button class="nav-link active" onclick="showTab('home')" id="nav-home">Home</button>
     <button class="nav-link" onclick="showTab('menu')" id="nav-menu">Menu</button>
     <button class="nav-link" onclick="showTab('reservations')" id="nav-reservations">Reserve</button>
     <button class="nav-link" onclick="showTab('csr')" id="nav-csr">Our Exchange</button>
   </div>
+  <button class="nav-burger" id="nav-burger" onclick="toggleMobileNav()" aria-label="Menu">
+    <span></span><span></span><span></span>
+  </button>
 </nav>
 
 <!-- ══════════════════ HOME ══════════════════ -->
@@ -477,7 +514,7 @@ footer{border-top:1px solid var(--border);padding:36px clamp(24px,5vw,80px);disp
           <div class="beat-inner">
             <div class="beat-media">
               <div class="beat-media-fallback" style="background:linear-gradient(140deg,#2E1200,#7A3A10 60%,#A05020);"></div>
-              <!-- REPLACE src WITH YOUR OWN IMAGE: dish_french_onion_soup.jpg -->
+              <!-- REPLACE src WITH YOUR OWN IMAGE: French-Onion-Soup-S1.jpg -->
               <img src="French-Onion-Soup-S1.jpg" alt="French Onion Soup" onerror="this.style.display='none'">
               <div class="beat-media-tag"><span>French Onion Soup</span></div>
             </div>
@@ -507,7 +544,7 @@ footer{border-top:1px solid var(--border);padding:36px clamp(24px,5vw,80px);disp
           <div class="beat-inner">
             <div class="beat-media">
               <div class="beat-media-fallback" style="background:linear-gradient(140deg,#0A1A2E,#1A3A5C 60%,#2A5A7A);"></div>
-              <!-- REPLACE src WITH YOUR OWN IMAGE: dish_xlb.jpg -->
+              <!-- REPLACE src WITH YOUR OWN IMAGE: Xiao Long Bao.jpg -->
               <img src="Xiao Long Bao.jpg" alt="Xiao Long Bao" onerror="this.style.display='none'">
               <div class="beat-media-tag"><span>Xiao Long Bao</span></div>
             </div>
@@ -524,7 +561,7 @@ footer{border-top:1px solid var(--border);padding:36px clamp(24px,5vw,80px);disp
           <div class="beat-inner">
             <div class="beat-media">
               <div class="beat-media-fallback" style="background:linear-gradient(140deg,#3A1A05,#8B4010 60%,#C06020);"></div>
-              <!-- REPLACE src WITH YOUR OWN IMAGE: dish_fried_assortment.jpg -->
+              <!-- REPLACE src WITH YOUR OWN IMAGE: Fried Chickem.jpg -->
               <img src="Fried Chickem.jpg" alt="Fried Assortment" onerror="this.style.display='none'">
               <div class="beat-media-tag"><span>Fried Assortment</span></div>
             </div>
@@ -559,7 +596,7 @@ footer{border-top:1px solid var(--border);padding:36px clamp(24px,5vw,80px);disp
           <div class="beat-inner">
             <div class="beat-media">
               <div class="beat-media-fallback" style="background:linear-gradient(140deg,#1C1005,#5C3810 60%,#8B5C28);"></div>
-              <!-- REPLACE src WITH YOUR OWN IMAGE: dish_rice_burger.jpg -->
+              <!-- REPLACE src WITH YOUR OWN IMAGE: Rice Burger.jpg -->
               <img src="Rice Burger.jpg" alt="Rice Burger" onerror="this.style.display='none'">
               <div class="beat-media-tag"><span>Rice Burger</span></div>
             </div>
@@ -576,7 +613,7 @@ footer{border-top:1px solid var(--border);padding:36px clamp(24px,5vw,80px);disp
           <div class="beat-inner">
             <div class="beat-media">
               <div class="beat-media-fallback" style="background:linear-gradient(140deg,#3A0A05,#8B1A10 60%,#B03020);"></div>
-              <!-- REPLACE src WITH YOUR OWN IMAGE: dish_birria_tacos.jpg -->
+              <!-- REPLACE src WITH YOUR OWN IMAGE: Birria Tacos.jpg -->
               <img src="Birria Tacos.jpg" alt="Birria Tacos" onerror="this.style.display='none'">
               <div class="beat-media-tag"><span>Birria Tacos</span></div>
             </div>
@@ -592,7 +629,7 @@ footer{border-top:1px solid var(--border);padding:36px clamp(24px,5vw,80px);disp
           <div class="beat-inner">
             <div class="beat-media">
               <div class="beat-media-fallback" style="background:linear-gradient(140deg,#2A1005,#7A3010 60%,#A04820);"></div>
-              <!-- REPLACE src WITH YOUR OWN IMAGE: dish_chicken_parm.jpg -->
+              <!-- REPLACE src WITH YOUR OWN IMAGE: Chicken Parm.jpg -->
               <img src="Chicken Parm.jpg" alt="Chicken Parm" onerror="this.style.display='none'">
               <div class="beat-media-tag"><span>Chicken Parm</span></div>
             </div>
@@ -617,7 +654,7 @@ footer{border-top:1px solid var(--border);padding:36px clamp(24px,5vw,80px);disp
           <div class="beat-inner">
             <div class="beat-media">
               <div class="beat-media-fallback" style="background:linear-gradient(140deg,#100404,#3A1010 60%,#5A1818);"></div>
-              <!-- REPLACE src WITH YOUR OWN IMAGE: dish_chocolate_layer_cake.jpg -->
+              <!-- REPLACE src WITH YOUR OWN IMAGE: Chocolate Cake.jpg -->
               <img src="Chocolate Cake.jpg" alt="Chocolate Layer Cake" onerror="this.style.display='none'">
               <div class="beat-media-tag"><span>Chocolate Layer Cake</span></div>
             </div>
@@ -738,7 +775,19 @@ footer{border-top:1px solid var(--border);padding:36px clamp(24px,5vw,80px);disp
 </footer>
 
 <script>
-function showTab(t){document.querySelectorAll('.tab-section').forEach(s=>s.classList.remove('active'));document.querySelectorAll('.nav-link').forEach(l=>l.classList.remove('active'));document.getElementById('tab-'+t).classList.add('active');var navEl=document.getElementById('nav-'+t);if(navEl)navEl.classList.add('active');window.scrollTo({top:0,behavior:'smooth'});if(t==='csr')initCSR();if(t==='menu'){requestAnimationFrame(initMenuScroll);}else{teardownMenuScroll();}}
+function showTab(t){document.querySelectorAll('.tab-section').forEach(s=>s.classList.remove('active'));document.querySelectorAll('.nav-link').forEach(l=>l.classList.remove('active'));document.getElementById('tab-'+t).classList.add('active');var navEl=document.getElementById('nav-'+t);if(navEl)navEl.classList.add('active');window.scrollTo({top:0,behavior:'smooth'});if(t==='csr')initCSR();if(t==='menu'){requestAnimationFrame(initMenuScroll);}else{teardownMenuScroll();}closeMobileNav();}
+function toggleMobileNav(){
+  var links=document.getElementById('nav-links');
+  var burger=document.getElementById('nav-burger');
+  var isOpen=links.classList.toggle('mobile-open');
+  burger.classList.toggle('open',isOpen);
+}
+function closeMobileNav(){
+  var links=document.getElementById('nav-links');
+  var burger=document.getElementById('nav-burger');
+  if(links)links.classList.remove('mobile-open');
+  if(burger)burger.classList.remove('open');
+}
 let selectedAmt=0,votes=[12,8,15,6,9],totalRaised=190796,userVoted=false;
 function initCSR(){const stored=localStorage.getItem('exchange_csr');if(stored){const data=JSON.parse(stored);totalRaised=data.total||totalRaised;votes=data.votes||votes;userVoted=data.userVoted||false;}animateTotal();updateVoteBars();if(userVoted)markVoted(localStorage.getItem('exchange_voted_idx'));}
 function animateTotal(){const el=document.getElementById('csr-total');let current=0;const step=Math.ceil(totalRaised/80);const timer=setInterval(()=>{current=Math.min(current+step,totalRaised);el.textContent='₹'+current.toLocaleString('en-IN');if(current>=totalRaised)clearInterval(timer);},18);}
@@ -755,8 +804,11 @@ const observer=new IntersectionObserver(entries=>{entries.forEach(e=>{if(e.isInt
 var menuScrollActive=false;
 var menuRaf=null;
 var reducedMotion=window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+var menuMobileObserver=null;
+function isMenuMobile(){return window.innerWidth<=780;}
 
 function layoutMenuCourses(){
+  if(isMenuMobile())return; // mobile uses natural height, no pin scrubbing
   var pins=document.querySelectorAll('#tab-menu .course-pin');
   pins.forEach(function(pin){
     var beats=parseInt(pin.getAttribute('data-beats'),10)||1;
@@ -767,6 +819,7 @@ function layoutMenuCourses(){
 
 function updateMenuScroll(){
   if(!menuScrollActive)return;
+  if(isMenuMobile()){menuRaf=requestAnimationFrame(updateMenuScroll);return;}
   var pins=document.querySelectorAll('#tab-menu .course-pin');
   var viewportH=window.innerHeight;
   // Fraction of one beat's scroll distance used for the crossfade transition at each edge.
@@ -817,8 +870,32 @@ function updateMenuScroll(){
   menuRaf=requestAnimationFrame(updateMenuScroll);
 }
 
+function initMenuMobileReveal(){
+  var slides=document.querySelectorAll('#tab-menu .beat-slide');
+  slides.forEach(function(slide){
+    slide.classList.add('reveal-mobile','is-active');
+    slide.style.opacity='';slide.style.transform='';
+  });
+  if(menuMobileObserver)menuMobileObserver.disconnect();
+  menuMobileObserver=new IntersectionObserver(function(entries){
+    entries.forEach(function(e){if(e.isIntersecting)e.target.classList.add('visible');});
+  },{threshold:0.15});
+  slides.forEach(function(s){menuMobileObserver.observe(s);});
+}
+function teardownMenuMobileReveal(){
+  if(menuMobileObserver){menuMobileObserver.disconnect();menuMobileObserver=null;}
+  document.querySelectorAll('#tab-menu .beat-slide').forEach(function(slide){
+    slide.classList.remove('reveal-mobile','visible');
+  });
+}
+
 function initMenuScroll(){
   if(menuScrollActive)return;
+  if(isMenuMobile()){
+    initMenuMobileReveal();
+    menuScrollActive=true;
+    return;
+  }
   layoutMenuCourses();
   menuScrollActive=true;
   if(menuRaf)cancelAnimationFrame(menuRaf);
@@ -829,6 +906,7 @@ function teardownMenuScroll(){
   menuScrollActive=false;
   if(menuRaf){cancelAnimationFrame(menuRaf);menuRaf=null;}
   window.removeEventListener('resize',layoutMenuCourses);
+  teardownMenuMobileReveal();
 }
 // If the menu tab happens to already be active on load, initialize it.
 if(document.getElementById('tab-menu') && document.getElementById('tab-menu').classList.contains('active')){
