@@ -823,7 +823,7 @@ function closeMobileNav(){
   if(links)links.classList.remove('mobile-open');
   if(burger)burger.classList.remove('open');
 }
-let selectedAmt=0,votes=[12,8,15,6,9],totalRaised=190796,userVoted=false;
+let selectedAmt=0,votes=[12,8,15,6,9],totalRaised=25000,userVoted=false;
 function initCSR(){const stored=localStorage.getItem('exchange_csr');if(stored){const data=JSON.parse(stored);totalRaised=data.total||totalRaised;votes=data.votes||votes;userVoted=data.userVoted||false;}animateTotal();updateVoteBars();if(userVoted)markVoted(localStorage.getItem('exchange_voted_idx'));}
 function animateTotal(){const el=document.getElementById('csr-total');let current=0;const step=Math.ceil(totalRaised/80);const timer=setInterval(()=>{current=Math.min(current+step,totalRaised);el.textContent='₹'+current.toLocaleString('en-IN');if(current>=totalRaised)clearInterval(timer);},18);}
 function selectAmt(btn,amt){document.querySelectorAll('.amt-btn').forEach(b=>b.classList.remove('selected'));btn.classList.add('selected');selectedAmt=amt;document.getElementById('donate-custom').value='';}
