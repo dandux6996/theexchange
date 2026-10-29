@@ -3,7 +3,7 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>The Exchange — Chennai</title>
+<title>The Exchange | Chennai</title>
 <link rel="icon" type="image/svg+xml" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 200 200'%3E%3Crect width='200' height='200' fill='%23F7F2E8'/%3E%3Ccircle cx='100' cy='100' r='88' fill='none' stroke='%237B4F2E' stroke-width='3'/%3E%3Ccircle cx='76' cy='84' r='12' fill='%237B4F2E'/%3E%3Ccircle cx='124' cy='84' r='12' fill='%237B4F2E'/%3E%3Ccircle cx='100' cy='124' r='12' fill='%237B4F2E'/%3E%3C/svg%3E">
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
@@ -47,7 +47,7 @@ nav{position:sticky;top:0;z-index:100;background:var(--cream);border-bottom:1px 
 @keyframes fadeUp{from{opacity:0;transform:translateY(14px);}to{opacity:1;transform:translateY(0);}}
 
 /* ── HOME ── */
-#tab-home{height:calc(100vh - 68px);display:none;flex-direction:column;}
+#tab-home{min-height:calc(100vh - 68px);display:none;flex-direction:column;}
 #tab-home.active{display:flex;}
 .home-inner{flex:1;display:grid;grid-template-columns:1fr 1fr;align-items:center;max-width:1000px;margin:0 auto;width:100%;padding:0 clamp(24px,5vw,56px);gap:48px;}
 .home-left{display:flex;flex-direction:column;align-items:center;text-align:center;}
@@ -252,6 +252,47 @@ footer{border-top:1px solid var(--border);padding:36px clamp(24px,5vw,80px);disp
 .splash-name{font-family:'Great Vibes',cursive;font-style:normal;font-size:clamp(56px,15vw,88px);font-weight:400;color:var(--brown);line-height:1.05;opacity:0;animation:splashFade 0.9s ease forwards 1.1s;}
 @keyframes splashFade{from{opacity:0;transform:translateY(10px);}to{opacity:1;transform:translateY(0);}}
 body.splash-lock{overflow:hidden;}
+
+.home-reserve{margin-top:14px;font-family:'Cormorant Garamond',serif;font-size:clamp(17px,1.9vw,20px);font-weight:600;color:var(--brown-dark);background:rgba(201,152,90,0.16);border:1px solid rgba(201,152,90,0.55);border-left:4px solid var(--gold);padding:12px 18px;}
+.home-reserve a{color:var(--brown);font-weight:700;text-decoration:underline;text-decoration-thickness:2px;text-underline-offset:4px;}
+.home-reserve a:hover{color:var(--brown-dark);}
+@media(max-width:680px){.home-reserve{text-align:center;}}
+
+/* ══ Invite (digital referral) tab: everything scoped under #tab-invite ══ */
+#tab-invite{background:var(--cream);}
+#tab-invite .inv{max-width:440px;margin:0 auto;padding:clamp(28px,5vw,56px) 20px clamp(40px,6vw,72px);display:grid;gap:22px;}
+#tab-invite .inv-head{text-align:center;display:grid;gap:12px;justify-items:center;}
+#tab-invite .inv-mark{width:64px;height:64px;}
+#tab-invite .inv-title{font-family:'Cormorant Garamond',serif;font-style:italic;font-weight:600;font-size:clamp(30px,8.4vw,38px);line-height:1.08;margin:0;color:var(--brown-dark);}
+#tab-invite .inv-lede{font-family:'Cormorant Garamond',serif;font-size:19px;line-height:1.45;margin:0;max-width:34ch;font-weight:500;color:var(--brown);}
+#tab-invite .inv-card{background:#FBF7EE;border:1px solid var(--border);border-radius:14px;padding:20px 18px;display:grid;gap:18px;}
+#tab-invite .inv-label{display:block;font-size:12px;letter-spacing:.14em;text-transform:uppercase;color:var(--text-muted);margin:0 0 8px;}
+#tab-invite .inv-label span{text-transform:none;letter-spacing:0;}
+#tab-invite .inv-input{width:100%;font-family:'Cormorant Garamond',serif;font-size:20px;font-weight:600;color:var(--brown-dark);background:transparent;border:0;border-bottom:1.5px solid var(--border);padding:6px 2px 8px;border-radius:0;outline:none;}
+#tab-invite textarea.inv-input{resize:none;min-height:64px;line-height:1.3;font-style:italic;font-weight:500;}
+#tab-invite .inv-input:focus{border-bottom-color:var(--brown);}
+#tab-invite .inv-input::placeholder{color:#B9A592;font-weight:500;}
+#tab-invite .inv-sublabel{display:block;margin-top:16px;font-family:'Cormorant Garamond',serif;font-style:italic;font-size:15px;color:var(--text-muted);}
+#tab-invite .inv-chips{display:flex;flex-wrap:wrap;gap:8px;margin-top:8px;}
+#tab-invite .inv-chip{font-family:'Cormorant Garamond',serif;font-style:italic;font-size:16px;font-weight:600;color:var(--brown);background:transparent;border:1px solid var(--border);border-radius:999px;padding:8px 14px;min-height:40px;cursor:pointer;}
+#tab-invite .inv-chip:hover,#tab-invite .inv-chip[aria-pressed="true"]{border-color:var(--brown);background:var(--cream-dark);}
+#tab-invite .inv-chip:focus-visible,#tab-invite .inv-btn:focus-visible{outline:2px solid var(--gold);outline-offset:2px;}
+#tab-invite .inv-preview{font-family:'Cormorant Garamond',serif;font-size:16.5px;line-height:1.45;white-space:pre-wrap;color:var(--brown-dark);background:var(--cream);border-radius:10px;padding:14px 14px 12px;margin:0;font-weight:500;word-break:break-word;}
+#tab-invite .inv-preview .inv-link{color:var(--text-muted);font-family:'Jost',sans-serif;font-size:13px;}
+#tab-invite .inv-actions{display:grid;gap:10px;}
+#tab-invite .inv-btn{display:flex;align-items:center;justify-content:center;gap:10px;min-height:54px;border-radius:12px;font-family:'Jost',sans-serif;font-size:16px;font-weight:500;letter-spacing:.02em;text-decoration:none;cursor:pointer;border:0;width:100%;}
+#tab-invite .inv-btn-wa{background:#1F7A4D;color:#fff;}
+#tab-invite .inv-btn-wa[aria-disabled="true"]{background:#A9B8AE;}
+#tab-invite .inv-btn-alt{background:transparent;color:var(--brown);border:1px solid var(--border);}
+#tab-invite .inv-hint{font-size:13px;color:var(--text-muted);text-align:center;margin:0;line-height:1.5;}
+#tab-invite .inv-code{font-size:12px;letter-spacing:.16em;color:var(--text-muted);text-align:center;margin:0;}
+#tab-invite .inv-code b{color:var(--brown);font-weight:500;}
+#tab-invite .inv-done{text-align:center;}
+#tab-invite .inv-big{font-family:'Cormorant Garamond',serif;font-style:italic;font-weight:600;font-size:26px;color:var(--brown-dark);margin:0;}
+#tab-invite .inv-foot{text-align:center;font-family:'Cormorant Garamond',serif;font-style:italic;font-size:16px;color:var(--text-muted);margin:0;}
+#tab-invite [hidden]{display:none!important;}
+@media(prefers-reduced-motion:no-preference){#tab-invite .inv-btn{transition:transform .12s ease;}#tab-invite .inv-btn:active{transform:scale(.98);}}
+@media(min-width:681px) and (max-height:760px){.home-inner{padding-top:16px;padding-bottom:16px;}.home-philosophy-body{margin-bottom:14px;line-height:1.65;}.home-cards{gap:8px;}.home-card{padding:10px 16px;}.home-section-title{margin-bottom:10px;}.home-reserve{margin-top:10px;padding:10px 16px;}}
 </style>
 </head>
 <body>
@@ -293,6 +334,7 @@ body.splash-lock{overflow:hidden;}
     <button class="nav-link" onclick="showTab('menu')" id="nav-menu">Menu</button>
     <button class="nav-link" onclick="showTab('reservations')" id="nav-reservations">Reserve</button>
     <button class="nav-link" onclick="showTab('csr')" id="nav-csr">Our Exchange</button>
+    <button class="nav-link" onclick="showTab('invite')" id="nav-invite">Invite</button>
   </div>
   <button class="nav-burger" id="nav-burger" onclick="toggleMobileNav()" aria-label="Menu">
     <span></span><span></span><span></span>
@@ -346,6 +388,7 @@ body.splash-lock{overflow:hidden;}
           </div>
         </div>
       </div>
+      <p class="home-reserve">To make a reservation, click <a href="#" class="reservation-link">here</a>.</p>
     </div>
   </div>
 </section>
@@ -358,7 +401,7 @@ body.splash-lock{overflow:hidden;}
       <h2 class="reserve-panel-title">Join Us</h2>
       <p class="reserve-panel-sub">Twenty seats. A table held for you.</p>
       <div class="reservation-simple-box">
-        <p>To make a reservation, please click <a href="#" id="reservation-link">here</a>.</p>
+        <p>To make a reservation, please click <a href="#" id="reservation-link" class="reservation-link">here</a>.</p>
       </div>
     </div>
     <div class="reserve-panel reserve-panel-right">
@@ -677,6 +720,67 @@ body.splash-lock{overflow:hidden;}
 </div>
 </section>
 
+<!-- INVITE (digital referral). QR code points to https://the-exchange.co.in/#invite -->
+<section id="tab-invite" class="tab-section">
+  <div class="inv">
+    <div class="inv-head">
+      <svg class="inv-mark" viewBox="0 0 200 200" xmlns="http://www.w3.org/2000/svg" role="img" aria-label="The Exchange">
+          <circle cx="100" cy="100" r="90" fill="none" stroke="#7B4F2E" stroke-width="1.3"/>
+          <circle cx="100" cy="100" r="80" fill="none" stroke="#7B4F2E" stroke-width="0.5" opacity="0.20"/>
+          <path d="M 88,84 C 92,78 98,90 100,84 C 102,78 108,90 112,84" fill="none" stroke="#7B4F2E" stroke-width="1.1" stroke-linecap="round" opacity="0.55"/>
+          <path d="M 82,93 C 88,89 91,101 88,104 C 85,107 88,115 94,115" fill="none" stroke="#7B4F2E" stroke-width="1.1" stroke-linecap="round" opacity="0.55"/>
+          <path d="M 118,93 C 112,89 109,101 112,104 C 115,107 112,115 106,115" fill="none" stroke="#7B4F2E" stroke-width="1.1" stroke-linecap="round" opacity="0.55"/>
+          <circle cx="76" cy="84" r="8" fill="#7B4F2E"/>
+          <circle cx="124" cy="84" r="8" fill="#7B4F2E"/>
+          <circle cx="100" cy="124" r="8" fill="#7B4F2E"/>
+        </svg>
+      <h1 class="inv-title">Who came to mind tonight?</h1>
+      <p class="inv-lede">Send them a seat at The Exchange. They get 10% off their first visit.</p>
+    </div>
+
+    <div class="inv-card" id="inv-form">
+      <div>
+        <label class="inv-label" for="inv-name">Your first name</label>
+        <input class="inv-input" id="inv-name" autocomplete="given-name" autocapitalize="words" maxlength="20" placeholder="So they know it's from you">
+      </div>
+      <div>
+        <label class="inv-label" for="inv-note">A line for them <span>(optional)</span></label>
+        <textarea class="inv-input" id="inv-note" maxlength="90" rows="2" placeholder="To someone who..."></textarea>
+        <span class="inv-sublabel">For instance</span>
+        <div class="inv-chips" role="group" aria-label="Suggestions">
+          <button type="button" class="inv-chip" aria-pressed="false">To someone I owe a dinner</button>
+          <button type="button" class="inv-chip" aria-pressed="false">To someone who stood by me</button>
+          <button type="button" class="inv-chip" aria-pressed="false">To the office gang</button>
+          <button type="button" class="inv-chip" aria-pressed="false">To the badminton community</button>
+          <button type="button" class="inv-chip" aria-pressed="false">To my friend</button>
+        </div>
+      </div>
+      <div>
+        <span class="inv-label">What they'll receive</span>
+        <p class="inv-preview" id="inv-preview" aria-live="polite"></p>
+      </div>
+      <div class="inv-actions">
+        <a class="inv-btn inv-btn-wa" id="inv-send" href="#" aria-disabled="true" target="_blank" rel="noopener">
+          <svg width="20" height="20" viewBox="0 0 24 24" aria-hidden="true"><path fill="currentColor" d="M12 2a10 10 0 0 0-8.6 15.1L2 22l5-1.3A10 10 0 1 0 12 2zm0 18.2a8.2 8.2 0 0 1-4.2-1.2l-.3-.2-3 .8.8-2.9-.2-.3A8.2 8.2 0 1 1 12 20.2zm4.5-6.1c-.2-.1-1.5-.7-1.7-.8s-.4-.1-.6.1-.6.8-.8 1-.3.2-.5.1a6.7 6.7 0 0 1-3.3-2.9c-.3-.4.3-.4.8-1.4a.5.5 0 0 0 0-.5l-.8-1.8c-.2-.5-.4-.4-.6-.4h-.5a1 1 0 0 0-.7.3 3 3 0 0 0-.9 2.2 5.2 5.2 0 0 0 1.1 2.7 11.8 11.8 0 0 0 4.5 4c1.7.7 2.3.8 3.2.6a2.7 2.7 0 0 0 1.8-1.3 2.2 2.2 0 0 0 .2-1.3c-.1-.1-.3-.2-.5-.3z"/></svg>
+          Send on WhatsApp
+        </a>
+        <button type="button" class="inv-btn inv-btn-alt" id="inv-other">Share another way</button>
+        <p class="inv-hint" id="inv-hint">Pick as many chats or groups as you like on the next screen.</p>
+      </div>
+      <p class="inv-code" id="inv-codeline" hidden>Invite code <b id="inv-code"></b></p>
+    </div>
+
+    <div class="inv-card inv-done" id="inv-done" hidden>
+      <p class="inv-big">Sent. Thank you.</p>
+      <p class="inv-hint">Now the phone can go back in your pocket.</p>
+      <p class="inv-code">Invite code <b id="inv-code2"></b></p>
+      <button type="button" class="inv-btn inv-btn-alt" id="inv-again">Invite someone else</button>
+    </div>
+
+    <p class="inv-foot">Food is the medium. Conversation is the product.</p>
+  </div>
+</section>
+
 <!-- CSR -->
 <section id="tab-csr" class="tab-section">
   <div class="csr-hero">
@@ -772,8 +876,15 @@ body.splash-lock{overflow:hidden;}
 </footer>
 
 <script>
+/* ── Site settings: change these when ready ── */
+var RESERVATION_URL='#';                 /* booking website for both "click here" links */
+var INVITE_BOOKING_NUMBER='919488950001'; /* WhatsApp Business number, country code first, no + */
+var INVITE_OFFER='10% off your first visit';
+document.querySelectorAll('.reservation-link').forEach(function(a){a.href=RESERVATION_URL;if(RESERVATION_URL!=='#'){a.target='_blank';a.rel='noopener';}});
+var openedFromInvite=(location.hash==='#invite');
 (function(){
   var splash=document.getElementById('splash');
+  if(splash&&openedFromInvite){splash.classList.add('hidden');return;}
   if(!splash)return;
   document.body.classList.add('splash-lock');
   setTimeout(function(){splash.classList.add('hidden');document.body.classList.remove('splash-lock');},2800);
@@ -822,6 +933,61 @@ function teardownMenuMobileReveal(){if(menuMobileObserver){menuMobileObserver.di
 function initMenuScroll(){if(menuScrollActive)return;if(isMenuMobile()){initMenuMobileReveal();menuScrollActive=true;return;}layoutMenuCourses();menuScrollActive=true;if(menuRaf)cancelAnimationFrame(menuRaf);menuRaf=requestAnimationFrame(updateMenuScroll);window.addEventListener('resize',layoutMenuCourses);}
 function teardownMenuScroll(){menuScrollActive=false;if(menuRaf){cancelAnimationFrame(menuRaf);menuRaf=null;}window.removeEventListener('resize',layoutMenuCourses);teardownMenuMobileReveal();}
 if(document.getElementById('tab-menu') && document.getElementById('tab-menu').classList.contains('active')){requestAnimationFrame(initMenuScroll);}
+
+/* ══ Invite (digital referral) ══ */
+(function(){
+  var nameEl=document.getElementById('inv-name'),noteEl=document.getElementById('inv-note'),
+      preview=document.getElementById('inv-preview'),send=document.getElementById('inv-send'),
+      other=document.getElementById('inv-other'),hint=document.getElementById('inv-hint'),
+      chips=Array.prototype.slice.call(document.querySelectorAll('#tab-invite .inv-chip')),
+      suffix=String(Math.floor(10+Math.random()*90));
+  if(!nameEl)return;
+  function strictEncode(t){return encodeURIComponent(t).replace(/[!'()*]/g,function(ch){return '%'+ch.charCodeAt(0).toString(16).toUpperCase();});}
+  function cleanName(){return nameEl.value.trim().replace(/\s+/g,' ');}
+  function code(){var n=cleanName().toUpperCase().replace(/[^A-Z]/g,'').slice(0,8);return n?'EX-'+n+suffix:'';}
+  function bookingLink(name,c){
+    var t='Hi, '+name+' invited me to The Exchange with code '+c+'. I’d like to book a table.';
+    return 'https://wa.me/'+INVITE_BOOKING_NUMBER+'?text='+strictEncode(t);
+  }
+  function message(){
+    var name=cleanName(),note=noteEl.value.trim(),c=code(),parts=[];
+    if(note)parts.push(note);
+    parts.push('I just had dinner at The Exchange in Adyar and thought of you. It’s a small place where the food starts the conversation.');
+    parts.push('Here’s '+INVITE_OFFER+'. Tap to book a table:\n'+(name?bookingLink(name,c):'[your booking link]'));
+    if(name)parts.push('From '+name);
+    return parts.join('\n\n');
+  }
+  function render(){
+    var name=cleanName(),msg=message(),c=code();
+    preview.textContent='';
+    msg.split(/(https:\/\/wa\.me\/\S+)/).forEach(function(piece){
+      if(/^https:\/\/wa\.me\//.test(piece)){var s=document.createElement('span');s.className='inv-link';s.textContent='wa.me/'+INVITE_BOOKING_NUMBER+' (booking link)';preview.appendChild(s);}
+      else preview.appendChild(document.createTextNode(piece));
+    });
+    var ready=name.length>0;
+    send.setAttribute('aria-disabled',ready?'false':'true');
+    send.href=ready?'https://wa.me/?text='+encodeURIComponent(msg):'#';
+    hint.textContent=ready?'Pick as many chats or groups as you like on the next screen.':'Add your first name to send.';
+    document.getElementById('inv-codeline').hidden=!c;
+    document.getElementById('inv-code').textContent=c;
+    document.getElementById('inv-code2').textContent=c;
+    chips.forEach(function(b){b.setAttribute('aria-pressed',String(b.textContent===noteEl.value.trim()));});
+  }
+  function finish(){setTimeout(function(){document.getElementById('inv-form').hidden=true;document.getElementById('inv-done').hidden=false;},600);}
+  chips.forEach(function(b){b.addEventListener('click',function(){noteEl.value=b.textContent;render();});});
+  nameEl.addEventListener('input',render);noteEl.addEventListener('input',render);
+  send.addEventListener('click',function(e){if(send.getAttribute('aria-disabled')==='true'){e.preventDefault();nameEl.focus();return;}finish();});
+  other.addEventListener('click',function(){
+    if(!cleanName()){nameEl.focus();hint.textContent='Add your first name to send.';return;}
+    var msg=message();
+    if(navigator.share){navigator.share({text:msg}).then(finish).catch(function(){});}
+    else if(navigator.clipboard){navigator.clipboard.writeText(msg).then(function(){hint.textContent='Copied. Paste it wherever you like.';});}
+  });
+  document.getElementById('inv-again').addEventListener('click',function(){noteEl.value='';document.getElementById('inv-done').hidden=true;document.getElementById('inv-form').hidden=false;render();});
+  render();
+})();
+if(openedFromInvite){showTab('invite');}
+window.addEventListener('hashchange',function(){if(location.hash==='#invite')showTab('invite');});
 </script>
 </body>
 </html>
