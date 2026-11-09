@@ -136,7 +136,7 @@ footer{border-top:1px solid var(--border);padding:36px clamp(24px,5vw,80px);disp
 /* ── Reserve tab ── */
 #tab-reservations{display:none;}
 #tab-reservations.active{display:block;}
-.reserve-split{height:calc(100vh - 68px);display:grid;grid-template-columns:1fr 1fr;}
+.reserve-split{min-height:calc(100vh - 68px);display:grid;grid-template-columns:1fr 1fr;}
 .reserve-panel{display:flex;flex-direction:column;justify-content:center;padding:clamp(40px,6vw,72px) clamp(32px,5vw,64px);}
 .reserve-panel-left{background:var(--cream);border-right:1px solid var(--border);}
 .reserve-panel-right{background:var(--brown-dark);}
@@ -158,6 +158,8 @@ footer{border-top:1px solid var(--border);padding:36px clamp(24px,5vw,80px);disp
 .collab-mini-cta p{font-family:'Cormorant Garamond',serif;font-style:italic;font-size:13px;color:var(--cream);opacity:0.6;margin-bottom:10px;}
 .collab-mini-cta a{display:inline-block;font-family:'Jost',sans-serif;font-size:10px;letter-spacing:3px;text-transform:uppercase;color:var(--cream);border:1px solid rgba(247,242,232,0.3);padding:10px 28px;text-decoration:none;transition:background 0.3s,border-color 0.3s;}
 .collab-mini-cta a:hover{background:rgba(201,152,90,0.15);border-color:var(--gold);}
+.collab-mini-cta a.collab-wa{display:table;margin-top:14px;padding:0;border:0;font-family:'Cormorant Garamond',serif;font-style:italic;font-size:15px;letter-spacing:0.3px;text-transform:none;color:var(--gold-light);text-decoration:underline;text-underline-offset:3px;}
+.collab-mini-cta a.collab-wa:hover{background:none;color:var(--cream);}
 @media(max-width:680px){
   .reserve-split{grid-template-columns:1fr;height:auto;}
   .reserve-panel{padding:40px 24px;}
@@ -293,6 +295,8 @@ body.splash-lock{overflow:hidden;}
 #tab-invite [hidden]{display:none!important;}
 @media(prefers-reduced-motion:no-preference){#tab-invite .inv-btn{transition:transform .12s ease;}#tab-invite .inv-btn:active{transform:scale(.98);}}
 @media(min-width:681px) and (max-height:760px){.home-inner{padding-top:16px;padding-bottom:16px;}.home-philosophy-body{margin-bottom:14px;line-height:1.65;}.home-cards{gap:8px;}.home-card{padding:10px 16px;}.home-section-title{margin-bottom:10px;}.home-reserve{margin-top:10px;padding:10px 16px;}}
+.sets-alacarte{max-width:860px;margin:clamp(14px,2.5vh,24px) auto 0;font-family:'Cormorant Garamond',serif;font-size:clamp(15px,1.7vw,18px);font-weight:600;color:var(--brown-dark);text-align:center;line-height:1.5;padding:0 8px;}
+.sets-gst{display:block;margin-top:4px;font-family:'Jost',sans-serif;font-weight:400;font-size:11px;letter-spacing:2px;text-transform:uppercase;color:var(--text-muted);}
 </style>
 </head>
 <body>
@@ -424,7 +428,8 @@ body.splash-lock{overflow:hidden;}
       </div>
       <div class="collab-mini-cta">
         <p>No forms, no portals. Just a conversation.</p>
-        <a href="mailto:hello@theexchange.in">Write to us</a>
+        <a href="mailto:theexchangemas@gmail.com?subject=Private%20%26%20Corporate%20enquiry">Write to us</a>
+        <a class="collab-wa" href="https://wa.me/919488950001?text=Hi%2C%20I%27d%20like%20to%20enquire%20about%20a%20private%20or%20corporate%20booking%20at%20The%20Exchange." target="_blank" rel="noopener">Or message us on WhatsApp</a>
       </div>
     </div>
   </div>
@@ -463,10 +468,11 @@ body.splash-lock{overflow:hidden;}
             <h2 class="sets-beat-title">Choose Your Exchange</h2>
             <div class="sets-beat-sub">Three courses. One conversation.</div>
             <div class="sets-beat-cards">
-              <div class="set-card"><span class="set-tag" style="color:var(--text-muted)">Two Course</span><div class="set-name" style="color:var(--brown-dark)">Short Exchange</div><div class="set-courses">Starter + Main Course <em>or</em> Main Course + Dessert</div><div class="set-price" style="font-size:20px;font-weight:500;letter-spacing:1px;color:var(--brown);background:rgba(201,152,90,0.16);border:1px solid rgba(201,152,90,0.4);border-radius:4px;padding:8px 10px;display:inline-block;">Price TBD</div></div>
-              <div class="set-card featured"><span class="set-tag">&#9733; Most Popular</span><div class="set-name">Full Exchange</div><div class="set-courses">Soup <em>or</em> Starter &middot; Main Course &middot; Dessert</div><div class="set-price" style="font-size:20px;font-weight:500;letter-spacing:1px;color:var(--gold-light);background:rgba(201,152,90,0.18);border:1px solid rgba(201,152,90,0.5);border-radius:4px;padding:8px 10px;display:inline-block;">Price TBD</div></div>
-              <div class="set-card" style="border-color:var(--gold);"><span class="set-tag" style="color:var(--gold)">&#10022; Four Course</span><div class="set-name" style="color:var(--brown-dark)">Grand Exchange</div><div class="set-courses">Soup &middot; Starter &middot; Main Course &middot; Dessert</div><div class="set-price" style="font-size:20px;font-weight:500;letter-spacing:1px;color:var(--brown);background:rgba(201,152,90,0.16);border:1px solid rgba(201,152,90,0.4);border-radius:4px;padding:8px 10px;display:inline-block;">Price TBD</div></div>
+              <div class="set-card"><span class="set-tag" style="color:var(--text-muted)">Two Course</span><div class="set-name" style="color:var(--brown-dark)">Short Exchange</div><div class="set-courses">Starter + Main Course <em>or</em> Main Course + Dessert</div><div class="set-price" style="font-size:20px;font-weight:500;letter-spacing:1px;color:var(--brown);background:rgba(201,152,90,0.16);border:1px solid rgba(201,152,90,0.4);border-radius:4px;padding:8px 10px;display:inline-block;">&#8377;725<small style="display:block;font-size:10px;letter-spacing:2px;text-transform:uppercase;opacity:0.75;margin-top:2px;">per guest</small></div></div>
+              <div class="set-card featured"><span class="set-tag">&#9733; Most Popular</span><div class="set-name">Full Exchange</div><div class="set-courses">Soup <em>or</em> Starter &middot; Main Course &middot; Dessert</div><div class="set-price" style="font-size:20px;font-weight:500;letter-spacing:1px;color:var(--gold-light);background:rgba(201,152,90,0.18);border:1px solid rgba(201,152,90,0.5);border-radius:4px;padding:8px 10px;display:inline-block;">&#8377;950<small style="display:block;font-size:10px;letter-spacing:2px;text-transform:uppercase;opacity:0.75;margin-top:2px;">per guest</small></div></div>
+              <div class="set-card" style="border-color:var(--gold);"><span class="set-tag" style="color:var(--gold)">&#10022; Four Course</span><div class="set-name" style="color:var(--brown-dark)">Grand Exchange</div><div class="set-courses">Soup &middot; Starter &middot; Main Course &middot; Dessert</div><div class="set-price" style="font-size:20px;font-weight:500;letter-spacing:1px;color:var(--brown);background:rgba(201,152,90,0.16);border:1px solid rgba(201,152,90,0.4);border-radius:4px;padding:8px 10px;display:inline-block;">&#8377;1,150<small style="display:block;font-size:10px;letter-spacing:2px;text-transform:uppercase;opacity:0.75;margin-top:2px;">per guest</small></div></div>
             </div>
+            <p class="sets-alacarte">&Agrave; la carte: Soups, Starters and Desserts at &#8377;350/- apiece and Main Course at &#8377;450/- apiece.<span class="sets-gst">Prices exclusive of 5% GST.</span></p>
           </div>
         </div>
       </div>
@@ -493,7 +499,6 @@ body.splash-lock{overflow:hidden;}
               <div class="beat-subtitle">French Onion Soup &times; Chettinad Rasam</div>
               <p class="beat-body">France meets Chettinad (Karaikudi). The slow-caramelised onions and mozzarella-laden cro&ucirc;ton of a French onion soup, poured over my mother&rsquo;s peppery Karaikudi rasam. The form is French; the soul is Chettinad.</p>
               <div class="beat-protein"><span>Veg: <b>Vegetable stock</b></span><span>Non-veg: <b>Chicken broth</b></span></div>
-              <div class="beat-price">Price TBD</div>
             </div>
           </div>
         </div>
@@ -516,17 +521,16 @@ body.splash-lock{overflow:hidden;}
           <div class="beat-inner">
             <div class="beat-media">
               <div class="beat-media-fallback" style="background:linear-gradient(140deg,#0A1A2E,#1A3A5C 60%,#2A5A7A);"></div>
-              <!-- IMAGE FILE: milagu-soup-dumplings.jpg -->
-              <img src="milagu-soup-dumplings.jpg" alt="Milagu Soup Dumplings" onerror="this.style.display='none'">
-              <div class="beat-media-tag"><span>Milagu Soup Dumplings</span></div>
+              <!-- IMAGE FILE: milagu-mandu.jpg -->
+              <img src="milagu-mandu.jpg" alt="Milagu Mandu" onerror="this.style.display='none'">
+              <div class="beat-media-tag"><span>Milagu Mandu</span></div>
             </div>
             <div class="beat-text">
               <div class="beat-veg"><span class="veg-mark v"><i></i>Veg</span><span class="veg-mark nv"><i></i>Non-veg</span></div>
-              <h3 class="beat-title">Milagu Soup Dumplings</h3>
-              <div class="beat-subtitle">Xiao Long Bao &times; Kongunadu Milagu Kozhi</div>
-              <p class="beat-body">China meets Kongunadu (Coimbatore). Shanghai soup dumplings, pleated to hold a hot black-pepper broth built on my mother&rsquo;s Kongunadu milagu masala. The fold is Chinese; the storm inside is Tamil.</p>
-              <div class="beat-protein"><span>Veg: <b>Button mushroom</b></span><span>Non-veg: <b>Chicken</b></span></div>
-              <div class="beat-price">Price TBD</div>
+              <h3 class="beat-title">Milagu Mandu</h3>
+              <div class="beat-subtitle">Korean Mandu &times; Kongunadu Milagu Kozhi</div>
+              <p class="beat-body">Korea meets Kongunadu (Coimbatore). Steamed Korean mandu, pleated around my mother&rsquo;s Kongunadu pepper fry tossed with glass noodles. The fold is Korean; the fire inside is Tamil.</p>
+              <div class="beat-protein"><span>Veg: <b>Paneer</b></span><span>Non-veg: <b>Chicken</b></span></div>
             </div>
           </div>
         </div>
@@ -544,7 +548,6 @@ body.splash-lock{overflow:hidden;}
               <div class="beat-subtitle">Argentine Empanada &times; Pallipalayam (Namakkal)</div>
               <p class="beat-body">Argentina meets Namakkal. The golden, hand-crimped pastry of an Argentine empanada, sealed around a coconut-flecked, red-chilli Pallipalayam fry from the Namakkal belt. The shell is South American; the filling is pure Kongu.</p>
               <div class="beat-protein"><span>Veg: <b>Paneer</b></span><span>Non-veg: <b>Chicken</b></span></div>
-              <div class="beat-price">Price TBD</div>
             </div>
           </div>
         </div>
@@ -562,7 +565,6 @@ body.splash-lock{overflow:hidden;}
               <div class="beat-subtitle">Indonesian Gepuk &times; Madras Chicken 65</div>
               <p class="beat-body">Indonesia meets Madras (Chennai). Javanese gepuk, sweet, smashed and deep-fried, tossed in the fiery, curry-leaf spice of a classic Madras Chicken 65. Smashed the Indonesian way, spiced the Chennai way.</p>
               <div class="beat-protein"><span>Veg: <b>Oyster mushroom</b></span><span>Non-veg: <b>Chicken</b></span></div>
-              <div class="beat-price">Price TBD</div>
             </div>
           </div>
         </div>
@@ -598,7 +600,6 @@ body.splash-lock{overflow:hidden;}
               <div class="beat-subtitle">Japanese Rice Burger &times; Mangalore</div>
               <p class="beat-body">Japan meets Mangalore. Compressed rice buns, the Japanese arisi (rice) format, holding my mother&rsquo;s signature chicken fry, or a coastal Mangalorean prawn or paneer ghee roast. The bun is the constant; Amma&rsquo;s fry and the ghee roast inside are what change.</p>
               <div class="beat-protein"><span>Veg: <b>Paneer ghee roast</b></span><span>Non-veg: <b>Mom&rsquo;s signature chicken or prawn ghee roast</b></span></div>
-              <div class="beat-price">Price TBD</div>
             </div>
           </div>
         </div>
@@ -616,7 +617,6 @@ body.splash-lock{overflow:hidden;}
               <div class="beat-subtitle">Korean Ramyeon &times; Erode Thanni Kuzhambu</div>
               <p class="beat-body">Korea meets Erode. Springy Korean ramyeon noodles in a light, tamarind-bright Erode thanni kuzhambu. The pull of Korean noodles, the tang of a Kongu-country gravy.</p>
               <div class="beat-protein"><span>Veg: <b>Paneer</b></span><span>Non-veg: <b>Chicken</b></span></div>
-              <div class="beat-price">Price TBD</div>
             </div>
           </div>
         </div>
@@ -634,7 +634,6 @@ body.splash-lock{overflow:hidden;}
               <div class="beat-subtitle">Mexican Quesabirria &times; Madurai Salna</div>
               <p class="beat-body">Mexico meets Madurai. Cheese-crisped birria tacos, stuffed and served with Madurai salna, the fiery street-side gravy standing in for the consomm&eacute;, both as the filling and the dip. Birria in form, Madurai in soul.</p>
               <div class="beat-protein"><span>Veg: <b>Oyster mushroom</b></span><span>Non-veg: <b>Chicken</b></span></div>
-              <div class="beat-price">Price TBD</div>
             </div>
           </div>
         </div>
@@ -652,7 +651,6 @@ body.splash-lock{overflow:hidden;}
               <div class="beat-subtitle">American Chicken &amp; Waffles &times; Hyderabad</div>
               <p class="beat-body">America meets Hyderabad. The Southern-American comfort of a crisp fry on a warm waffle, marinated in the deep, aromatic spice of a Hyderabadi kitchen. Sweet, savoury, and unmistakably Deccan.</p>
               <div class="beat-protein"><span>Veg: <b>Oyster mushroom</b></span><span>Non-veg: <b>Chicken</b></span></div>
-              <div class="beat-price">Price TBD</div>
             </div>
           </div>
         </div>
@@ -683,7 +681,6 @@ body.splash-lock{overflow:hidden;}
               <h3 class="beat-title">Gulab Jamun Churros</h3>
               <div class="beat-subtitle">Spanish Churros &times; Kumbakonam Gulab Jamun</div>
               <p class="beat-body">Spain meets Kumbakonam. Everything you love about a syrup-soaked gulab jamun, piped into the ridges of a Spanish churro. Crisp outside, molten and rose-sweet within.</p>
-              <div class="beat-price">Price TBD</div>
             </div>
           </div>
         </div>
@@ -700,7 +697,6 @@ body.splash-lock{overflow:hidden;}
               <h3 class="beat-title">Nei Urundai Rocher</h3>
               <div class="beat-subtitle">Italian Ferrero Rocher &times; Tamil Nei Urundai</div>
               <p class="beat-body">Italy meets Tamil Nadu. The indulgence of an Italian Ferrero Rocher, built around my mother&rsquo;s nei urundai: a ghee-roasted gram ball with a whole cashew at its heart, sealed in Nutella sauce and crusted with roasted cashews. The form is Italian; the soul is Tamil.</p>
-              <div class="beat-price">Price TBD</div>
             </div>
           </div>
         </div>
@@ -870,8 +866,7 @@ body.splash-lock{overflow:hidden;}
   <div class="footer-info">
     <strong>Everyday 5&ndash;11 PM</strong><br>
     Old, 3A, Second Main Rd, opp. Nilgiris<br>
-    Kasturba Nagar, Adyar, Chennai 600020<br>
-    <span style="font-style:italic;color:var(--gold)">Opening October 2026</span>
+    Kasturba Nagar, Adyar, Chennai 600020
   </div>
 </footer>
 
