@@ -866,15 +866,20 @@ var RESERVATION_URL='https://bookings.airmenus.in/theexchange/order';           
 var INVITE_BOOKING_NUMBER='919488950001'; /* WhatsApp Business number, country code first, no + */
 var INVITE_OFFER='10% off your first visit';
 document.querySelectorAll('.reservation-link').forEach(function(a){a.href=RESERVATION_URL;if(RESERVATION_URL!=='#'){a.target='_blank';a.rel='noopener';}});
-var openedFromInvite=(location.hash==='#invite');
+var ROUTES={home:'home',menu:'menu',reserve:'reservations',reservations:'reservations',csr:'csr','our-exchange':'csr',invite:'invite',referral:'invite'};
+var TAB_HASH={home:'home',menu:'menu',reservations:'reserve',csr:'csr',invite:'invite'};
+function routeTab(){var h=(location.hash||'').replace(/^#\/?/,'').toLowerCase();return ROUTES[h]||null;}
+var initialRoute=routeTab();
+var openedFromInvite=(initialRoute==='invite');
+var deepLinked=(initialRoute&&initialRoute!=='home');
 (function(){
   var splash=document.getElementById('splash');
-  if(splash&&openedFromInvite){splash.classList.add('hidden');return;}
+  if(splash&&deepLinked){splash.classList.add('hidden');return;}
   if(!splash)return;
   document.body.classList.add('splash-lock');
   setTimeout(function(){splash.classList.add('hidden');document.body.classList.remove('splash-lock');},2800);
 })();
-function showTab(t){document.querySelectorAll('.tab-section').forEach(s=>s.classList.remove('active'));document.querySelectorAll('.nav-link').forEach(l=>l.classList.remove('active'));document.getElementById('tab-'+t).classList.add('active');var navEl=document.getElementById('nav-'+t);if(navEl)navEl.classList.add('active');window.scrollTo({top:0,behavior:'smooth'});if(t==='csr')initCSR();if(t==='menu'){requestAnimationFrame(initMenuScroll);}else{teardownMenuScroll();}closeMobileNav();}
+function showTab(t){document.querySelectorAll('.tab-section').forEach(s=>s.classList.remove('active'));document.querySelectorAll('.nav-link').forEach(l=>l.classList.remove('active'));document.getElementById('tab-'+t).classList.add('active');var navEl=document.getElementById('nav-'+t);if(navEl)navEl.classList.add('active');window.scrollTo({top:0,behavior:'smooth'});if(t==='csr')initCSR();if(t==='menu'){requestAnimationFrame(initMenuScroll);}else{teardownMenuScroll();}closeMobileNav();if(TAB_HASH[t]&&location.hash!=='#'+TAB_HASH[t]){try{history.replaceState(null,'','#'+TAB_HASH[t]);}catch(e){}}}
 function toggleMobileNav(){var links=document.getElementById('nav-links');var burger=document.getElementById('nav-burger');var isOpen=links.classList.toggle('mobile-open');burger.classList.toggle('open',isOpen);}
 function closeMobileNav(){var links=document.getElementById('nav-links');var burger=document.getElementById('nav-burger');if(links)links.classList.remove('mobile-open');if(burger)burger.classList.remove('open');}
 let selectedAmt=0,votes=[12,8,15,6,9],totalRaised=25000,userVoted=false;
@@ -971,8 +976,8 @@ if(document.getElementById('tab-menu') && document.getElementById('tab-menu').cl
   document.getElementById('inv-again').addEventListener('click',function(){noteEl.value='';document.getElementById('inv-done').hidden=true;document.getElementById('inv-form').hidden=false;render();});
   render();
 })();
-if(openedFromInvite){showTab('invite');}
-window.addEventListener('hashchange',function(){if(location.hash==='#invite')showTab('invite');});
+if(deepLinked){showTab(initialRoute);}
+window.addEventListener('hashchange',function(){var r=routeTab();if(r)showTab(r);});
 </script>
 </body>
 </html>
