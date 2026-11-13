@@ -749,13 +749,11 @@ body.splash-lock{overflow:hidden;}
         <button type="button" class="inv-btn inv-btn-alt" id="inv-other">Share another way</button>
         <p class="inv-hint" id="inv-hint">Pick as many chats or groups as you like on the next screen.</p>
       </div>
-      <p class="inv-code" id="inv-codeline" hidden>Invite code <b id="inv-code"></b></p>
     </div>
 
     <div class="inv-card inv-done" id="inv-done" hidden>
       <p class="inv-big">Sent. Thank you.</p>
       <p class="inv-hint">Now the phone can go back in your pocket.</p>
-      <p class="inv-code">Invite code <b id="inv-code2"></b></p>
       <button type="button" class="inv-btn inv-btn-alt" id="inv-again">Invite someone else</button>
     </div>
 
@@ -812,8 +810,8 @@ body.splash-lock{overflow:hidden;}
           <p class="cause-body">Run by the Theosophical Society on its Adyar campus since 1968, BMAD treats, rehabilitates and rehomes distressed animals: street dogs and cats, horses and wildlife.</p>
           <div class="cause-amt-row"><span class="cause-amt-label">Contributed</span><span class="cause-amt" data-amt="10000">&#8377;10,000</span></div>
           <div class="cause-actions">
-            <!-- PROOF OF PAYMENT IMAGE: proof-bmad.jpg -->
-            <button class="cause-btn solid" onclick="openProof('proof-bmad.jpg','Besant Memorial Animal Dispensary (BMAD)')">Proof of payment</button>
+            <!-- PROOF OF PAYMENT IMAGE: proof_bmad.jpg -->
+            <button class="cause-btn solid" onclick="openProof('proof_bmad.jpg','Besant Memorial Animal Dispensary (BMAD)')">Proof of payment</button>
             <a class="cause-btn ghost" href="https://ts-adyar.org/besant-memorial-animal-dispensary" target="_blank" rel="noopener">Visit website</a>
           </div>
         </div>
@@ -923,32 +921,30 @@ if(document.getElementById('tab-menu') && document.getElementById('tab-menu').cl
   function strictEncode(t){return encodeURIComponent(t).replace(/[!'()*]/g,function(ch){return '%'+ch.charCodeAt(0).toString(16).toUpperCase();});}
   function cleanName(){return nameEl.value.trim().replace(/\s+/g,' ');}
   function code(){var n=cleanName().toUpperCase().replace(/[^A-Z]/g,'').slice(0,8);return n?'EX-'+n+suffix:'';}
-  function bookingLink(name,c){
-    var t='Hi, '+name+' invited me to The Exchange with code '+c+'. I’d like to book a table.';
+  function bookingLink(name){
+    var t='Hi, '+name+' invited me to The Exchange. I’d like to book a table.';
     return 'https://wa.me/'+INVITE_BOOKING_NUMBER+'?text='+strictEncode(t);
   }
   function message(){
     var name=cleanName(),note=noteEl.value.trim(),c=code(),parts=[];
     if(note)parts.push(note);
     parts.push('I just had dinner at The Exchange in Adyar and thought of you. It’s a small place where the food starts the conversation.');
-    parts.push('Here’s '+INVITE_OFFER+'. Tap to book a table:\n'+(name?bookingLink(name,c):'[your booking link]'));
+    parts.push('Here’s '+INVITE_OFFER+', given when you dine with us. Book a table here:\n'+RESERVATION_URL+(name?'\n\nOr book on WhatsApp:\n'+bookingLink(name):''));
     if(name)parts.push('From '+name);
     return parts.join('\n\n');
   }
   function render(){
     var name=cleanName(),msg=message(),c=code();
     preview.textContent='';
-    msg.split(/(https:\/\/wa\.me\/\S+)/).forEach(function(piece){
-      if(/^https:\/\/wa\.me\//.test(piece)){var s=document.createElement('span');s.className='inv-link';s.textContent='wa.me/'+INVITE_BOOKING_NUMBER+' (booking link)';preview.appendChild(s);}
+    msg.split(/(https:\/\/\S+)/).forEach(function(piece){
+      if(/^https:\/\/wa\.me\//.test(piece)){var s=document.createElement('span');s.className='inv-link';s.textContent='wa.me/'+INVITE_BOOKING_NUMBER+' (WhatsApp booking link)';preview.appendChild(s);}
+      else if(/^https:\/\//.test(piece)){var s2=document.createElement('span');s2.className='inv-link';s2.textContent=piece.replace(/^https:\/\//,'');preview.appendChild(s2);}
       else preview.appendChild(document.createTextNode(piece));
     });
     var ready=name.length>0;
     send.setAttribute('aria-disabled',ready?'false':'true');
     send.href=ready?'https://wa.me/?text='+encodeURIComponent(msg):'#';
     hint.textContent=ready?'Pick as many chats or groups as you like on the next screen.':'Add your first name to send.';
-    document.getElementById('inv-codeline').hidden=!c;
-    document.getElementById('inv-code').textContent=c;
-    document.getElementById('inv-code2').textContent=c;
     chips.forEach(function(b){b.setAttribute('aria-pressed',String(b.textContent===noteEl.value.trim()));});
   }
   function finish(){setTimeout(function(){document.getElementById('inv-form').hidden=true;document.getElementById('inv-done').hidden=false;},600);}
